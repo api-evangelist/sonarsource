@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication metrics API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: metrics
+  description: Get information on automatic metrics, and manage custom metrics. See also api/custom_measures.
+paths:
+  /api/metrics/domains:
+    get:
+      operationId: metricsDomains
+      summary: List all custom metric domains.
+      description: List all custom metric domains.
+      tags:
+      - metrics
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/metrics/search:
+    get:
+      operationId: metricsSearch
+      summary: Search for metrics
+      description: Search for metrics
+      tags:
+      - metrics
+      parameters:
+      - name: f
+        in: query
+        description: Comma-separated list of the fields to be returned in response. All the fields are returned by default.
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - description
+          - domain
+          - direction
+          - qualitative
+          - hidden
+          - decimalScale
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/metrics/types:
+    get:
+      operationId: metricsTypes
+      summary: List all available metric types.
+      description: List all available metric types.
+      tags:
+      - metrics
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

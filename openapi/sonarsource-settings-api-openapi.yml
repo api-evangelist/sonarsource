@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication settings API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: settings
+  description: Manage settings.
+paths:
+  /api/settings/list_definitions:
+    get:
+      operationId: settingsListDefinitions
+      summary: List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, au...
+      description: 'List settings definitions. Requires ''Browse'' permission when a component is specified To access licensed settings, authentication is required To access secured settings, one of the following permissions is required: ''Execute Analysis''''Administer'' rights on the specified component'
+      tags:
+      - settings
+      parameters:
+      - name: component
+        in: query
+        description: Component key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/settings/reset:
+    post:
+      operationId: settingsReset
+      summary: Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires th...
+      description: Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component.
+      tags:
+      - settings
+      parameters:
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: component
+        in: query
+        description: Component key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: keys
+        in: query
+        description: Comma-separated list of keys
+        required: true
+        schema:
+          type: string
+        example: sonar.links.scm,sonar.debt.hoursInDay
+      - name: organization
+        in: query
+        description: Organization key
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/settings/set:
+    post:
+      operationId: settingsSet
+      summary: Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties ar...
+      description: Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component.
+      tags:
+      - settings
+      parameters:
+      - name: component
+        in: query
+        description: Component key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: fieldValues
+        in: query
+        description: Setting field values. To set several values, the parameter must be called once for each value.
+        required: false
+        schema:
+          type: string
+        example: fieldValues={"firstField":"first value", "secondField":"second value", "thirdField":"third value"}
+      - name: key
+        in: query
+        description: Setting key
+        required: true
+        schema:
+          type: string
+        example: sonar.links.scm
+      - name: organization
+        in: query
+        description: Organization key (for the Enterprise plan only)
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: value
+        in: query
+        description: Setting value. To reset a value, please use the reset web service.
+        required: false
+        schema:
+          type: string
+          maxLength: 4000
+        example: git@github.com:SonarSource/sonarqube.git
+      - name: values
+        in: query
+        description: Setting multi value. To set several values, the parameter must be called once for each value.
+        required: false
+        schema:
+          type: string
+        example: values=firstValue&values=secondValue&values=thirdValue
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/settings/values:
+    get:
+      operationId: settingsValues
+      summary: List settings values. If no value has been set for a setting, then the default value is returned. Both component and ...
+      description: 'List settings values. If no value has been set for a setting, then the default value is returned. Both component and organization parameters cannot be used together. Requires ''Browse'' or ''Execute Analysis'' permission when a component is specified. Requires to be member of the organization if one is specified. To access secured settings, one of the following permissions is required: ''Execute Analysis'' or ''Administer'' rights on the specified component The returned attributes are:''key'': The key of the setting''value'': The value of setting''inherited'': True if the value is being inherited from a parent setting''parentValue: The value of the parent setting if the value is not inherited''''parentOrigin: The origin of the parentValue (INSTANCE, ORGANIZATION, PROJECT)'''
+      tags:
+      - settings
+      parameters:
+      - name: component
+        in: query
+        description: Component key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: keys
+        in: query
+        description: List of setting keys
+        required: false
+        schema:
+          type: string
+        example: sonar.test.inclusions,sonar.exclusions
+      - name: organization
+        in: query
+        description: Organization key
+        required: false
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

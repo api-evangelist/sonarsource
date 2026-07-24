@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication project_tags API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: project_tags
+  description: Manage project tags
+paths:
+  /api/project_tags/search:
+    get:
+      operationId: projectTagsSearch
+      summary: Search tags
+      description: Search tags
+      tags:
+      - project_tags
+      parameters:
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 100
+        required: false
+        schema:
+          type: string
+          default: '10'
+        example: '20'
+      - name: q
+        in: query
+        description: Limit search to tags that contain the supplied string.
+        required: false
+        schema:
+          type: string
+        example: 'off'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_tags/set:
+    post:
+      operationId: projectTagsSet
+      summary: 'Set tags on a project. Requires the following permission: ''Administer'' rights on the specified project'
+      description: 'Set tags on a project. Requires the following permission: ''Administer'' rights on the specified project'
+      tags:
+      - project_tags
+      parameters:
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: tags
+        in: query
+        description: Comma-separated list of tags
+        required: true
+        schema:
+          type: string
+        example: finance, offshore
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

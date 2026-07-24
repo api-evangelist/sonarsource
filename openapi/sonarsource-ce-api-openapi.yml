@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication ce API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: ce
+  description: Get information on Compute Engine tasks.
+paths:
+  /api/ce/activity:
+    get:
+      operationId: ceActivity
+      summary: Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration ...
+      description: Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration permission if componentId or component is set.
+      tags:
+      - ce
+      parameters:
+      - name: component
+        in: query
+        description: Key of the component (project) to filter on
+        required: false
+        schema:
+          type: string
+        example: projectKey
+      - name: componentId
+        in: query
+        description: Id of the component (project) to filter on
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL0
+      - name: maxExecutedAt
+        in: query
+        description: Maximum date of end of task processing (inclusive)
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19T13:00:00+0200
+      - name: minSubmittedAt
+        in: query
+        description: Minimum date of task submission (inclusive)
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19T13:00:00+0200
+      - name: onlyCurrents
+        in: query
+        description: Filter on the last tasks (only the most recent finished task by project)
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 1000
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: q
+        in: query
+        description: 'Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied stringtask ids that are exactly the same as the supplied stringMust not be set together with componentId'
+        required: false
+        schema:
+          type: string
+        example: Apache
+      - name: status
+        in: query
+        description: Comma separated list of task statuses
+        required: false
+        schema:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILED
+          - CANCELED
+          - PENDING
+          - IN_PROGRESS
+          default: SUCCESS,FAILED,CANCELED
+        example: IN_PROGRESS,SUCCESS
+      - name: type
+        in: query
+        description: Task type
+        required: false
+        schema:
+          type: string
+          enum:
+          - REPORT
+        example: REPORT
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/ce/activity_status:
+    get:
+      operationId: ceActivityStatus
+      summary: Returns CE activity related metrics. Requires 'Administer' permission on the specified project.
+      description: Returns CE activity related metrics. Requires 'Administer' permission on the specified project.
+      tags:
+      - ce
+      parameters:
+      - name: componentId
+        in: query
+        description: Id of the component (project) to filter on
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL0
+      - name: componentKey
+        in: query
+        description: Key of the component (project) to filter on
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/ce/component:
+    get:
+      operationId: ceComponent
+      summary: Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Require...
+      description: 'Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Requires the following permission: ''Browse'' on the specified component. Either ''componentId'' or ''component'' must be provided.'
+      tags:
+      - ce
+      parameters:
+      - name: component
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: componentId
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/ce/task:
+    get:
+      operationId: ceTask
+      summary: Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis'...
+      description: Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis' permission.
+      tags:
+      - ce
+      parameters:
+      - name: additionalFields
+        in: query
+        description: Comma-separated list of the optional fields to be returned in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - scannerContext
+          - warnings
+      - name: id
+        in: query
+        description: Id of task
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

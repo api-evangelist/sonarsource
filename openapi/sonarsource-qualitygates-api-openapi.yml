@@ -1,0 +1,699 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication qualitygates API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: qualitygates
+  description: Manage quality gates, including conditions and project association.
+paths:
+  /api/qualitygates/copy:
+    post:
+      operationId: qualitygatesCopy
+      summary: Copy a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      description: Copy a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: id
+        in: query
+        description: The ID of the source quality gate
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: name
+        in: query
+        description: The name of the quality gate to create
+        required: true
+        schema:
+          type: string
+        example: My Quality Gate
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/create:
+    post:
+      operationId: qualitygatesCreate
+      summary: Create a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      description: Create a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: name
+        in: query
+        description: The name of the quality gate to create
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: My Quality Gate
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/create_condition:
+    post:
+      operationId: qualitygatesCreateCondition
+      summary: Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission.
+      description: Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: error
+        in: query
+        description: Condition error threshold
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+        example: '10'
+      - name: gateId
+        in: query
+        description: ID of the quality gate
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: metric
+        in: query
+        description: Condition metric. Only metric of the following types are allowed:INTMILLISECRATINGWORK_DURFLOATPERCENTLEVELFollowing metrics are forbidden:alert_statussecurity_hotspotsnew_security_hotspots
+        required: true
+        schema:
+          type: string
+        example: blocker_violations, vulnerabilities, new_code_smells
+      - name: op
+        in: query
+        description: 'Condition operator: LT = is lower thanGT = is greater than'
+        required: false
+        schema:
+          type: string
+          enum:
+          - LT
+          - GT
+        example: GT
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/delete_condition:
+    post:
+      operationId: qualitygatesDeleteCondition
+      summary: Delete a condition from a quality gate. Requires the 'Administer Quality Gates' permission.
+      description: Delete a condition from a quality gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: id
+        in: query
+        description: Condition ID
+        required: true
+        schema:
+          type: string
+        example: '2'
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/deselect:
+    post:
+      operationId: qualitygatesDeselect
+      summary: Remove the association of a project from a quality gate. Requires one of the following permissions:'Administer Qualit...
+      description: Remove the association of a project from a quality gate. Requires one of the following permissions:'Administer Quality Gates''Administer' rights on the project
+      tags:
+      - qualitygates
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/destroy:
+    post:
+      operationId: qualitygatesDestroy
+      summary: Delete a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      description: Delete a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: id
+        in: query
+        description: ID of the quality gate to delete
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/get_by_project:
+    get:
+      operationId: qualitygatesGetByProject
+      summary: Get the quality gate of a project. Requires one of the following permissions:'Administer' rights on the specified pro...
+      description: Get the quality gate of a project. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project
+      tags:
+      - qualitygates
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/list:
+    get:
+      operationId: qualitygatesList
+      summary: Get a list of quality gates
+      description: Get a list of quality gates
+      tags:
+      - qualitygates
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/project_status:
+    get:
+      operationId: qualitygatesProjectStatus
+      summary: Get the quality gate status of a project or a Compute Engine task. Either 'analysisId', 'projectId' or 'projectKey' m...
+      description: 'Get the quality gate status of a project or a Compute Engine task. Either ''analysisId'', ''projectId'' or ''projectKey'' must be provided The different statuses returned are: OK, WARN, ERROR, NONE. The NONE status is returned when there is no quality gate associated with the analysis. Returns an HTTP code 404 if the analysis associated with the task is not found or does not exist. Requires one of the following permissions:''Administer'' rights on the specified project''Browse'' on the specified project'
+      tags:
+      - qualitygates
+      parameters:
+      - name: analysisId
+        in: query
+        description: Analysis id
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL1
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: projectId
+        in: query
+        description: Project id. Doesn't work with branches or pull requests
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/rename:
+    post:
+      operationId: qualitygatesRename
+      summary: Rename a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      description: Rename a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: id
+        in: query
+        description: ID of the quality gate to rename
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: name
+        in: query
+        description: New name of the quality gate
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: My Quality Gate
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/search:
+    get:
+      operationId: qualitygatesSearch
+      summary: Search for projects associated (or not) to a quality gate. Only authorized projects for current user will be returned.
+      description: Search for projects associated (or not) to a quality gate. Only authorized projects for current user will be returned.
+      tags:
+      - qualitygates
+      parameters:
+      - name: gateId
+        in: query
+        description: Quality Gate ID
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: page
+        in: query
+        description: Page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '2'
+      - name: pageSize
+        in: query
+        description: Page size
+        required: false
+        schema:
+          type: string
+        example: '10'
+      - name: query
+        in: query
+        description: To search for projects containing this string. If this parameter is set, "selected" is set to "all".
+        required: false
+        schema:
+          type: string
+        example: abc
+      - name: selected
+        in: query
+        description: Depending on the value, show only selected items (selected=selected), deselected items (selected=deselected), or all items with their selection status (selected=all).
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - deselected
+          - selected
+          default: selected
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/select:
+    post:
+      operationId: qualitygatesSelect
+      summary: Associate a project to a quality gate. The 'projectId' or 'projectKey' must be provided. Project id as a numeric valu...
+      description: Associate a project to a quality gate. The 'projectId' or 'projectKey' must be provided. Project id as a numeric value is deprecated since 6.1. Please use the id similar to 'AU-TpxcA-iU5OvuD2FLz'. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: gateId
+        in: query
+        description: Quality gate id
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: projectId
+        in: query
+        description: Project id. Project id as an numeric value is deprecated since 6.1
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/set_as_default:
+    post:
+      operationId: qualitygatesSetAsDefault
+      summary: Set a quality gate as the default quality gate. Requires the 'Administer Quality Gates' permission.
+      description: Set a quality gate as the default quality gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: id
+        in: query
+        description: ID of the quality gate to set as default
+        required: true
+        schema:
+          type: string
+        example: '1'
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/show:
+    get:
+      operationId: qualitygatesShow
+      summary: Display the details of a quality gate
+      description: Display the details of a quality gate
+      tags:
+      - qualitygates
+      parameters:
+      - name: id
+        in: query
+        description: ID of the quality gate. Either id or name must be set
+        required: false
+        schema:
+          type: string
+        example: '1'
+      - name: name
+        in: query
+        description: Name of the quality gate. Either id or name must be set
+        required: false
+        schema:
+          type: string
+        example: My Quality Gate
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/unset_default:
+    post:
+      operationId: qualitygatesUnsetDefault
+      summary: 'This webservice is no more available : a default quality gate is mandatory.'
+      description: 'This webservice is no more available : a default quality gate is mandatory.'
+      tags:
+      - qualitygates
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualitygates/update_condition:
+    post:
+      operationId: qualitygatesUpdateCondition
+      summary: Update a condition attached to a quality gate. Requires the 'Administer Quality Gates' permission.
+      description: Update a condition attached to a quality gate. Requires the 'Administer Quality Gates' permission.
+      tags:
+      - qualitygates
+      parameters:
+      - name: error
+        in: query
+        description: Condition error threshold
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+        example: '10'
+      - name: id
+        in: query
+        description: Condition ID
+        required: true
+        schema:
+          type: string
+        example: '10'
+      - name: metric
+        in: query
+        description: Condition metric. Only metric of the following types are allowed:INTMILLISECRATINGWORK_DURFLOATPERCENTLEVELFollowing metrics are forbidden:alert_statussecurity_hotspotsnew_security_hotspots
+        required: true
+        schema:
+          type: string
+        example: blocker_violations, vulnerabilities, new_code_smells
+      - name: op
+        in: query
+        description: 'Condition operator: LT = is lower thanGT = is greater than'
+        required: false
+        schema:
+          type: string
+          enum:
+          - LT
+          - GT
+        example: GT
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

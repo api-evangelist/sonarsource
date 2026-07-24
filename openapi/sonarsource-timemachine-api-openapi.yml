@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication timemachine API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: timemachine
+  description: Removed since 6.3, please use api/measures/search_history instead
+paths:
+  /api/timemachine/index:
+    get:
+      operationId: timemachineIndex
+      summary: The web service is removed and you're invited to use api/measures/search_history instead
+      description: The web service is removed and you're invited to use api/measures/search_history instead
+      tags:
+      - timemachine
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

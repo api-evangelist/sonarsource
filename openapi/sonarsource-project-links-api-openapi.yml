@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication project_links API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: project_links
+  description: Manage projects links.
+paths:
+  /api/project_links/create:
+    post:
+      operationId: projectLinksCreate
+      summary: Create a new project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      description: Create a new project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      tags:
+      - project_links
+      parameters:
+      - name: name
+        in: query
+        description: Link name
+        required: true
+        schema:
+          type: string
+          maxLength: 128
+        example: Custom
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: url
+        in: query
+        description: Link url
+        required: true
+        schema:
+          type: string
+          maxLength: 2048
+        example: http://example.com
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_links/delete:
+    post:
+      operationId: projectLinksDelete
+      summary: Delete existing project link. Requires 'Administer' permission on the specified project, or global 'Administer' permi...
+      description: Delete existing project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      tags:
+      - project_links
+      parameters:
+      - name: id
+        in: query
+        description: Link id
+        required: true
+        schema:
+          type: string
+        example: '17'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_links/search:
+    get:
+      operationId: projectLinksSearch
+      summary: List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one of the following permissions:...
+      description: List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project
+      tags:
+      - project_links
+      parameters:
+      - name: projectId
+        in: query
+        description: Project Id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: projectKey
+        in: query
+        description: Project Key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

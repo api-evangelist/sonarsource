@@ -1,0 +1,280 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication webhooks API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: webhooks
+  description: Webhooks allow to notify external services when a project analysis is done
+paths:
+  /api/webhooks/create:
+    post:
+      operationId: webhooksCreate
+      summary: Create a Webhook. Requires 'Administer' permission on the specified project.
+      description: Create a Webhook. Requires 'Administer' permission on the specified project.
+      tags:
+      - webhooks
+      parameters:
+      - name: name
+        in: query
+        description: Name displayed in the administration console of webhooks
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: My Webhook
+      - name: organization
+        in: query
+        description: The key of the organization that will own the webhook
+        required: true
+        schema:
+          type: string
+          maxLength: 255
+        example: my-org
+      - name: project
+        in: query
+        description: The key of the project that will own the webhook
+        required: false
+        schema:
+          type: string
+          maxLength: 100
+        example: my_project
+      - name: secret
+        in: query
+        description: If provided, secret will be used as the key to generate the HMAC hex (lowercase) digest value in the 'X-Sonar-Webhook-HMAC-SHA256' header
+        required: false
+        schema:
+          type: string
+          maxLength: 200
+        example: your_secret
+      - name: url
+        in: query
+        description: 'Server endpoint that will receive the webhook payload, for example ''http://my_server/foo''. If HTTP Basic authentication is used, HTTPS is recommended to avoid man in the middle attacks. Example: ''https://myLogin:myPassword@my_server/foo'''
+        required: true
+        schema:
+          type: string
+          maxLength: 512
+        example: https://www.google.com/sonar
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/webhooks/delete:
+    post:
+      operationId: webhooksDelete
+      summary: Delete a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      description: Delete a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      tags:
+      - webhooks
+      parameters:
+      - name: webhook
+        in: query
+        description: The key of the webhook to be deleted, auto-generated value can be obtained through api/webhooks/create or api/webhooks/list
+        required: true
+        schema:
+          type: string
+          maxLength: 40
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/webhooks/deliveries:
+    get:
+      operationId: webhooksDeliveries
+      summary: Get the recent deliveries for a specified project or Compute Engine task. Require 'Administer' permission on the rela...
+      description: Get the recent deliveries for a specified project or Compute Engine task. Require 'Administer' permission on the related project. Note that additional information are returned by api/webhooks/delivery.
+      tags:
+      - webhooks
+      parameters:
+      - name: ceTaskId
+        in: query
+        description: Id of the Compute Engine task
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: componentKey
+        in: query
+        description: Key of the project
+        required: false
+        schema:
+          type: string
+        example: my-project
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less than 500
+        required: false
+        schema:
+          type: string
+          default: '10'
+        example: '20'
+      - name: webhook
+        in: query
+        description: Key of the webhook that triggered those deliveries, auto-generated value that can be obtained through api/webhooks/create or api/webhooks/list
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FLz
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/webhooks/delivery:
+    get:
+      operationId: webhooksDelivery
+      summary: Get a webhook delivery by its id. Note that additional information are returned by api/webhooks/delivery.
+      description: Get a webhook delivery by its id. Note that additional information are returned by api/webhooks/delivery.
+      tags:
+      - webhooks
+      parameters:
+      - name: deliveryId
+        in: query
+        description: Id of delivery
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL3
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/webhooks/list:
+    get:
+      operationId: webhooksList
+      summary: Search for global webhooks or project webhooks. Webhooks are ordered by name. Requires 'Administer' permission on the...
+      description: Search for global webhooks or project webhooks. Webhooks are ordered by name. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      tags:
+      - webhooks
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/webhooks/update:
+    post:
+      operationId: webhooksUpdate
+      summary: Update a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      description: Update a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      tags:
+      - webhooks
+      parameters:
+      - name: name
+        in: query
+        description: new name of the webhook
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: My Webhook
+      - name: secret
+        in: query
+        description: If provided, secret will be used as the key to generate the HMAC hex (lowercase) digest value in the 'X-Sonar-Webhook-HMAC-SHA256' header. If blank, any secret previously configured will be removed. If not set, the secret will remain unchanged.
+        required: false
+        schema:
+          type: string
+          maxLength: 200
+        example: your_secret
+      - name: url
+        in: query
+        description: new url to be called by the webhook
+        required: true
+        schema:
+          type: string
+          maxLength: 512
+        example: https://www.google.com/sonar
+      - name: webhook
+        in: query
+        description: The key of the webhook to be updated, auto-generated value can be obtained through api/webhooks/create or api/webhooks/list
+        required: true
+        schema:
+          type: string
+          maxLength: 40
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

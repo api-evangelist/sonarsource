@@ -1,0 +1,354 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication measures API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: measures
+  description: Get components or children with specified measures.
+paths:
+  /api/measures/component:
+    get:
+      operationId: measuresComponent
+      summary: Return component with specified measures. The componentId or the component parameter must be provided. Requires the f...
+      description: 'Return component with specified measures. The componentId or the component parameter must be provided. Requires the following permission: ''Browse'' on the project of specified component.'
+      tags:
+      - measures
+      parameters:
+      - name: additionalFields
+        in: query
+        description: Comma-separated list of additional fields that can be returned in the response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - metrics
+          - periods
+        example: periods,metrics
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: component
+        in: query
+        description: Component key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: componentId
+        in: query
+        description: Component id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: developerId
+        in: query
+        description: Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set.
+        required: false
+        schema:
+          type: string
+      - name: developerKey
+        in: query
+        description: Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set.
+        required: false
+        schema:
+          type: string
+      - name: metricKeys
+        in: query
+        description: Comma-separated list of metric keys
+        required: true
+        schema:
+          type: string
+        example: ncloc,complexity,violations
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/measures/component_tree:
+    get:
+      operationId: measuresComponentTree
+      summary: Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the componen...
+      description: 'Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the component parameter must be provided. Requires the following permission: ''Browse'' on the specified project. When limiting search with the q parameter, directories are not returned.'
+      tags:
+      - measures
+      parameters:
+      - name: additionalFields
+        in: query
+        description: Comma-separated list of additional fields that can be returned in the response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - metrics
+          - periods
+        example: periods,metrics
+      - name: asc
+        in: query
+        description: Ascending sort
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'true'
+      - name: baseComponentId
+        in: query
+        description: Base component id. The search is based on this component.
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FLz
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: component
+        in: query
+        description: Component key. The search is based on this component.
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: developerId
+        in: query
+        description: Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set.
+        required: false
+        schema:
+          type: string
+      - name: developerKey
+        in: query
+        description: Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set.
+        required: false
+        schema:
+          type: string
+      - name: metricKeys
+        in: query
+        description: Comma-separated list of metric keys. Types DATA, DISTRIB are not allowed.
+        required: true
+        schema:
+          type: string
+        example: ncloc,complexity,violations
+      - name: metricPeriodSort
+        in: query
+        description: Sort measures by leak period or not ?. The 's' parameter must contain the 'metricPeriod' value.
+        required: false
+        schema:
+          type: string
+          enum:
+          - '1'
+      - name: metricSort
+        in: query
+        description: Metric key to sort by. The 's' parameter must contain the 'metric' or 'metricPeriod' value. It must be part of the 'metricKeys' parameter
+        required: false
+        schema:
+          type: string
+        example: ncloc
+      - name: metricSortFilter
+        in: query
+        description: 'Filter components. Sort must be on a metric. Possible values are: all: return all componentswithMeasuresOnly: filter out components that do not have a measure on the sorted metric'
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - withMeasuresOnly
+          default: all
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      - name: q
+        in: query
+        description: 'Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string'
+        required: false
+        schema:
+          type: string
+        example: FILE_NAM
+      - name: qualifiers
+        in: query
+        description: Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:BRC - Sub-projectsDIR - DirectoriesFIL - FilesTRK - ProjectsUTS - Test Files
+        required: false
+        schema:
+          type: string
+          enum:
+          - BRC
+          - DIR
+          - FIL
+          - TRK
+          - UTS
+      - name: s
+        in: query
+        description: Comma-separated list of sort fields
+        required: false
+        schema:
+          type: string
+          enum:
+          - metric
+          - metricPeriod
+          - name
+          - path
+          - qualifier
+          default: name
+        example: name,path
+      - name: strategy
+        in: query
+        description: 'Strategy to search for base component descendants:children: return the children components of the base component. Grandchildren components are not returnedall: return all the descendants components of the base component. Grandchildren are returned.leaves: return all the descendant components (files, in general) which don''t have other children. They are the leaves of the component tree.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - leaves
+          - all
+          - children
+          default: all
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/measures/search_history:
+    get:
+      operationId: measuresSearchHistory
+      summary: Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of mea...
+      description: 'Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of measures for each metric. Requires the following permission: ''Browse'' on the specified component'
+      tags:
+      - measures
+      parameters:
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: component
+        in: query
+        description: Component key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: from
+        in: query
+        description: Filter measures created after the given date (inclusive). Either a date (server timezone) or datetime can be provided
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: metrics
+        in: query
+        description: Comma-separated list of metric keys
+        required: true
+        schema:
+          type: string
+        example: ncloc,coverage,new_violations
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 1000
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      - name: to
+        in: query
+        description: Filter measures created before the given date (inclusive). Either a date (server timezone) or datetime can be provided
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

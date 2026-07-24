@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication user_tokens API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: user_tokens
+  description: List, create, and delete a user's access tokens.
+paths:
+  /api/user_tokens/generate:
+    post:
+      operationId: userTokensGenerate
+      summary: Generate a user access token. Please keep your tokens secret. They enable to authenticate and analyze projects. The e...
+      description: Generate a user access token. Please keep your tokens secret. They enable to authenticate and analyze projects. The endpoint generates a token for the logged in user.
+      tags:
+      - user_tokens
+      parameters:
+      - name: expirationDate
+        in: query
+        description: Optional expiration date.
+        required: false
+        schema:
+          type: string
+        example: 2026-01-01T00:00:00+0000
+      - name: login
+        in: query
+        description: Deprecated and ignored. Tokens are always generated for the authenticated user.
+        required: false
+        schema:
+          type: string
+        example: g.hopper
+      - name: name
+        in: query
+        description: Token name
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: Project scan on Travis
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/user_tokens/revoke:
+    post:
+      operationId: userTokensRevoke
+      summary: Revoke an access token of the authenticated user.
+      description: Revoke an access token of the authenticated user.
+      tags:
+      - user_tokens
+      parameters:
+      - name: login
+        in: query
+        description: Deprecated and ignored. Tokens are always revoked for the authenticated user.
+        required: false
+        schema:
+          type: string
+        example: g.hopper
+      - name: name
+        in: query
+        description: Token name
+        required: true
+        schema:
+          type: string
+        example: Project scan on Travis
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/user_tokens/search:
+    get:
+      operationId: userTokensSearch
+      summary: List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated every hour, so it may no...
+      description: List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated every hour, so it may not be accurate, for instance when a user is using a token many times in less than one hour.
+      tags:
+      - user_tokens
+      parameters:
+      - name: login
+        in: query
+        description: Deprecated and ignored. Tokens are always listed for the authenticated user.
+        required: false
+        schema:
+          type: string
+        example: g.hopper
+      - name: type
+        in: query
+        description: Filter tokens by type. If omitted, all tokens are returned.
+        required: false
+        schema:
+          type: string
+          enum:
+          - standard
+          - agentHq
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication properties API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: properties
+  description: This web service is deprecated, please use api/settings instead.
+paths:
+  /api/properties/index:
+    get:
+      operationId: propertiesIndex
+      summary: This web service is deprecated, please use api/settings/values instead.
+      description: This web service is deprecated, please use api/settings/values instead.
+      tags:
+      - properties
+      parameters:
+      - name: format
+        in: query
+        description: Only json response format is available
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+      - name: id
+        in: query
+        description: Setting key
+        required: false
+        schema:
+          type: string
+        example: sonar.test.inclusions
+      - name: resource
+        in: query
+        description: Component key or database id
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

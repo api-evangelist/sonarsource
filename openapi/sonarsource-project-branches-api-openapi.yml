@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication project_branches API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: project_branches
+  description: Manage branch (only available when the Branch plugin is installed)
+paths:
+  /api/project_branches/delete:
+    post:
+      operationId: projectBranchesDelete
+      summary: Delete a non-main branch of a project. Requires 'Administer' rights on the specified project.
+      description: Delete a non-main branch of a project. Requires 'Administer' rights on the specified project.
+      tags:
+      - project_branches
+      parameters:
+      - name: branch
+        in: query
+        description: Name of the branch
+        required: true
+        schema:
+          type: string
+        example: branch1
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_branches/list:
+    get:
+      operationId: projectBranchesList
+      summary: List the branches of a project. The statistics are the overall counts on long branches, and the count of issues detec...
+      description: List the branches of a project. The statistics are the overall counts on long branches, and the count of issues detected on the changed code on short branches, and are only provided if the project parameter is specified. If the project parameter is specified, requires the user to have 'Browse' or 'Execute analysis' rights on that project. Otherwise, only returns branches from projects on which this user has 'Browse' or 'Execute analysis' rights.
+      tags:
+      - project_branches
+      parameters:
+      - name: branchIds
+        in: query
+        description: List of up to 50 branch IDs - required unless project key is provided
+        required: false
+        schema:
+          type: string
+        example: uuid1,uuid2,uuid3
+      - name: project
+        in: query
+        description: Project key - required unless branchIds is provided
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_branches/rename:
+    post:
+      operationId: projectBranchesRename
+      summary: Rename the main branch of a project. Requires 'Administer' permission on the specified project.
+      description: Rename the main branch of a project. Requires 'Administer' permission on the specified project.
+      tags:
+      - project_branches
+      parameters:
+      - name: name
+        in: query
+        description: New name of the main branch
+        required: true
+        schema:
+          type: string
+          maxLength: 255
+        example: branch1
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

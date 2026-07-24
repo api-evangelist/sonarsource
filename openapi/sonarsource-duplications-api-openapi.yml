@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication duplications API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: duplications
+  description: Get duplication information for a project.
+paths:
+  /api/duplications/show:
+    get:
+      operationId: duplicationsShow
+      summary: Get duplications. Require Browse permission on file's project
+      description: Get duplications. Require Browse permission on file's project
+      tags:
+      - duplications
+      parameters:
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: key
+        in: query
+        description: File key
+        required: false
+        schema:
+          type: string
+        example: my_project:/src/foo/Bar.php
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      - name: uuid
+        in: query
+        description: File ID. If provided, 'key' must not be provided.
+        required: false
+        schema:
+          type: string
+        example: 584a89f2-8037-4f7b-b82c-8b45d2d63fb2
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

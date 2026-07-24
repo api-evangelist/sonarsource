@@ -1,0 +1,1028 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication issues API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: issues
+  description: Read and update issues.
+paths:
+  /api/issues/add_comment:
+    post:
+      operationId: issuesAddComment
+      summary: 'Add a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      description: 'Add a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      tags:
+      - issues
+      parameters:
+      - name: isFeedback
+        in: query
+        description: Define is the given comment is a feedback
+        required: false
+        schema:
+          type: string
+          default: 'false'
+        example: 'true'
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: text
+        in: query
+        description: Comment text
+        required: true
+        schema:
+          type: string
+        example: Won't fix because it doesn't apply to the context
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/assign:
+    post:
+      operationId: issuesAssign
+      summary: Assign/Unassign an issue. Requires authentication and Browse permission on project
+      description: Assign/Unassign an issue. Requires authentication and Browse permission on project
+      tags:
+      - issues
+      parameters:
+      - name: assignee
+        in: query
+        description: Login of the assignee. When not set, it will unassign the issue. Use '_me' to assign to current user
+        required: false
+        schema:
+          type: string
+        example: admin
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/authors:
+    get:
+      operationId: issuesAuthors
+      summary: Search SCM accounts which match a given query. Requires authentication.
+      description: Search SCM accounts which match a given query. Requires authentication.
+      tags:
+      - issues
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 100
+        required: false
+        schema:
+          type: string
+          default: '10'
+        example: '20'
+      - name: q
+        in: query
+        description: Limit search to authors that contain the supplied string.
+        required: false
+        schema:
+          type: string
+        example: luke
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/bulk_change:
+    post:
+      operationId: issuesBulkChange
+      summary: Bulk change on issues. Requires authentication.
+      description: Bulk change on issues. Requires authentication.
+      tags:
+      - issues
+      parameters:
+      - name: add_tags
+        in: query
+        description: Add tags
+        required: false
+        schema:
+          type: string
+        example: security,java8
+      - name: assign
+        in: query
+        description: To assign the list of issues to a specific user (login), or un-assign all the issues
+        required: false
+        schema:
+          type: string
+        example: john.smith
+      - name: comment
+        in: query
+        description: To add a comment to a list of issues
+        required: false
+        schema:
+          type: string
+        example: Here is my comment
+      - name: do_transition
+        in: query
+        description: Transition
+        required: false
+        schema:
+          type: string
+          enum:
+          - confirm
+          - unconfirm
+          - reopen
+          - resolve
+          - falsepositive
+          - close
+          - wontfix
+          - accept
+          - resolveasreviewed
+          - resolveassafe
+          - resolveasacknowledged
+          - resetastoreview
+        example: reopen
+      - name: isFeedback
+        in: query
+        description: Define if the given comment is a feedback
+        required: false
+        schema:
+          type: string
+          default: 'false'
+        example: 'false'
+      - name: issues
+        in: query
+        description: Comma-separated list of issue keys
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz
+      - name: remove_tags
+        in: query
+        description: Remove tags
+        required: false
+        schema:
+          type: string
+        example: security,java8
+      - name: sendNotifications
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: set_severity
+        in: query
+        description: To change the severity of the list of issues
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+        example: BLOCKER
+      - name: set_type
+        in: query
+        description: To change the type of the list of issues
+        required: false
+        schema:
+          type: string
+          enum:
+          - CODE_SMELL
+          - BUG
+          - VULNERABILITY
+          - SECURITY_HOTSPOT
+        example: BUG
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/changelog:
+    get:
+      operationId: issuesChangelog
+      summary: Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.
+      description: Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.
+      tags:
+      - issues
+      parameters:
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/delete_comment:
+    post:
+      operationId: issuesDeleteComment
+      summary: 'Delete a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      description: 'Delete a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      tags:
+      - issues
+      parameters:
+      - name: comment
+        in: query
+        description: Comment key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/do_transition:
+    post:
+      operationId: issuesDoTransition
+      summary: Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept...
+      description: Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept', 'wontfix', and 'falsepositive' require the permission 'Administer Issues'. The transitions involving security hotspots require the permission 'Administer Security Hotspot'.
+      tags:
+      - issues
+      parameters:
+      - name: comment
+        in: query
+        description: Comment text
+        required: false
+        schema:
+          type: string
+        example: Won't fix because it doesn't apply to the context
+      - name: isFeedback
+        in: query
+        description: Define is the given comment is a feedback
+        required: false
+        schema:
+          type: string
+          default: 'false'
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: transition
+        in: query
+        description: Transition
+        required: true
+        schema:
+          type: string
+          enum:
+          - confirm
+          - unconfirm
+          - reopen
+          - resolve
+          - falsepositive
+          - close
+          - wontfix
+          - accept
+          - resolveasreviewed
+          - resolveassafe
+          - resolveasacknowledged
+          - resetastoreview
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/edit_comment:
+    post:
+      operationId: issuesEditComment
+      summary: 'Edit a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      description: 'Edit a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      tags:
+      - issues
+      parameters:
+      - name: comment
+        in: query
+        description: Comment key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: text
+        in: query
+        description: Comment text
+        required: true
+        schema:
+          type: string
+        example: Won't fix because it doesn't apply to the context
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/search:
+    get:
+      operationId: issuesSearch
+      summary: Search for issues. Requires the 'Browse' permission on the specified project(s).
+      description: Search for issues. Requires the 'Browse' permission on the specified project(s).
+      tags:
+      - issues
+      parameters:
+      - name: additionalFields
+        in: query
+        description: Comma-separated list of the optional fields to be returned in response. Action plans are dropped in 5.5, it is not returned in the response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - _all
+          - comments
+          - languages
+          - actionPlans
+          - rules
+          - ruleDescriptionContextKey
+          - transitions
+          - actions
+          - users
+      - name: asc
+        in: query
+        description: Ascending sort
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'true'
+      - name: assigned
+        in: query
+        description: To retrieve assigned or unassigned issues
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: assignees
+        in: query
+        description: Comma-separated list of assignee logins. The value '__me__' can be used as a placeholder for user who performs the request
+        required: false
+        schema:
+          type: string
+        example: admin,usera,__me__
+      - name: author
+        in: query
+        description: SCM accounts. To set several values, the parameter must be called once for each value.
+        required: false
+        schema:
+          type: string
+        example: author=torvalds@linux-foundation.org&author=linux@fondation.org
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: cleanCodeAttributeCategories
+        in: query
+        description: Comma-separated list of clean code attribute categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - ADAPTABLE
+          - CONSISTENT
+          - INTENTIONAL
+          - RESPONSIBLE
+        example: ADAPTABLE,INTENTIONAL
+      - name: complianceStandards
+        in: query
+        description: Set of compliance standards to filter on. Categories within a standard are comma-separated and behave as an 'or'. Multiple standards are separated by an ampersand and behave as an 'and'.
+        required: false
+        schema:
+          type: string
+        example: owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16&sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned=log-injection
+      - name: componentKeys
+        in: query
+        description: Comma-separated list of component keys. Retrieve issues associated to a specific list of components (and all its descendants). A component can be a project, directory or file.
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: createdAfter
+        in: query
+        description: To retrieve issues created after the given date (inclusive). Either a date (server timezone) or datetime can be provided. If this parameter is set, createdSince must not be set
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: createdAt
+        in: query
+        description: Datetime to retrieve issues created during a specific analysis
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19T13:00:00+0200
+      - name: createdBefore
+        in: query
+        description: To retrieve issues created before the given date (inclusive). Either a date (server timezone) or datetime can be provided.
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: createdInLast
+        in: query
+        description: To retrieve issues created during a time span before the current time (exclusive). Accepted units are 'y' for year, 'm' for month, 'w' for week and 'd' for day. If this parameter is set, createdAfter must not be set
+        required: false
+        schema:
+          type: string
+        example: 1m2w (1 month 2 weeks)
+      - name: cwe
+        in: query
+        description: Comma-separated list of CWE identifiers. Use 'unknown' to select issues not associated to any CWE.
+        required: false
+        schema:
+          type: string
+        example: 12,125,unknown
+      - name: facetMode
+        in: query
+        description: Choose the returned value for facet items, either count of issues or sum of remediation effort.
+        required: false
+        schema:
+          type: string
+          enum:
+          - count
+          - effort
+          default: count
+      - name: facets
+        in: query
+        description: Comma-separated list of the facets to be computed. No facet is computed by default.
+        required: false
+        schema:
+          type: string
+          enum:
+          - projects
+          - moduleUuids
+          - fileUuids
+          - assigned_to_me
+          - severities
+          - statuses
+          - issueStatuses
+          - resolutions
+          - rules
+          - assignees
+          - author
+          - directories
+          - languages
+          - tags
+          - types
+          - owaspMobileTop10-2024
+          - owaspTop10
+          - owaspTop10-2021
+          - cwe
+          - createdAt
+          - sonarsourceSecurity
+          - impactSoftwareQualities
+          - impactSeverities
+          - cleanCodeAttributeCategories
+          - complianceStandards
+      - name: impactSeverities
+        in: query
+        description: Comma-separated list of impact severities.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - LOW
+          - MEDIUM
+          - HIGH
+          - BLOCKER
+        example: HIGH,LOW
+      - name: impactSoftwareQualities
+        in: query
+        description: Comma-separated list of software qualities.
+        required: false
+        schema:
+          type: string
+          enum:
+          - MAINTAINABILITY
+          - RELIABILITY
+          - SECURITY
+        example: MAINTAINABILITY,RELIABILITY
+      - name: issueStatuses
+        in: query
+        description: Comma-separated list of issue statuses
+        required: false
+        schema:
+          type: string
+          enum:
+          - OPEN
+          - CONFIRMED
+          - FALSE_POSITIVE
+          - ACCEPTED
+          - FIXED
+        example: OPEN,ACCEPTED
+      - name: issues
+        in: query
+        description: Comma-separated list of issue keys
+        required: false
+        schema:
+          type: string
+        example: 5bccd6e8-f525-43a2-8d76-fcb13dde79ef
+      - name: languages
+        in: query
+        description: Comma-separated list of languages. Available since 4.4
+        required: false
+        schema:
+          type: string
+        example: java,js
+      - name: onComponentOnly
+        in: query
+        description: Return only issues at a component's level, not on its descendants (modules, directories, files, etc). This parameter is only considered when componentKeys or componentUuids is set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: organization
+        in: query
+        description: Organization key
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: owaspMobileTop10-2024
+        in: query
+        description: Comma-separated list of OWASP Mobile Top 10 - 2024 lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - m1
+          - m2
+          - m3
+          - m4
+          - m5
+          - m6
+          - m7
+          - m8
+          - m9
+          - m10
+      - name: owaspTop10
+        in: query
+        description: Comma-separated list of OWASP Top 10 lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - a1
+          - a2
+          - a3
+          - a4
+          - a5
+          - a6
+          - a7
+          - a8
+          - a9
+          - a10
+      - name: owaspTop10-2021
+        in: query
+        description: Comma-separated list of OWASP Top 10 - 2021 lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - a1
+          - a2
+          - a3
+          - a4
+          - a5
+          - a6
+          - a7
+          - a8
+          - a9
+          - a10
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '50'
+        example: '20'
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      - name: resolutions
+        in: query
+        description: Comma-separated list of resolutions
+        required: false
+        schema:
+          type: string
+          enum:
+          - FALSE-POSITIVE
+          - WONTFIX
+          - FIXED
+          - REMOVED
+        example: FIXED,REMOVED
+      - name: resolved
+        in: query
+        description: To match resolved or unresolved issues
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: rules
+        in: query
+        description: Comma-separated list of coding rule keys. Format is <repository>:<rule>
+        required: false
+        schema:
+          type: string
+        example: squid:AvoidCycles
+      - name: s
+        in: query
+        description: Sort field
+        required: false
+        schema:
+          type: string
+          enum:
+          - STATUS
+          - UPDATE_DATE
+          - CLOSE_DATE
+          - HOTSPOTS
+          - FILE_LINE
+          - SEVERITY
+          - CREATION_DATE
+          - ASSIGNEE
+      - name: severities
+        in: query
+        description: Comma-separated list of severities
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+        example: BLOCKER,CRITICAL
+      - name: sinceLeakPeriod
+        in: query
+        description: To retrieve issues created since the leak period. If this parameter is set to a truthy value, createdAfter must not be set and one component id or key must be provided.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: sonarsourceSecurity
+        in: query
+        description: Comma-separated list of SonarSource security categories. Use 'others' to select issues not associated with any category
+        required: false
+        schema:
+          type: string
+          enum:
+          - buffer-overflow
+          - permission
+          - sql-injection
+          - command-injection
+          - path-traversal-injection
+          - ldap-injection
+          - xpath-injection
+          - rce
+          - dos
+          - ssrf
+          - csrf
+          - xss
+          - log-injection
+          - http-response-splitting
+          - open-redirect
+          - xxe
+          - object-injection
+          - weak-cryptography
+          - auth
+          - insecure-conf
+          - encrypt-data
+          - traceability
+          - file-manipulation
+          - others
+      - name: statuses
+        in: query
+        description: Comma-separated list of statuses
+        required: false
+        schema:
+          type: string
+          enum:
+          - OPEN
+          - CONFIRMED
+          - REOPENED
+          - RESOLVED
+          - CLOSED
+        example: OPEN,REOPENED
+      - name: tags
+        in: query
+        description: Comma-separated list of tags.
+        required: false
+        schema:
+          type: string
+        example: security,convention
+      - name: types
+        in: query
+        description: Comma-separated list of types.
+        required: false
+        schema:
+          type: string
+          enum:
+          - CODE_SMELL
+          - BUG
+          - VULNERABILITY
+        example: CODE_SMELL,BUG
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/set_severity:
+    post:
+      operationId: issuesSetSeverity
+      summary: 'Change severity. Requires the following permissions: ''Authentication'' ''Browse'' rights on project of the specified iss...'
+      description: 'Change severity. Requires the following permissions: ''Authentication'' ''Browse'' rights on project of the specified issue ''Administer Issues'' rights on project of the specified issue'
+      tags:
+      - issues
+      parameters:
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: severity
+        in: query
+        description: New severity
+        required: true
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/issues/set_tags:
+    post:
+      operationId: issuesSetTags
+      summary: Set tags on an issue. Requires authentication and Browse permission on project
+      description: Set tags on an issue. Requires authentication and Browse permission on project
+      tags:
+      - issues
+      parameters:
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: tags
+        in: query
+        description: Comma-separated list of tags. All tags are removed if parameter is empty or not set.
+        required: false
+        schema:
+          type: string
+        example: security,cwe,misra-c
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/issues/set_type:
+    post:
+      operationId: issuesSetType
+      summary: 'Change type of issue, for instance from ''code smell'' to ''bug''. Requires the following permissions: ''Authentication'' ''...'
+      description: 'Change type of issue, for instance from ''code smell'' to ''bug''. Requires the following permissions: ''Authentication'' ''Browse'' rights on project of the specified issue ''Administer Issues'' rights on project of the specified issue'
+      tags:
+      - issues
+      parameters:
+      - name: issue
+        in: query
+        description: Issue key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: type
+        in: query
+        description: New type
+        required: true
+        schema:
+          type: string
+          enum:
+          - CODE_SMELL
+          - BUG
+          - VULNERABILITY
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/issues/tags:
+    get:
+      operationId: issuesTags
+      summary: List tags matching a given query
+      description: List tags matching a given query
+      tags:
+      - issues
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 100
+        required: false
+        schema:
+          type: string
+          default: '10'
+        example: '20'
+      - name: q
+        in: query
+        description: Limit search to tags that contain the supplied string.
+        required: false
+        schema:
+          type: string
+        example: misra
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

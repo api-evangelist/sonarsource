@@ -1,0 +1,212 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication hotspots API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: hotspots
+  description: Read and update Security Hotspots. Hotspots are deprecated and replaced by security issues (software quality) and vulnerabilities (type). Please use the API of security issues / vulnerabilities instea
+paths:
+  /api/hotspots/change_status:
+    post:
+      operationId: hotspotsChangeStatus
+      summary: Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.
+      description: Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.
+      tags:
+      - hotspots
+      parameters:
+      - name: comment
+        in: query
+        description: Comment text.
+        required: false
+        schema:
+          type: string
+        example: This is safe because user input is validated by the calling code
+      - name: hotspot
+        in: query
+        description: Key of the Security Hotspot
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL0
+      - name: resolution
+        in: query
+        description: Resolution of the Security Hotspot when new status is REVIEWED, otherwise must not be set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - FIXED
+          - SAFE
+      - name: status
+        in: query
+        description: New status of the Security Hotspot.
+        required: true
+        schema:
+          type: string
+          enum:
+          - TO_REVIEW
+          - REVIEWED
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/hotspots/search:
+    get:
+      operationId: hotspotsSearch
+      summary: Search for Security Hotpots.
+      description: Search for Security Hotpots.
+      tags:
+      - hotspots
+      parameters:
+      - name: fileUuids
+        in: query
+        description: Comma-separated list of file uuids. Returns only hotspots found in those files. If set, 'files' must not be set.
+        required: false
+        schema:
+          type: string
+        example: AXAKhxssZ0nocQ78Us1K
+      - name: files
+        in: query
+        description: Comma-separated list of file paths. Returns only hotspots found in those files. If set, 'fileUuids' must not be set.
+        required: false
+        schema:
+          type: string
+        example: src/main/java/com/sonarsource/FourthClass.java
+      - name: hotspots
+        in: query
+        description: Comma-separated list of Security Hotspot keys. This parameter is required unless projectKey is provided.
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: onlyMine
+        in: query
+        description: If 'projectKey' is provided, returns only Security Hotspots assigned to the current user
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: projectKey
+        in: query
+        description: Key of the project or application. This parameter is required unless hotspots is provided.
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0.
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: resolution
+        in: query
+        description: If 'projectKey' is provided and if status is 'REVIEWED', only Security Hotspots with the specified resolution are returned.
+        required: false
+        schema:
+          type: string
+          enum:
+          - FIXED
+          - SAFE
+      - name: sinceLeakPeriod
+        in: query
+        description: If '%s' is provided, only Security Hotspots created since the leak period are returned.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: status
+        in: query
+        description: If 'projectKey' is provided, only Security Hotspots with the specified status are returned.
+        required: false
+        schema:
+          type: string
+          enum:
+          - TO_REVIEW
+          - REVIEWED
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/hotspots/show:
+    get:
+      operationId: hotspotsShow
+      summary: Provides the details of a Security Hotspot.
+      description: Provides the details of a Security Hotspot.
+      tags:
+      - hotspots
+      parameters:
+      - name: hotspot
+        in: query
+        description: Key of the Security Hotspot
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL0
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

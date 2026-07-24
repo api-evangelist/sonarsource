@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication sources API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: sources
+  description: Get details on source files. See also api/tests.
+paths:
+  /api/sources/raw:
+    get:
+      operationId: sourcesRaw
+      summary: Get source code as raw text. Require 'See Source Code' permission on file
+      description: Get source code as raw text. Require 'See Source Code' permission on file
+      tags:
+      - sources
+      parameters:
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: key
+        in: query
+        description: File key
+        required: true
+        schema:
+          type: string
+        example: my_project:src/foo/Bar.php
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/sources/scm:
+    get:
+      operationId: sourcesScm
+      summary: Get SCM information of source files. Require See Source Code permission on file's project Each element of the result ...
+      description: Get SCM information of source files. Require See Source Code permission on file's project Each element of the result array is composed of:Line numberAuthor of the commitDatetime of the commit (before 5.2 it was only the Date)Revision of the commit (added in 5.2)
+      tags:
+      - sources
+      parameters:
+      - name: commits_by_line
+        in: query
+        description: Group lines by SCM commit if value is false, else display commits for each line, even if two consecutive lines relate to the same commit.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: from
+        in: query
+        description: First line to return. Starts at 1
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '10'
+      - name: key
+        in: query
+        description: File key
+        required: true
+        schema:
+          type: string
+        example: my_project:/src/foo/Bar.php
+      - name: to
+        in: query
+        description: Last line to return (inclusive)
+        required: false
+        schema:
+          type: string
+        example: '20'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/sources/show:
+    get:
+      operationId: sourcesShow
+      summary: Get source code. Requires See Source Code permission on file's project, or organization membership on public projects...
+      description: Get source code. Requires See Source Code permission on file's project, or organization membership on public projects. Each element of the result array is composed of:Line numberContent of the line
+      tags:
+      - sources
+      parameters:
+      - name: from
+        in: query
+        description: First line to return. Starts at 1
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '10'
+      - name: key
+        in: query
+        description: File key
+        required: true
+        schema:
+          type: string
+        example: my_project:/src/foo/Bar.php
+      - name: to
+        in: query
+        description: Last line to return (inclusive)
+        required: false
+        schema:
+          type: string
+        example: '20'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

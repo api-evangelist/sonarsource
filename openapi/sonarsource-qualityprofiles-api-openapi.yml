@@ -1,0 +1,2143 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication qualityprofiles API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: qualityprofiles
+  description: Manage quality profiles.
+paths:
+  /api/qualityprofiles/activate_rule:
+    post:
+      operationId: qualityprofilesActivateRule
+      summary: 'Activate a rule on a Quality Profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit r...'
+      description: 'Activate a rule on a Quality Profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality Profile key. Can be obtained through api/qualityprofiles/search
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: params
+        in: query
+        description: Parameters as semi-colon list of key=value. Ignored if parameter reset is true.
+        required: false
+        schema:
+          type: string
+        example: params=key1=v1;key2=v2
+      - name: reset
+        in: query
+        description: Reset severity and parameters of activated rule. Set the values defined on parent profile or from rule default values.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: rule
+        in: query
+        description: Rule key
+        required: true
+        schema:
+          type: string
+        example: squid:AvoidCycles
+      - name: severity
+        in: query
+        description: Severity. Ignored if parameter reset is true.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/activate_rules:
+    post:
+      operationId: qualityprofilesActivateRules
+      summary: 'Bulk-activate rules on one quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' ...'
+      description: 'Bulk-activate rules on one quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: activation
+        in: query
+        description: Filter rules that are activated or deactivated on the selected Quality profile. Ignored if the parameter 'qprofile' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: active_severities
+        in: query
+        description: Comma-separated list of activation severities, i.e the severity of rules in Quality profiles.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+        example: CRITICAL,BLOCKER
+      - name: asc
+        in: query
+        description: Ascending sort
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'true'
+      - name: available_since
+        in: query
+        description: Filters rules added since date. Format is yyyy-MM-dd
+        required: false
+        schema:
+          type: string
+        example: '2014-06-22'
+      - name: cleanCodeAttributeCategories
+        in: query
+        description: Comma-separated list of Clean Code Attribute Categories
+        required: false
+        schema:
+          type: string
+          enum:
+          - ADAPTABLE
+          - CONSISTENT
+          - INTENTIONAL
+          - RESPONSIBLE
+        example: ADAPTABLE,INTENTIONAL
+      - name: cwe
+        in: query
+        description: Comma-separated list of CWE identifiers. Use 'unknown' to select rules not associated to any CWE.
+        required: false
+        schema:
+          type: string
+        example: 12,125,unknown
+      - name: impactSeverities
+        in: query
+        description: Comma-separated list of Software Quality Severities
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - LOW
+          - MEDIUM
+          - HIGH
+          - BLOCKER
+        example: HIGH,MEDIUM
+      - name: impactSoftwareQualities
+        in: query
+        description: Comma-separated list of Software Qualities
+        required: false
+        schema:
+          type: string
+          enum:
+          - MAINTAINABILITY
+          - RELIABILITY
+          - SECURITY
+        example: MAINTAINABILITY,RELIABILITY
+      - name: inheritance
+        in: query
+        description: Comma-separated list of values of inheritance for a rule within a quality profile. Used only if the parameter 'activation' is set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - NONE
+          - INHERITED
+          - OVERRIDES
+        example: INHERITED,OVERRIDES
+      - name: is_template
+        in: query
+        description: Filter template rules
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: languages
+        in: query
+        description: Comma-separated list of languages
+        required: false
+        schema:
+          type: string
+        example: java,js
+      - name: organization
+        in: query
+        description: Organization key
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: owaspMobileTop10-2024
+        in: query
+        description: Comma-separated list of OWASP Mobile Top 10 (2024) lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - m1
+          - m2
+          - m3
+          - m4
+          - m5
+          - m6
+          - m7
+          - m8
+          - m9
+          - m10
+      - name: owaspTop10
+        in: query
+        description: Comma-separated list of OWASP Top 10 lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - a1
+          - a2
+          - a3
+          - a4
+          - a5
+          - a6
+          - a7
+          - a8
+          - a9
+          - a10
+      - name: owaspTop10-2021
+        in: query
+        description: Comma-separated list of OWASP Top 10 (2021) lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - a1
+          - a2
+          - a3
+          - a4
+          - a5
+          - a6
+          - a7
+          - a8
+          - a9
+          - a10
+      - name: q
+        in: query
+        description: UTF-8 search query
+        required: false
+        schema:
+          type: string
+        example: xpath
+      - name: qprofile
+        in: query
+        description: Quality profile key to filter on. Used only if the parameter 'activation' is set.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: repositories
+        in: query
+        description: Comma-separated list of repositories
+        required: false
+        schema:
+          type: string
+        example: checkstyle,findbugs
+      - name: rule_key
+        in: query
+        description: Key of rule to search for
+        required: false
+        schema:
+          type: string
+        example: squid:S001
+      - name: s
+        in: query
+        description: Sort field
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - updatedAt
+          - createdAt
+          - key
+        example: name
+      - name: severities
+        in: query
+        description: Comma-separated list of default severities. Not the same than severity of rules in Quality profiles.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+        example: CRITICAL,BLOCKER
+      - name: sonarsourceSecurity
+        in: query
+        description: Comma-separated list of SonarSource security categories. Use 'others' to select rules not associated with any category
+        required: false
+        schema:
+          type: string
+          enum:
+          - buffer-overflow
+          - permission
+          - sql-injection
+          - command-injection
+          - path-traversal-injection
+          - ldap-injection
+          - xpath-injection
+          - rce
+          - dos
+          - ssrf
+          - csrf
+          - xss
+          - log-injection
+          - http-response-splitting
+          - open-redirect
+          - xxe
+          - object-injection
+          - weak-cryptography
+          - auth
+          - insecure-conf
+          - encrypt-data
+          - traceability
+          - file-manipulation
+          - others
+        example: sql-injection,command-injection,others
+      - name: statuses
+        in: query
+        description: Comma-separated list of status codes
+        required: false
+        schema:
+          type: string
+          enum:
+          - BETA
+          - DEPRECATED
+          - READY
+          - REMOVED
+        example: READY
+      - name: tags
+        in: query
+        description: Comma-separated list of tags. Returned rules match any of the tags (OR operator)
+        required: false
+        schema:
+          type: string
+        example: security,java8
+      - name: targetKey
+        in: query
+        description: Quality Profile key on which the rule activation is done. To retrieve a quality profile key please see api/qualityprofiles/search
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL0
+      - name: targetSeverity
+        in: query
+        description: Severity to set on the activated rules
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+      - name: template_key
+        in: query
+        description: Key of the template rule to filter on. Used to search for the custom rules based on this template.
+        required: false
+        schema:
+          type: string
+        example: java:S001
+      - name: types
+        in: query
+        description: Comma-separated list of types. Returned rules match any of the tags (OR operator)
+        required: false
+        schema:
+          type: string
+          enum:
+          - CODE_SMELL
+          - BUG
+          - VULNERABILITY
+          - SECURITY_HOTSPOT
+        example: BUG
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/add_project:
+    post:
+      operationId: qualityprofilesAddProject
+      summary: 'Associate a project with a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' ...'
+      description: 'Associate a project with a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile Administer right on the specified project'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: projectUuid
+        in: query
+        description: Project ID. Either this parameter or 'project' must be set.
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL5
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/backup:
+    get:
+      operationId: qualityprofilesBackup
+      summary: Backup a quality profile in XML form. The exported profile can be restored through api/qualityprofiles/restore.
+      description: Backup a quality profile in XML form. The exported profile can be restored through api/qualityprofiles/restore.
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/change_parent:
+    post:
+      operationId: qualityprofilesChangeParent
+      summary: 'Change a quality profile''s parent. Requires one of the following permissions: ''Administer Quality Profiles'' Edit righ...'
+      description: 'Change a quality profile''s parent. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: parentKey
+        in: query
+        description: New parent profile key. If no profile is provided, the inheritance link with current parent profile (if any) is broken, which deactivates all rules which come from the parent and are not overridden.
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FLz
+      - name: parentQualityProfile
+        in: query
+        description: Quality profile name. If this parameter is set, 'parentKey' must not be set and 'language' must be set to disambiguate.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/changelog:
+    get:
+      operationId: qualityprofilesChangelog
+      summary: 'Get the history of changes on a quality profile: rule activation/deactivation, change in parameters/severity. Events ...'
+      description: 'Get the history of changes on a quality profile: rule activation/deactivation, change in parameters/severity. Events are ordered by date in descending order (most recent first).'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '50'
+        example: '20'
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      - name: since
+        in: query
+        description: Start date for the changelog. Either a date (server timezone) or datetime can be provided.
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: to
+        in: query
+        description: End date for the changelog. Either a date (server timezone) or datetime can be provided.
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/copy:
+    post:
+      operationId: qualityprofilesCopy
+      summary: Copy a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      description: Copy a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: fromKey
+        in: query
+        description: Quality profile key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: toName
+        in: query
+        description: Name for the new quality profile.
+        required: true
+        schema:
+          type: string
+        example: My Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/create:
+    post:
+      operationId: qualityprofilesCreate
+      summary: Create a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      description: Create a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: language
+        in: query
+        description: Quality profile language
+        required: true
+        schema:
+          type: string
+          enum:
+          - abap
+          - ansible
+          - apex
+          - azurepipelines
+          - azureresourcemanager
+          - c
+          - cloudformation
+          - cobol
+          - cpp
+          - cs
+          - css
+          - dart
+          - docker
+          - flex
+          - githubactions
+          - go
+          - gosu
+          - groovy
+          - ipynb
+          - java
+          - jcl
+          - js
+          - json
+          - jsp
+          - kotlin
+          - kubernetes
+          - objc
+          - php
+          - pli
+          - plsql
+          - postgres
+          - powershell
+          - py
+          - rpg
+          - ruby
+          - rust
+          - scala
+          - secrets
+          - shell
+          - swift
+          - terraform
+          - text
+          - ts
+          - tsql
+          - vb
+          - vbnet
+          - web
+          - xml
+          - yaml
+        example: js
+      - name: name
+        in: query
+        description: Quality profile name
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: My Sonar way
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/deactivate_rule:
+    post:
+      operationId: qualityprofilesDeactivateRule
+      summary: 'Deactivate a rule on a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit...'
+      description: 'Deactivate a rule on a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality Profile key. Can be obtained through api/qualityprofiles/search
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: rule
+        in: query
+        description: Rule key
+        required: true
+        schema:
+          type: string
+        example: squid:AvoidCycles
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/deactivate_rules:
+    post:
+      operationId: qualityprofilesDeactivateRules
+      summary: 'Bulk deactivate rules on Quality profiles. Requires one of the following permissions: ''Administer Quality Profiles'' E...'
+      description: 'Bulk deactivate rules on Quality profiles. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: activation
+        in: query
+        description: Filter rules that are activated or deactivated on the selected Quality profile. Ignored if the parameter 'qprofile' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: active_severities
+        in: query
+        description: Comma-separated list of activation severities, i.e the severity of rules in Quality profiles.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+        example: CRITICAL,BLOCKER
+      - name: asc
+        in: query
+        description: Ascending sort
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'true'
+      - name: available_since
+        in: query
+        description: Filters rules added since date. Format is yyyy-MM-dd
+        required: false
+        schema:
+          type: string
+        example: '2014-06-22'
+      - name: cleanCodeAttributeCategories
+        in: query
+        description: Comma-separated list of Clean Code Attribute Categories
+        required: false
+        schema:
+          type: string
+          enum:
+          - ADAPTABLE
+          - CONSISTENT
+          - INTENTIONAL
+          - RESPONSIBLE
+        example: ADAPTABLE,INTENTIONAL
+      - name: cwe
+        in: query
+        description: Comma-separated list of CWE identifiers. Use 'unknown' to select rules not associated to any CWE.
+        required: false
+        schema:
+          type: string
+        example: 12,125,unknown
+      - name: impactSeverities
+        in: query
+        description: Comma-separated list of Software Quality Severities
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - LOW
+          - MEDIUM
+          - HIGH
+          - BLOCKER
+        example: HIGH,MEDIUM
+      - name: impactSoftwareQualities
+        in: query
+        description: Comma-separated list of Software Qualities
+        required: false
+        schema:
+          type: string
+          enum:
+          - MAINTAINABILITY
+          - RELIABILITY
+          - SECURITY
+        example: MAINTAINABILITY,RELIABILITY
+      - name: inheritance
+        in: query
+        description: Comma-separated list of values of inheritance for a rule within a quality profile. Used only if the parameter 'activation' is set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - NONE
+          - INHERITED
+          - OVERRIDES
+        example: INHERITED,OVERRIDES
+      - name: is_template
+        in: query
+        description: Filter template rules
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+      - name: languages
+        in: query
+        description: Comma-separated list of languages
+        required: false
+        schema:
+          type: string
+        example: java,js
+      - name: organization
+        in: query
+        description: Organization key
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: owaspMobileTop10-2024
+        in: query
+        description: Comma-separated list of OWASP Mobile Top 10 (2024) lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - m1
+          - m2
+          - m3
+          - m4
+          - m5
+          - m6
+          - m7
+          - m8
+          - m9
+          - m10
+      - name: owaspTop10
+        in: query
+        description: Comma-separated list of OWASP Top 10 lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - a1
+          - a2
+          - a3
+          - a4
+          - a5
+          - a6
+          - a7
+          - a8
+          - a9
+          - a10
+      - name: owaspTop10-2021
+        in: query
+        description: Comma-separated list of OWASP Top 10 (2021) lowercase categories.
+        required: false
+        schema:
+          type: string
+          enum:
+          - a1
+          - a2
+          - a3
+          - a4
+          - a5
+          - a6
+          - a7
+          - a8
+          - a9
+          - a10
+      - name: q
+        in: query
+        description: UTF-8 search query
+        required: false
+        schema:
+          type: string
+        example: xpath
+      - name: qprofile
+        in: query
+        description: Quality profile key to filter on. Used only if the parameter 'activation' is set.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: repositories
+        in: query
+        description: Comma-separated list of repositories
+        required: false
+        schema:
+          type: string
+        example: checkstyle,findbugs
+      - name: rule_key
+        in: query
+        description: Key of rule to search for
+        required: false
+        schema:
+          type: string
+        example: squid:S001
+      - name: rule_keys
+        in: query
+        description: Comma-separated list of rule keys to deactivate. When provided, other search filter parameters are ignored.
+        required: false
+        schema:
+          type: string
+        example: squid:AvoidCycles,java:S1234
+      - name: s
+        in: query
+        description: Sort field
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - updatedAt
+          - createdAt
+          - key
+        example: name
+      - name: severities
+        in: query
+        description: Comma-separated list of default severities. Not the same than severity of rules in Quality profiles.
+        required: false
+        schema:
+          type: string
+          enum:
+          - INFO
+          - MINOR
+          - MAJOR
+          - CRITICAL
+          - BLOCKER
+        example: CRITICAL,BLOCKER
+      - name: sonarsourceSecurity
+        in: query
+        description: Comma-separated list of SonarSource security categories. Use 'others' to select rules not associated with any category
+        required: false
+        schema:
+          type: string
+          enum:
+          - buffer-overflow
+          - permission
+          - sql-injection
+          - command-injection
+          - path-traversal-injection
+          - ldap-injection
+          - xpath-injection
+          - rce
+          - dos
+          - ssrf
+          - csrf
+          - xss
+          - log-injection
+          - http-response-splitting
+          - open-redirect
+          - xxe
+          - object-injection
+          - weak-cryptography
+          - auth
+          - insecure-conf
+          - encrypt-data
+          - traceability
+          - file-manipulation
+          - others
+        example: sql-injection,command-injection,others
+      - name: statuses
+        in: query
+        description: Comma-separated list of status codes
+        required: false
+        schema:
+          type: string
+          enum:
+          - BETA
+          - DEPRECATED
+          - READY
+          - REMOVED
+        example: READY
+      - name: tags
+        in: query
+        description: Comma-separated list of tags. Returned rules match any of the tags (OR operator)
+        required: false
+        schema:
+          type: string
+        example: security,java8
+      - name: targetKey
+        in: query
+        description: Quality Profile key on which the rule deactivation is done. To retrieve a profile key please see api/qualityprofiles/search
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL1
+      - name: template_key
+        in: query
+        description: Key of the template rule to filter on. Used to search for the custom rules based on this template.
+        required: false
+        schema:
+          type: string
+        example: java:S001
+      - name: types
+        in: query
+        description: Comma-separated list of types. Returned rules match any of the tags (OR operator)
+        required: false
+        schema:
+          type: string
+          enum:
+          - CODE_SMELL
+          - BUG
+          - VULNERABILITY
+          - SECURITY_HOTSPOT
+        example: BUG
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/delete:
+    post:
+      operationId: qualityprofilesDelete
+      summary: Delete a quality profile and all its descendants. The default quality profile cannot be deleted. Requires one of the ...
+      description: 'Delete a quality profile and all its descendants. The default quality profile cannot be deleted. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/export:
+    get:
+      operationId: qualityprofilesExport
+      summary: Deprecated. Use GET /api/qualityprofiles/backup instead
+      description: Deprecated. Use GET /api/qualityprofiles/backup instead
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language
+        required: false
+        schema:
+          type: string
+          enum:
+          - abap
+          - ansible
+          - apex
+          - azurepipelines
+          - azureresourcemanager
+          - c
+          - cloudformation
+          - cobol
+          - cpp
+          - cs
+          - css
+          - dart
+          - docker
+          - flex
+          - githubactions
+          - go
+          - gosu
+          - groovy
+          - ipynb
+          - java
+          - jcl
+          - js
+          - json
+          - jsp
+          - kotlin
+          - kubernetes
+          - objc
+          - php
+          - pli
+          - plsql
+          - postgres
+          - powershell
+          - py
+          - rpg
+          - ruby
+          - rust
+          - scala
+          - secrets
+          - shell
+          - swift
+          - terraform
+          - text
+          - ts
+          - tsql
+          - vb
+          - vbnet
+          - web
+          - xml
+          - yaml
+        example: abap
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: qualityProfile
+        in: query
+        description: Quality profile name to export. If left empty, the default profile for the language is exported.
+        required: false
+        schema:
+          type: string
+        example: My Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualityprofiles/exporters:
+    get:
+      operationId: qualityprofilesExporters
+      summary: Deprecated. No more custom profile exporters.
+      description: Deprecated. No more custom profile exporters.
+      tags:
+      - qualityprofiles
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualityprofiles/importers:
+    get:
+      operationId: qualityprofilesImporters
+      summary: Deprecated. No more custom profile importers.
+      description: Deprecated. No more custom profile importers.
+      tags:
+      - qualityprofiles
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualityprofiles/inheritance:
+    get:
+      operationId: qualityprofilesInheritance
+      summary: Show a quality profile's ancestors and children.
+      description: Show a quality profile's ancestors and children.
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/projects:
+    get:
+      operationId: qualityprofilesProjects
+      summary: List projects with their association status regarding a quality profile
+      description: List projects with their association status regarding a quality profile
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: q
+        in: query
+        description: Limit search to projects that contain the supplied string.
+        required: false
+        schema:
+          type: string
+        example: sonar
+      - name: selected
+        in: query
+        description: Depending on the value, show only selected items (selected=selected), deselected items (selected=deselected), or all items with their selection status (selected=all).
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - deselected
+          - selected
+          default: selected
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/remove_project:
+    post:
+      operationId: qualityprofilesRemoveProject
+      summary: 'Remove a project''s association with a quality profile. Requires one of the following permissions: ''Administer Quality...'
+      description: 'Remove a project''s association with a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile Administer right on the specified project'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: projectUuid
+        in: query
+        description: Project ID. Either this parameter, or 'project' must be set.
+        required: false
+        schema:
+          type: string
+        example: AU-TpxcB-iU5OvuD2FL6
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/rename:
+    post:
+      operationId: qualityprofilesRename
+      summary: 'Rename a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the ...'
+      description: 'Rename a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: name
+        in: query
+        description: New quality profile name
+        required: true
+        schema:
+          type: string
+          maxLength: 100
+        example: My Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/restore:
+    post:
+      operationId: qualityprofilesRestore
+      summary: Restore a quality profile using an XML file. The restored profile name is taken from the backup file, so if a profile...
+      description: Restore a quality profile using an XML file. The restored profile name is taken from the backup file, so if a profile with the same name and language already exists, it will be overwritten. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: backup
+        in: query
+        description: A profile backup file in XML format, as generated by api/qualityprofiles/backup or the former api/profiles/backup.
+        required: true
+        schema:
+          type: string
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/restore_built_in:
+    post:
+      operationId: qualityprofilesRestoreBuiltIn
+      summary: This web service has no effect since 6.4. It's no more possible to restore built-in quality profiles because they are...
+      description: This web service has no effect since 6.4. It's no more possible to restore built-in quality profiles because they are automatically updated and read only. Returns HTTP code 410.
+      tags:
+      - qualityprofiles
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/qualityprofiles/search:
+    get:
+      operationId: qualityprofilesSearch
+      summary: Search quality profiles
+      description: Search quality profiles
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: defaults
+        in: query
+        description: If set to true, return only the quality profiles marked as default for each language
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: language
+        in: query
+        description: Language key. If provided, only profiles for the given language are returned.
+        required: false
+        schema:
+          type: string
+          enum:
+          - abap
+          - ansible
+          - apex
+          - azurepipelines
+          - azureresourcemanager
+          - c
+          - cloudformation
+          - cobol
+          - cpp
+          - cs
+          - css
+          - dart
+          - docker
+          - flex
+          - githubactions
+          - go
+          - gosu
+          - groovy
+          - ipynb
+          - java
+          - jcl
+          - js
+          - json
+          - jsp
+          - kotlin
+          - kubernetes
+          - objc
+          - php
+          - pli
+          - plsql
+          - postgres
+          - powershell
+          - py
+          - rpg
+          - ruby
+          - rust
+          - scala
+          - secrets
+          - shell
+          - swift
+          - terraform
+          - text
+          - ts
+          - tsql
+          - vb
+          - vbnet
+          - web
+          - xml
+          - yaml
+      - name: organization
+        in: query
+        description: Organization key.
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: qualityProfile
+        in: query
+        description: Quality profile name
+        required: false
+        schema:
+          type: string
+        example: SonarQube Way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/qualityprofiles/set_default:
+    post:
+      operationId: qualityprofilesSetDefault
+      summary: Select the default profile for a given language. Requires to be logged in and the 'Administer Quality Profiles' permi...
+      description: Select the default profile for a given language. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      tags:
+      - qualityprofiles
+      parameters:
+      - name: key
+        in: query
+        description: Quality profile key. Mandatory unless 'qualityProfile' and 'language' are specified.
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: language
+        in: query
+        description: Quality profile language. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - kubernetes
+          - css
+          - py
+          - plsql
+          - apex
+          - java
+          - xml
+          - powershell
+          - ipynb
+          - text
+          - azurepipelines
+          - yaml
+          - swift
+          - cpp
+          - vb
+          - secrets
+          - groovy
+          - shell
+          - terraform
+          - azureresourcemanager
+          - abap
+          - scala
+          - jsp
+          - js
+          - docker
+          - ansible
+          - dart
+          - rust
+          - jcl
+          - web
+          - flex
+          - json
+          - vbnet
+          - postgres
+          - cloudformation
+          - c
+          - go
+          - kotlin
+          - rpg
+          - pli
+          - tsql
+          - ruby
+          - cs
+          - cobol
+          - php
+          - gosu
+          - objc
+          - githubactions
+          - ts
+      - name: organization
+        in: query
+        description: Organization key.
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: qualityProfile
+        in: query
+        description: Quality profile name. Mandatory if 'key' is not set.
+        required: false
+        schema:
+          type: string
+        example: Sonar way
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

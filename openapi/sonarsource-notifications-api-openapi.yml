@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication notifications API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: notifications
+  description: Manage notifications of the authenticated user
+paths:
+  /api/notifications/add:
+    post:
+      operationId: notificationsAdd
+      summary: 'Add a notification for the authenticated user. Requires one of the following permissions: Authentication if no login ...'
+      description: 'Add a notification for the authenticated user. Requires one of the following permissions: Authentication if no login is provided. If a project is provided, requires the ''Browse'' permission on the specified project. If a project is provided, requires the ''Browse'' permission on the specified project.'
+      tags:
+      - notifications
+      parameters:
+      - name: channel
+        in: query
+        description: Channel through which the notification is sent. For example, notifications can be sent by email.
+        required: false
+        schema:
+          type: string
+          enum:
+          - EmailNotificationChannel
+          default: EmailNotificationChannel
+      - name: login
+        in: query
+        description: User login
+        required: false
+        schema:
+          type: string
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: type
+        in: query
+        description: 'Notification type. Possible values are for: Global notifications: CeReportTaskFailure, ChangesOnMyIssue, SQ-MyNewIssues Per project notifications: CeReportTaskFailure, ChangesOnMyIssue, NewAlerts, NewFalsePositiveIssue, NewIssues, SQ-MyNewIssues'
+        required: true
+        schema:
+          type: string
+        example: SQ-MyNewIssues
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/notifications/list:
+    get:
+      operationId: notificationsList
+      summary: List notifications of the authenticated user
+      description: List notifications of the authenticated user
+      tags:
+      - notifications
+      parameters:
+      - name: login
+        in: query
+        description: User login
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/notifications/remove:
+    post:
+      operationId: notificationsRemove
+      summary: Remove a notification for the authenticated user
+      description: Remove a notification for the authenticated user
+      tags:
+      - notifications
+      parameters:
+      - name: channel
+        in: query
+        description: Channel through which the notification is sent. For example, notifications can be sent by email.
+        required: false
+        schema:
+          type: string
+          enum:
+          - EmailNotificationChannel
+          default: EmailNotificationChannel
+      - name: login
+        in: query
+        description: User login
+        required: false
+        schema:
+          type: string
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: type
+        in: query
+        description: 'Notification type. Possible values are for: Global notifications: CeReportTaskFailure, ChangesOnMyIssue, SQ-MyNewIssues Per project notifications: CeReportTaskFailure, ChangesOnMyIssue, NewAlerts, NewFalsePositiveIssue, NewIssues, SQ-MyNewIssues'
+        required: true
+        schema:
+          type: string
+        example: SQ-MyNewIssues
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

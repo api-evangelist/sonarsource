@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication users API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: users
+  description: Manage users.
+paths:
+  /api/users/groups:
+    get:
+      operationId: usersGroups
+      summary: Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.
+      description: Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.
+      tags:
+      - users
+      parameters:
+      - name: login
+        in: query
+        description: A user login
+        required: true
+        schema:
+          type: string
+        example: admin
+      - name: organization
+        in: query
+        description: Organization key
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0.
+        required: false
+        schema:
+          type: string
+          default: '25'
+        example: '20'
+      - name: q
+        in: query
+        description: Limit search to group names that contain the supplied string.
+        required: false
+        schema:
+          type: string
+        example: users
+      - name: selected
+        in: query
+        description: Depending on the value, show only selected items (selected=selected), deselected items (selected=deselected), or all items with their selection status (selected=all).
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - deselected
+          - selected
+          default: selected
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

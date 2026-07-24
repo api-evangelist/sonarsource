@@ -1,0 +1,227 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication components API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: components
+  description: Get information about a component (file, directory, project, ...) and its ancestors or descendants. Update a project or module key.
+paths:
+  /api/components/search:
+    get:
+      operationId: componentsSearch
+      summary: Search for projects. Used to provide the ability to search for any component but this option has been removed and web...
+      description: Search for projects. Used to provide the ability to search for any component but this option has been removed and webservice 'api/components/tree' should be used instead for this purpose
+      tags:
+      - components
+      parameters:
+      - name: organization
+        in: query
+        description: Organization key
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: q
+        in: query
+        description: 'Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string'
+        required: false
+        schema:
+          type: string
+        example: sonar
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/components/show:
+    get:
+      operationId: componentsShow
+      summary: Returns a component (file, directory, project) and its ancestors. The ancestors are ordered from the parent to the ro...
+      description: 'Returns a component (file, directory, project) and its ancestors. The ancestors are ordered from the parent to the root project. Requires the following permission: ''Browse'' on the project of the specified component.'
+      tags:
+      - components
+      parameters:
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: component
+        in: query
+        description: Component key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/components/tree:
+    get:
+      operationId: componentsTree
+      summary: 'Navigate through components based on the chosen strategy. Requires the following permission: ''Browse'' on the specifie...'
+      description: 'Navigate through components based on the chosen strategy. Requires the following permission: ''Browse'' on the specified project. When limiting search with the q parameter, directories are not returned.'
+      tags:
+      - components
+      parameters:
+      - name: asc
+        in: query
+        description: Ascending sort
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'true'
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: component
+        in: query
+        description: Base component key. The search is based on this component.
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: pullRequest
+        in: query
+        description: Pull request id
+        required: false
+        schema:
+          type: string
+        example: '5461'
+      - name: q
+        in: query
+        description: 'Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string'
+        required: false
+        schema:
+          type: string
+        example: FILE_NAM
+      - name: qualifiers
+        in: query
+        description: Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:BRC - Sub-projectsDIR - DirectoriesFIL - FilesTRK - ProjectsUTS - Test Files
+        required: false
+        schema:
+          type: string
+          enum:
+          - BRC
+          - DIR
+          - FIL
+          - TRK
+          - UTS
+      - name: s
+        in: query
+        description: Comma-separated list of sort fields
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - path
+          - qualifier
+          default: name
+        example: name, path
+      - name: strategy
+        in: query
+        description: 'Strategy to search for base component descendants:children: return the children components of the base component. Grandchildren components are not returnedall: return all the descendants components of the base component. Grandchildren are returned.leaves: return all the descendant components (files, in general) which don''t have other children. They are the leaves of the component tree.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - children
+          - leaves
+          default: all
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

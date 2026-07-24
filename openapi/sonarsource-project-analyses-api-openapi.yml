@@ -1,0 +1,303 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication project_analyses API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: project_analyses
+  description: Manage project analyses.
+paths:
+  /api/project_analyses/create_event:
+    post:
+      operationId: projectAnalysesCreateEvent
+      summary: Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created. Requires the permission...
+      description: Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created. Requires the permission 'Administer' on the specified project.
+      tags:
+      - project_analyses
+      parameters:
+      - name: analysis
+        in: query
+        description: Analysis key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: category
+        in: query
+        description: Category
+        required: false
+        schema:
+          type: string
+          enum:
+          - VERSION
+          - OTHER
+          default: OTHER
+      - name: name
+        in: query
+        description: Name
+        required: true
+        schema:
+          type: string
+          maxLength: 400
+        example: '5.6'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_analyses/delete:
+    post:
+      operationId: projectAnalysesDelete
+      summary: Delete a project analysis. Requires the permission 'Administer' on the project of the specified analysis.
+      description: Delete a project analysis. Requires the permission 'Administer' on the project of the specified analysis.
+      tags:
+      - project_analyses
+      parameters:
+      - name: analysis
+        in: query
+        description: Analysis key
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL1
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_analyses/delete_event:
+    post:
+      operationId: projectAnalysesDeleteEvent
+      summary: Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted. Requires the permission...
+      description: Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted. Requires the permission 'Administer' on the specified project.
+      tags:
+      - project_analyses
+      parameters:
+      - name: event
+        in: query
+        description: Event key
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FLz
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_analyses/search:
+    get:
+      operationId: projectAnalysesSearch
+      summary: 'Search a project analyses and attached events. Requires the following permission: ''Browse'' on the specified project'
+      description: 'Search a project analyses and attached events. Requires the following permission: ''Browse'' on the specified project'
+      tags:
+      - project_analyses
+      parameters:
+      - name: branch
+        in: query
+        description: Key of a long lived branch
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: category
+        in: query
+        description: Event category. Filter analyses that have at least one event of the category specified.
+        required: false
+        schema:
+          type: string
+          enum:
+          - VERSION
+          - OTHER
+          - QUALITY_PROFILE
+          - QUALITY_GATE
+          - DEFINITION_CHANGE
+        example: OTHER
+      - name: from
+        in: query
+        description: Filter analyses created after the given date (inclusive). Either a date (server timezone) or datetime can be provided
+        required: false
+        schema:
+          type: string
+        example: '2013-05-01'
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: to
+        in: query
+        description: Filter analyses created before the given date (inclusive). Either a date (server timezone) or datetime can be provided
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_analyses/set_baseline:
+    post:
+      operationId: projectAnalysesSetBaseline
+      summary: Set an analysis as the baseline of the New Code Period on a project or a long-lived branch. This manually set baselin...
+      description: Set an analysis as the baseline of the New Code Period on a project or a long-lived branch. This manually set baseline overrides the `sonar.leak.period` setting. Requires the permission 'Administer' on the specified project.
+      tags:
+      - project_analyses
+      parameters:
+      - name: analysis
+        in: query
+        description: Analysis key
+        required: true
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_analyses/unset_baseline:
+    post:
+      operationId: projectAnalysesUnsetBaseline
+      summary: Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting a manual baseline rest...
+      description: Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting a manual baseline restores the use of the `sonar.leak.period` setting. Requires the permission 'Administer' on the specified project.
+      tags:
+      - project_analyses
+      parameters:
+      - name: branch
+        in: query
+        description: Branch key
+        required: false
+        schema:
+          type: string
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_analyses/update_event:
+    post:
+      operationId: projectAnalysesUpdateEvent
+      summary: Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated. Requires the permissio...
+      description: Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated. Requires the permission 'Administer' on the specified project.
+      tags:
+      - project_analyses
+      parameters:
+      - name: event
+        in: query
+        description: Event key
+        required: true
+        schema:
+          type: string
+        example: AU-TpxcA-iU5OvuD2FL5
+      - name: name
+        in: query
+        description: New name
+        required: true
+        schema:
+          type: string
+          maxLength: 400
+        example: '5.6'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

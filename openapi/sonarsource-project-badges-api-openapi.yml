@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication project_badges API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: project_badges
+  description: Generate badges based on quality gates or measures
+paths:
+  /api/project_badges/ai_code_assurance:
+    get:
+      operationId: projectBadgesAiCodeAssurance
+      summary: Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on the specified project.
+      description: Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on the specified project.
+      tags:
+      - project_badges
+      parameters:
+      - name: project
+        in: query
+        description: Project or application key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: token
+        in: query
+        description: Security token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_badges/measure:
+    get:
+      operationId: projectBadgesMeasure
+      summary: Generate badge for project's measure as an SVG. Requires a security token for private projects.
+      description: Generate badge for project's measure as an SVG. Requires a security token for private projects.
+      tags:
+      - project_badges
+      parameters:
+      - name: branch
+        in: query
+        description: Long-lived branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: metric
+        in: query
+        description: Metric key
+        required: true
+        schema:
+          type: string
+          enum:
+          - coverage
+          - ncloc
+          - code_smells
+          - sqale_rating
+          - security_rating
+          - bugs
+          - vulnerabilities
+          - duplicated_lines_density
+          - reliability_rating
+          - alert_status
+          - sqale_index
+      - name: project
+        in: query
+        description: Project or application key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: token
+        in: query
+        description: Security token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/project_badges/quality_gate:
+    get:
+      operationId: projectBadgesQualityGate
+      summary: Generate badge for project's quality gate as an SVG. Requires a security token for private projects.
+      description: Generate badge for project's quality gate as an SVG. Requires a security token for private projects.
+      tags:
+      - project_badges
+      parameters:
+      - name: branch
+        in: query
+        description: Long-lived branch key
+        required: false
+        schema:
+          type: string
+        example: feature/my_branch
+      - name: project
+        in: query
+        description: Project or application key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: token
+        in: query
+        description: Security token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

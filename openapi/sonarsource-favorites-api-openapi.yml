@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication favorites API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: favorites
+  description: Manage user favorites
+paths:
+  /api/favorites/add:
+    post:
+      operationId: favoritesAdd
+      summary: Add a project as favorite for the authenticated user. Only 100 components can be added as favorite. Requires authenti...
+      description: 'Add a project as favorite for the authenticated user. Only 100 components can be added as favorite. Requires authentication and the following permission: ''Browse'' on the project.'
+      tags:
+      - favorites
+      parameters:
+      - name: component
+        in: query
+        description: Component key. Only components with qualifier TRK are supported
+        required: true
+        schema:
+          type: string
+        example: my_project:/src/foo/Bar.php
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/favorites/remove:
+    post:
+      operationId: favoritesRemove
+      summary: Remove a component (project, directory, file etc.) as favorite for the authenticated user. Requires authentication.
+      description: Remove a component (project, directory, file etc.) as favorite for the authenticated user. Requires authentication.
+      tags:
+      - favorites
+      parameters:
+      - name: component
+        in: query
+        description: Component key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/favorites/search:
+    get:
+      operationId: favoritesSearch
+      summary: Search for the authenticated user favorites. Requires authentication.
+      description: Search for the authenticated user favorites. Requires authentication.
+      tags:
+      - favorites
+      parameters:
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

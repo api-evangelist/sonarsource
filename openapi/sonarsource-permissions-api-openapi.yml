@@ -1,0 +1,972 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication permissions API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: permissions
+  description: Manage permission templates, and the granting and revoking of permissions at the global and project levels.
+paths:
+  /api/permissions/add_group:
+    post:
+      operationId: permissionsAddGroup
+      summary: Add permission to a group. This service defaults to global permissions, but can be limited to project permissions by ...
+      description: Add permission to a group. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. The group name or group id must be provided. Requires the permission 'Administer' on the specified project.
+      tags:
+      - permissions
+      parameters:
+      - name: groupId
+        in: query
+        description: Group id (deprecated). Use 'groupName' and 'organization' instead.
+        required: false
+        schema:
+          type: string
+        example: '42'
+      - name: groupName
+        in: query
+        description: Group name or 'anyone' (case insensitive)
+        required: false
+        schema:
+          type: string
+        example: sonar-administrators
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: 'PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user'
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: ce4c03d6-430f-40a9-b777-ad877c00aa4d
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/add_group_to_template:
+    post:
+      operationId: permissionsAddGroupToTemplate
+      summary: Add a group to a permission template. The group id or group name must be provided. Requires the permission 'Administe...
+      description: Add a group to a permission template. The group id or group name must be provided. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: groupId
+        in: query
+        description: Group id (deprecated). Use 'groupName' and 'organization' instead.
+        required: false
+        schema:
+          type: string
+        example: '42'
+      - name: groupName
+        in: query
+        description: Group name or 'anyone' (case insensitive)
+        required: false
+        schema:
+          type: string
+        example: sonar-administrators
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user
+        required: true
+        schema:
+          type: string
+          enum:
+          - admin
+          - codeviewer
+          - issueadmin
+          - securityhotspotadmin
+          - architectureadmin
+          - scan
+          - user
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/add_project_creator_to_template:
+    post:
+      operationId: permissionsAddProjectCreatorToTemplate
+      summary: Add a project creator to a permission template. Requires the permission 'Administer' on the organization.
+      description: Add a project creator to a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user
+        required: true
+        schema:
+          type: string
+          enum:
+          - admin
+          - codeviewer
+          - issueadmin
+          - securityhotspotadmin
+          - architectureadmin
+          - scan
+          - user
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/add_user:
+    post:
+      operationId: permissionsAddUser
+      summary: Add permission to a user. This service defaults to global permissions, but can be limited to project permissions by p...
+      description: Add permission to a user. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. Requires the permission 'Administer' on the specified project.
+      tags:
+      - permissions
+      parameters:
+      - name: login
+        in: query
+        description: User login
+        required: true
+        schema:
+          type: string
+        example: g.hopper
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: 'PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user'
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: ce4c03d6-430f-40a9-b777-ad877c00aa4d
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/add_user_to_template:
+    post:
+      operationId: permissionsAddUserToTemplate
+      summary: Add a user to a permission template. Requires the permission 'Administer' on the organization.
+      description: Add a user to a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: login
+        in: query
+        description: User login
+        required: true
+        schema:
+          type: string
+        example: g.hopper
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user
+        required: true
+        schema:
+          type: string
+          enum:
+          - admin
+          - codeviewer
+          - issueadmin
+          - securityhotspotadmin
+          - architectureadmin
+          - scan
+          - user
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/apply_template:
+    post:
+      operationId: permissionsApplyTemplate
+      summary: Apply a permission template to one project. The project id or project key must be provided. The template id or name m...
+      description: Apply a permission template to one project. The project id or project key must be provided. The template id or name must be provided. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: ce4c03d6-430f-40a9-b777-ad877c00aa4d
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/bulk_apply_template:
+    post:
+      operationId: permissionsBulkApplyTemplate
+      summary: Apply a permission template to several projects. The template id or name must be provided. Requires the permission 'A...
+      description: Apply a permission template to several projects. The template id or name must be provided. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: analyzedBefore
+        in: query
+        description: Filter the projects for which last analysis is older than the given date (exclusive). Either a date (server timezone) or datetime can be provided.
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: onProvisionedOnly
+        in: query
+        description: Filter the projects that are provisioned
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: projects
+        in: query
+        description: Comma-separated list of project keys
+        required: false
+        schema:
+          type: string
+        example: my_project,another_project
+      - name: q
+        in: query
+        description: 'Limit search to: project names that contain the supplied stringproject keys that are exactly the same as the supplied string'
+        required: false
+        schema:
+          type: string
+        example: apac
+      - name: qualifiers
+        in: query
+        description: Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:TRK - Projects
+        required: false
+        schema:
+          type: string
+          enum:
+          - TRK
+          default: TRK
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/create_template:
+    post:
+      operationId: permissionsCreateTemplate
+      summary: Create a permission template. Requires the permission 'Administer' on the organization.
+      description: Create a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: description
+        in: query
+        description: Description
+        required: false
+        schema:
+          type: string
+        example: Permissions for all projects related to the financial service
+      - name: name
+        in: query
+        description: Name
+        required: true
+        schema:
+          type: string
+        example: Financial Service Permissions
+      - name: organization
+        in: query
+        description: Key of organization
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: projectKeyPattern
+        in: query
+        description: Project key pattern. Must be a valid Java regular expression
+        required: false
+        schema:
+          type: string
+        example: .*\.finance\..*
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/delete_template:
+    post:
+      operationId: permissionsDeleteTemplate
+      summary: Delete a permission template. Requires the permission 'Administer' on the organization.
+      description: Delete a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/remove_group:
+    post:
+      operationId: permissionsRemoveGroup
+      summary: Remove a permission from a group. This service defaults to global permissions, but can be limited to project permissi...
+      description: Remove a permission from a group. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. The group id or group name must be provided, not both. Requires the permission 'Administer' on the specified project.
+      tags:
+      - permissions
+      parameters:
+      - name: groupId
+        in: query
+        description: Group id (deprecated). Use 'groupName' and 'organization' instead.
+        required: false
+        schema:
+          type: string
+        example: '42'
+      - name: groupName
+        in: query
+        description: Group name or 'anyone' (case insensitive)
+        required: false
+        schema:
+          type: string
+        example: sonar-administrators
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: 'PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user'
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: ce4c03d6-430f-40a9-b777-ad877c00aa4d
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/remove_group_from_template:
+    post:
+      operationId: permissionsRemoveGroupFromTemplate
+      summary: Remove a group from a permission template. The group id or group name must be provided. Requires the permission 'Admi...
+      description: Remove a group from a permission template. The group id or group name must be provided. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: groupId
+        in: query
+        description: Group id (deprecated). Use 'groupName' and 'organization' instead.
+        required: false
+        schema:
+          type: string
+        example: '42'
+      - name: groupName
+        in: query
+        description: Group name or 'anyone' (case insensitive)
+        required: false
+        schema:
+          type: string
+        example: sonar-administrators
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user
+        required: true
+        schema:
+          type: string
+          enum:
+          - admin
+          - codeviewer
+          - issueadmin
+          - securityhotspotadmin
+          - architectureadmin
+          - scan
+          - user
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/remove_project_creator_from_template:
+    post:
+      operationId: permissionsRemoveProjectCreatorFromTemplate
+      summary: Remove a project creator from a permission template. Requires the permission 'Administer' on the organization.
+      description: Remove a project creator from a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user
+        required: true
+        schema:
+          type: string
+          enum:
+          - admin
+          - codeviewer
+          - issueadmin
+          - securityhotspotadmin
+          - architectureadmin
+          - scan
+          - user
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/remove_user:
+    post:
+      operationId: permissionsRemoveUser
+      summary: Remove permission from a user. This service defaults to global permissions, but can be limited to project permissions...
+      description: Remove permission from a user. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. Requires the permission 'Administer' on the specified project.
+      tags:
+      - permissions
+      parameters:
+      - name: login
+        in: query
+        description: User login
+        required: true
+        schema:
+          type: string
+        example: g.hopper
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: 'PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user'
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: query
+        description: Project id
+        required: false
+        schema:
+          type: string
+        example: ce4c03d6-430f-40a9-b777-ad877c00aa4d
+      - name: projectKey
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/remove_user_from_template:
+    post:
+      operationId: permissionsRemoveUserFromTemplate
+      summary: Remove a user from a permission template. Requires the permission 'Administer' on the organization.
+      description: Remove a user from a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: login
+        in: query
+        description: User login
+        required: true
+        schema:
+          type: string
+        example: g.hopper
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: permission
+        in: query
+        description: PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user
+        required: true
+        schema:
+          type: string
+          enum:
+          - admin
+          - codeviewer
+          - issueadmin
+          - securityhotspotadmin
+          - architectureadmin
+          - scan
+          - user
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/search_templates:
+    get:
+      operationId: permissionsSearchTemplates
+      summary: List permission templates. Requires the permission 'Administer' on the organization.
+      description: List permission templates. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: organization
+        in: query
+        description: Key of organization
+        required: true
+        schema:
+          type: string
+        example: my-org
+      - name: q
+        in: query
+        description: Limit search to permission template names that contain the supplied string.
+        required: false
+        schema:
+          type: string
+        example: defau
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/set_default_template:
+    post:
+      operationId: permissionsSetDefaultTemplate
+      summary: Set a permission template as default. Requires the permission 'Administer' on the organization.
+      description: Set a permission template as default. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: organization
+        in: query
+        description: Key of organization, used when group name is set
+        required: false
+        schema:
+          type: string
+        example: my-org
+      - name: qualifier
+        in: query
+        description: Project qualifier. Filter the results with the specified qualifier. Possible values are:TRK - Projects
+        required: false
+        schema:
+          type: string
+          enum:
+          - TRK
+          default: TRK
+      - name: templateId
+        in: query
+        description: Template id
+        required: false
+        schema:
+          type: string
+        example: AU-Tpxb--iU5OvuD2FLy
+      - name: templateName
+        in: query
+        description: Template name
+        required: false
+        schema:
+          type: string
+        example: Default Permission Template for Projects
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/permissions/update_template:
+    post:
+      operationId: permissionsUpdateTemplate
+      summary: Update a permission template. Requires the permission 'Administer' on the organization.
+      description: Update a permission template. Requires the permission 'Administer' on the organization.
+      tags:
+      - permissions
+      parameters:
+      - name: description
+        in: query
+        description: Description
+        required: false
+        schema:
+          type: string
+        example: Permissions for all projects related to the financial service
+      - name: id
+        in: query
+        description: Id
+        required: true
+        schema:
+          type: string
+        example: af8cb8cc-1e78-4c4e-8c00-ee8e814009a5
+      - name: name
+        in: query
+        description: Name
+        required: false
+        schema:
+          type: string
+        example: Financial Service Permissions
+      - name: projectKeyPattern
+        in: query
+        description: Project key pattern. Must be a valid Java regular expression
+        required: false
+        schema:
+          type: string
+        example: .*\.finance\..*
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.

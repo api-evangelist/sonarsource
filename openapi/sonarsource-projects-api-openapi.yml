@@ -1,0 +1,395 @@
+openapi: 3.0.3
+info:
+  title: SonarQube Cloud Web authentication projects API
+  version: v1
+  description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
+  x-derived-from: https://sonarcloud.io/api/webservices/list
+  contact:
+    name: SonarSource
+    url: https://community.sonarsource.com/
+servers:
+- url: https://sonarcloud.io
+security:
+- bearerToken: []
+- basicToken: []
+tags:
+- name: projects
+  description: Manage project existence.
+paths:
+  /api/projects/bulk_delete:
+    post:
+      operationId: projectsBulkDelete
+      summary: Delete one or several projects. Only the 1'000 first items in project filters are taken into account. Requires 'Admin...
+      description: Delete one or several projects. Only the 1'000 first items in project filters are taken into account. Requires 'Administer System' permission. At least one parameter is required among analyzedBefore, projects and q
+      tags:
+      - projects
+      parameters:
+      - name: analyzedBefore
+        in: query
+        description: Filter the projects for which last analysis is older than the given date (exclusive). Either a date (server timezone) or datetime can be provided.
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: onProvisionedOnly
+        in: query
+        description: Filter the projects that are provisioned
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: organization
+        in: query
+        description: The key of the organization
+        required: true
+        schema:
+          type: string
+      - name: projects
+        in: query
+        description: Comma-separated list of project keys
+        required: false
+        schema:
+          type: string
+        example: my_project,another_project
+      - name: q
+        in: query
+        description: 'Limit to: component names that contain the supplied stringcomponent keys that contain the supplied string'
+        required: false
+        schema:
+          type: string
+        example: sonar
+      - name: qualifiers
+        in: query
+        description: No longer used
+        required: false
+        schema:
+          type: string
+          enum:
+          - TRK
+          default: TRK
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/projects/bulk_update_key:
+    post:
+      operationId: projectsBulkUpdateKey
+      summary: Bulk update a project or module key and all its sub-components keys. The bulk update allows to replace a part of the ...
+      description: 'Bulk update a project or module key and all its sub-components keys. The bulk update allows to replace a part of the current key by another string on the current project and all its sub-modules. It''s possible to simulate the bulk update by setting the parameter ''dryRun'' at true. No key is updated with a dry run. Ex: to rename a project with key ''my_project'' to ''my_new_project'' and all its sub-components keys, call the WS with parameters: project: my_project from: my_ to: my_new_Requires the permission ''Administer'' on the specified project.'
+      tags:
+      - projects
+      parameters:
+      - name: dryRun
+        in: query
+        description: Simulate bulk update. No component key is updated.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: from
+        in: query
+        description: String to match in components keys
+        required: true
+        schema:
+          type: string
+        example: _old
+      - name: project
+        in: query
+        description: Project or module key
+        required: true
+        schema:
+          type: string
+        example: my_old_project
+      - name: to
+        in: query
+        description: String replacement in components keys
+        required: true
+        schema:
+          type: string
+        example: _new
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+      deprecated: true
+  /api/projects/create:
+    post:
+      operationId: projectsCreate
+      summary: Create a project. Requires 'Create Projects' permission
+      description: Create a project. Requires 'Create Projects' permission
+      tags:
+      - projects
+      parameters:
+      - name: branch
+        in: query
+        description: SCM Branch of the project. The key of the project will become key:branch, for instance 'SonarQube:branch-5.0'
+        required: false
+        schema:
+          type: string
+        example: branch-5.0
+      - name: name
+        in: query
+        description: Name of the project. If name is longer than 500, it is abbreviated.
+        required: true
+        schema:
+          type: string
+        example: SonarQube
+      - name: newCodeDefinitionType
+        in: query
+        description: Project New Code Definition Type New code definitions of the following types are allowed:previous_versiondaysdateversion
+        required: false
+        schema:
+          type: string
+        example: days
+      - name: newCodeDefinitionValue
+        in: query
+        description: Project New Code Definition Value For each new code definition type, a different value is expected:value is 'previous_version', when the new code definition type is previous_versionvalue should be a date , when the new code definition type is datevalue should be version string, when the new code definition type is versionvalue should be a number between 1 and 90, when the new code definition type is days
+        required: false
+        schema:
+          type: string
+        example: '30'
+      - name: organization
+        in: query
+        description: The key of the organization
+        required: true
+        schema:
+          type: string
+      - name: project
+        in: query
+        description: Key of the project
+        required: true
+        schema:
+          type: string
+          maxLength: 400
+        example: my_project
+      - name: visibility
+        in: query
+        description: Whether the created project should be visible to everyone, or only specific user/groups. If no visibility is specified, the default project visibility will be private for plans that allow private projects.
+        required: false
+        schema:
+          type: string
+          enum:
+          - private
+          - public
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/projects/delete:
+    post:
+      operationId: projectsDelete
+      summary: Delete a project. Requires 'Administer System' permission or 'Administer' permission on the project.
+      description: Delete a project. Requires 'Administer System' permission or 'Administer' permission on the project.
+      tags:
+      - projects
+      parameters:
+      - name: project
+        in: query
+        description: Project key
+        required: false
+        schema:
+          type: string
+        example: my_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/projects/search:
+    get:
+      operationId: projectsSearch
+      summary: Search for projects. Results are filtered to projects the caller has access to.
+      description: Search for projects. Results are filtered to projects the caller has access to.
+      tags:
+      - projects
+      parameters:
+      - name: analyzedBefore
+        in: query
+        description: Filter the projects for which last analysis is older than the given date (exclusive). Either a date (server timezone) or datetime can be provided.
+        required: false
+        schema:
+          type: string
+        example: 2017-10-19 or 2017-10-19T13:00:00+0200
+      - name: onProvisionedOnly
+        in: query
+        description: Filter the projects that are provisioned
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - 'yes'
+          - 'no'
+          default: 'false'
+      - name: organization
+        in: query
+        description: The key of the organization
+        required: true
+        schema:
+          type: string
+      - name: p
+        in: query
+        description: 1-based page number
+        required: false
+        schema:
+          type: string
+          default: '1'
+        example: '42'
+      - name: projects
+        in: query
+        description: Comma-separated list of project keys
+        required: false
+        schema:
+          type: string
+        example: my_project,another_project
+      - name: ps
+        in: query
+        description: Page size. Must be greater than 0 and less or equal than 500
+        required: false
+        schema:
+          type: string
+          default: '100'
+        example: '20'
+      - name: q
+        in: query
+        description: 'Limit search to: component names that contain the supplied stringcomponent keys that contain the supplied string'
+        required: false
+        schema:
+          type: string
+        example: sonar
+      - name: qualifiers
+        in: query
+        description: No longer used
+        required: false
+        schema:
+          type: string
+          enum:
+          - TRK
+          default: TRK
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/projects/update_key:
+    post:
+      operationId: projectsUpdateKey
+      summary: Update a project or module key and all its sub-components keys. Requires the permission 'Administer' on the specified...
+      description: Update a project or module key and all its sub-components keys. Requires the permission 'Administer' on the specified project.
+      tags:
+      - projects
+      parameters:
+      - name: from
+        in: query
+        description: Project or module key
+        required: true
+        schema:
+          type: string
+        example: my_old_project
+      - name: to
+        in: query
+        description: New component key
+        required: true
+        schema:
+          type: string
+        example: my_new_project
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+  /api/projects/update_visibility:
+    post:
+      operationId: projectsUpdateVisibility
+      summary: Updates visibility of a project. Requires 'Project administer' permission on the specified project
+      description: Updates visibility of a project. Requires 'Project administer' permission on the specified project
+      tags:
+      - projects
+      parameters:
+      - name: project
+        in: query
+        description: Project key
+        required: true
+        schema:
+          type: string
+        example: my_project
+      - name: visibility
+        in: query
+        description: New visibility
+        required: true
+        schema:
+          type: string
+          enum:
+          - private
+          - public
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized - authentication required
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: User token as Bearer token.
+    basicToken:
+      type: http
+      scheme: basic
+      description: User token as HTTP Basic username with empty password.
