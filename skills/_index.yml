@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Grounded in real operationIds from openapi/sonarsource-web-api-openapi.yml plus the
+  conventions (conventions/sonarsource-conventions.yml) and error envelope
+  (errors/sonarsource-problem-types.yml). No provider-published Agent Skills / AGENTS.md
+  were found on the public developer surface during this pass.
+skills:
+- file: sonarsource-triage-issues.md
+  name: Search and triage SonarQube issues
+  api: openapi/sonarsource-web-api-openapi.yml
+  operations: [issuesSearch, issuesAssign, issuesDoTransition, issuesAddComment]
+- file: sonarsource-check-quality-gate.md
+  name: Check a project quality gate in CI
+  api: openapi/sonarsource-web-api-openapi.yml
+  operations: [projectsSearch, qualitygatesProjectStatus, measuresComponent]
+- file: sonarsource-provision-project.md
+  name: Provision a project and analysis token
+  api: openapi/sonarsource-web-api-openapi.yml
+  operations: [projectsCreate, userTokensGenerate, webhooksCreate]

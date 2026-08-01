@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: docs.sonarsource.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  9 16:14:33 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: sonarcloud.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb  3 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 63072000
+domains:
+- domain: sonarsource.com
+  dnssec: false
+  caa:
+  - 128 iodef "mailto:infra@sonarsource.com"
+  - 0 issue "amazon.com"
+  - 0 issue "awstrust.com"
+  - 0 issue "pki.goog"
+  - 0 issuewild "amazon.com"
+  - 0 issue "amazonaws.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: sonarcloud.io
+  dnssec: false
+  caa:
+  - 0 issue "pki.goog"
+  - 0 issuewild "amazontrust.com"
+  - 128 iodef "mailto:infra@sonarsource.com"
+  - 0 issue "amazonaws.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issuewild "awstrust.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

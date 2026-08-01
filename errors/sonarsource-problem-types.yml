@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sonarsource-web-api-openapi.yml
+format: sonarqube-error-envelope
+envelope:
+  shape: '{"errors":[{"msg":"<message>"}]}'
+  notes: SonarQube Web API returns errors as a JSON object with an errors array; each element carries
+    a human-readable msg. The HTTP status conveys the error class.
+problems:
+- status: 400
+  title: Bad Request - malformed or missing parameters
+  description: Bad Request
+- status: 401
+  title: Unauthorized - authentication required or token invalid
+  description: Unauthorized - authentication required
+- status: 403
+  title: Forbidden - insufficient permissions for the resource
+  description: Insufficient privileges
+- status: 404
+  title: Not Found - component or resource does not exist
+  description: Not Found

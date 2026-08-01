@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/ and the
+  machine-readable service catalog at https://sonarcloud.io/api/webservices/list —
+  the cross-cutting request/response conventions that apply across every SonarQube
+  Cloud Web API endpoint.
+description: >-
+  How the SonarQube Cloud Web API behaves across operations: authentication, pagination,
+  the error envelope, HTTP method semantics, versioning, and rate limiting. These are
+  the runtime-semantics conventions the OpenAPI does not fully express.
+base_url: https://sonarcloud.io/api
+api_style: REST over HTTPS; form/query parameters on requests, JSON responses
+authentication:
+  scheme: >-
+    User token, supplied either as a Bearer token (Authorization: Bearer <token>) or as
+    the HTTP Basic username with an empty password.
+  token_types: [user token, project analysis token, global analysis token]
+  docs: https://docs.sonarsource.com/sonarqube-cloud/managing-your-account/managing-tokens/
+  detail: authentication/sonarsource-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    The SonarQube Web API does not document an idempotency-key mechanism. Write actions
+    are POST endpoints; GET reads are naturally idempotent.
+pagination:
+  style: page-number
+  request_params:
+    p: 1-based page index (page number to return).
+    ps: page size (number of results per page); most endpoints cap ps at 500.
+  response_fields:
+    paging: "{ pageIndex, pageSize, total }"
+  notes: >-
+    List/search endpoints return a paging object. Note SonarQube historically caps the
+    total number of reachable results (e.g. issues search is limited to the first 10,000
+    results) — narrow filters or iterate by facet to page beyond the cap.
+http_semantics:
+  read: GET endpoints (e.g. /issues/search, /measures/component, /components/search)
+  write: POST endpoints (e.g. /issues/do_transition, /projects/create, /qualitygates/create)
+error_envelope:
+  shape: '{"errors":[{"msg":"<human-readable message>"}]}'
+  status_via: HTTP status code (400/401/403/404)
+  detail: errors/sonarsource-problem-types.yml
+versioning:
+  scheme: path-based
+  current: v1 (/api/*)
+  notes: >-
+    The classic Web API lives under /api/*. Endpoints carry per-action "since" and
+    "deprecatedSince" version markers surfaced in /api/webservices/list. A newer REST
+    surface under /api/v2 exists for select capabilities.
+  detail: lifecycle/sonarsource-lifecycle.yml
+rate_limiting:
+  documented: false
+  notes: The Web API does not publish explicit rate-limit headers or quotas in its reference.

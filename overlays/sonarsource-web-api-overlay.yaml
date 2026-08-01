@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for SonarQube Cloud Web API
+  version: 1.0.0
+extends: openapi/sonarsource-web-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-source: https://sonarcloud.io/api/webservices/list
+- target: $.info
+  update:
+    x-authentication: authentication/sonarsource-authentication.yml
+    x-conventions: conventions/sonarsource-conventions.yml
+    x-errors: errors/sonarsource-problem-types.yml
+    x-lifecycle: lifecycle/sonarsource-lifecycle.yml

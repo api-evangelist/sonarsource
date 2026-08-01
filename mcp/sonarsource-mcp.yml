@@ -1,0 +1,458 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/sonarsource-web-api-openapi.yml
+note: No official SonarSource hosted MCP server was found on the public developer surface as of this pass.
+  This is a candidate tool list derived one-to-one from the SonarQube Cloud Web API operations, for building
+  an MCP wrapper.
+server:
+  name: sonarsource
+  transport: http
+tools:
+- name: authenticationLogout
+  description: Logout a user.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#authenticationLogout
+- name: authenticationValidate
+  description: Check credentials. Returns true for anonymous user.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#authenticationValidate
+- name: ceActivity
+  description: Search for tasks. Either componentId or component can be provided, but not both. Requires
+    the project administration ...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#ceActivity
+- name: ceActivityStatus
+  description: Returns CE activity related metrics. Requires 'Administer' permission on the specified
+    project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#ceActivityStatus
+- name: ceComponent
+  description: Get the pending tasks, in-progress tasks and the last executed task of a given component
+    (usually a project). Require...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#ceComponent
+- name: ceTask
+  description: Give Compute Engine task details such as type, status, duration and associated component.
+    Requires 'Execute Analysis'...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#ceTask
+- name: componentsSearch
+  description: Search for projects. Used to provide the ability to search for any component but this option
+    has been removed and web...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#componentsSearch
+- name: componentsShow
+  description: Returns a component (file, directory, project) and its ancestors. The ancestors are ordered
+    from the parent to the ro...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#componentsShow
+- name: componentsTree
+  description: 'Navigate through components based on the chosen strategy. Requires the following permission:
+    ''Browse'' on the specifie...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#componentsTree
+- name: duplicationsShow
+  description: Get duplications. Require Browse permission on file's project
+  source_operation: openapi/sonarsource-web-api-openapi.yml#duplicationsShow
+- name: favoritesAdd
+  description: Add a project as favorite for the authenticated user. Only 100 components can be added
+    as favorite. Requires authenti...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#favoritesAdd
+- name: favoritesRemove
+  description: Remove a component (project, directory, file etc.) as favorite for the authenticated user.
+    Requires authentication.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#favoritesRemove
+- name: favoritesSearch
+  description: Search for the authenticated user favorites. Requires authentication.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#favoritesSearch
+- name: issuesAddComment
+  description: 'Add a comment. Requires authentication and the following permission: ''Browse'' on the
+    project of the specified issue.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesAddComment
+- name: issuesAssign
+  description: Assign/Unassign an issue. Requires authentication and Browse permission on project
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesAssign
+- name: issuesAuthors
+  description: Search SCM accounts which match a given query. Requires authentication.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesAuthors
+- name: issuesBulkChange
+  description: Bulk change on issues. Requires authentication.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesBulkChange
+- name: issuesChangelog
+  description: Display changelog of an issue. Requires the 'Browse' permission on the project of the specified
+    issue.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesChangelog
+- name: issuesDeleteComment
+  description: 'Delete a comment. Requires authentication and the following permission: ''Browse'' on
+    the project of the specified issue.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesDeleteComment
+- name: issuesDoTransition
+  description: Do workflow transition on an issue. Requires authentication and Browse permission on project.
+    The transitions 'accept...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesDoTransition
+- name: issuesEditComment
+  description: 'Edit a comment. Requires authentication and the following permission: ''Browse'' on the
+    project of the specified issue.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesEditComment
+- name: issuesSearch
+  description: Search for issues. Requires the 'Browse' permission on the specified project(s).
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesSearch
+- name: issuesSetTags
+  description: Set tags on an issue. Requires authentication and Browse permission on project
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesSetTags
+- name: issuesTags
+  description: List tags matching a given query
+  source_operation: openapi/sonarsource-web-api-openapi.yml#issuesTags
+- name: languagesList
+  description: List supported programming languages
+  source_operation: openapi/sonarsource-web-api-openapi.yml#languagesList
+- name: measuresComponent
+  description: Return component with specified measures. The componentId or the component parameter must
+    be provided. Requires the f...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#measuresComponent
+- name: measuresComponentTree
+  description: Navigate through components based on the chosen strategy with specified measures. The baseComponentId
+    or the componen...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#measuresComponentTree
+- name: measuresSearchHistory
+  description: Search measures history of a component. Measures are ordered chronologically. Pagination
+    applies to the number of mea...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#measuresSearchHistory
+- name: metricsSearch
+  description: Search for metrics
+  source_operation: openapi/sonarsource-web-api-openapi.yml#metricsSearch
+- name: metricsTypes
+  description: List all available metric types.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#metricsTypes
+- name: notificationsAdd
+  description: 'Add a notification for the authenticated user. Requires one of the following permissions:
+    Authentication if no login ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#notificationsAdd
+- name: notificationsList
+  description: List notifications of the authenticated user
+  source_operation: openapi/sonarsource-web-api-openapi.yml#notificationsList
+- name: notificationsRemove
+  description: Remove a notification for the authenticated user
+  source_operation: openapi/sonarsource-web-api-openapi.yml#notificationsRemove
+- name: permissionsAddGroup
+  description: Add permission to a group. This service defaults to global permissions, but can be limited
+    to project permissions by ...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsAddGroup
+- name: permissionsAddGroupToTemplate
+  description: Add a group to a permission template. The group id or group name must be provided. Requires
+    the permission 'Administe...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsAddGroupToTemplate
+- name: permissionsAddProjectCreatorToTemplate
+  description: Add a project creator to a permission template. Requires the permission 'Administer' on
+    the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsAddProjectCreatorToTemplate
+- name: permissionsAddUser
+  description: Add permission to a user. This service defaults to global permissions, but can be limited
+    to project permissions by p...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsAddUser
+- name: permissionsAddUserToTemplate
+  description: Add a user to a permission template. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsAddUserToTemplate
+- name: permissionsApplyTemplate
+  description: Apply a permission template to one project. The project id or project key must be provided.
+    The template id or name m...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsApplyTemplate
+- name: permissionsBulkApplyTemplate
+  description: Apply a permission template to several projects. The template id or name must be provided.
+    Requires the permission 'A...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsBulkApplyTemplate
+- name: permissionsCreateTemplate
+  description: Create a permission template. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsCreateTemplate
+- name: permissionsDeleteTemplate
+  description: Delete a permission template. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsDeleteTemplate
+- name: permissionsRemoveGroup
+  description: Remove a permission from a group. This service defaults to global permissions, but can
+    be limited to project permissi...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsRemoveGroup
+- name: permissionsRemoveGroupFromTemplate
+  description: Remove a group from a permission template. The group id or group name must be provided.
+    Requires the permission 'Admi...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsRemoveGroupFromTemplate
+- name: permissionsRemoveProjectCreatorFromTemplate
+  description: Remove a project creator from a permission template. Requires the permission 'Administer'
+    on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsRemoveProjectCreatorFromTemplate
+- name: permissionsRemoveUser
+  description: Remove permission from a user. This service defaults to global permissions, but can be
+    limited to project permissions...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsRemoveUser
+- name: permissionsRemoveUserFromTemplate
+  description: Remove a user from a permission template. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsRemoveUserFromTemplate
+- name: permissionsSearchTemplates
+  description: List permission templates. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsSearchTemplates
+- name: permissionsSetDefaultTemplate
+  description: Set a permission template as default. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsSetDefaultTemplate
+- name: permissionsUpdateTemplate
+  description: Update a permission template. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#permissionsUpdateTemplate
+- name: projectAnalysesCreateEvent
+  description: Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created.
+    Requires the permission...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesCreateEvent
+- name: projectAnalysesDelete
+  description: Delete a project analysis. Requires the permission 'Administer' on the project of the specified
+    analysis.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesDelete
+- name: projectAnalysesDeleteEvent
+  description: Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted.
+    Requires the permission...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesDeleteEvent
+- name: projectAnalysesSearch
+  description: 'Search a project analyses and attached events. Requires the following permission: ''Browse''
+    on the specified project'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesSearch
+- name: projectAnalysesSetBaseline
+  description: Set an analysis as the baseline of the New Code Period on a project or a long-lived branch.
+    This manually set baselin...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesSetBaseline
+- name: projectAnalysesUnsetBaseline
+  description: Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting
+    a manual baseline rest...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesUnsetBaseline
+- name: projectAnalysesUpdateEvent
+  description: Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated.
+    Requires the permissio...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectAnalysesUpdateEvent
+- name: projectBadgesAiCodeAssurance
+  description: Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on
+    the specified project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectBadgesAiCodeAssurance
+- name: projectBadgesMeasure
+  description: Generate badge for project's measure as an SVG. Requires a security token for private projects.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectBadgesMeasure
+- name: projectBadgesQualityGate
+  description: Generate badge for project's quality gate as an SVG. Requires a security token for private
+    projects.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectBadgesQualityGate
+- name: projectBranchesDelete
+  description: Delete a non-main branch of a project. Requires 'Administer' rights on the specified project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectBranchesDelete
+- name: projectBranchesList
+  description: List the branches of a project. The statistics are the overall counts on long branches,
+    and the count of issues detec...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectBranchesList
+- name: projectBranchesRename
+  description: Rename the main branch of a project. Requires 'Administer' permission on the specified
+    project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectBranchesRename
+- name: projectLinksCreate
+  description: Create a new project link. Requires 'Administer' permission on the specified project, or
+    global 'Administer' permission.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectLinksCreate
+- name: projectLinksDelete
+  description: Delete existing project link. Requires 'Administer' permission on the specified project,
+    or global 'Administer' permi...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectLinksDelete
+- name: projectLinksSearch
+  description: List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one
+    of the following permissions:...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectLinksSearch
+- name: projectPullRequestsDelete
+  description: Delete a pull request. Requires 'Administer' rights on the specified project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectPullRequestsDelete
+- name: projectPullRequestsList
+  description: 'List the pull requests of a project. One of the following permissions is required: ''Browse''
+    rights on the specified p...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectPullRequestsList
+- name: projectTagsSearch
+  description: Search tags
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectTagsSearch
+- name: projectTagsSet
+  description: 'Set tags on a project. Requires the following permission: ''Administer'' rights on the
+    specified project'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectTagsSet
+- name: projectsBulkDelete
+  description: Delete one or several projects. Only the 1'000 first items in project filters are taken
+    into account. Requires 'Admin...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectsBulkDelete
+- name: projectsCreate
+  description: Create a project. Requires 'Create Projects' permission
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectsCreate
+- name: projectsDelete
+  description: Delete a project. Requires 'Administer System' permission or 'Administer' permission on
+    the project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectsDelete
+- name: projectsSearch
+  description: Search for projects. Results are filtered to projects the caller has access to.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectsSearch
+- name: projectsUpdateKey
+  description: Update a project or module key and all its sub-components keys. Requires the permission
+    'Administer' on the specified...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectsUpdateKey
+- name: projectsUpdateVisibility
+  description: Updates visibility of a project. Requires 'Project administer' permission on the specified
+    project
+  source_operation: openapi/sonarsource-web-api-openapi.yml#projectsUpdateVisibility
+- name: qualityprofilesActivateRule
+  description: 'Activate a rule on a Quality Profile. Requires one of the following permissions: ''Administer
+    Quality Profiles'' Edit r...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesActivateRule
+- name: qualityprofilesActivateRules
+  description: 'Bulk-activate rules on one quality profile. Requires one of the following permissions:
+    ''Administer Quality Profiles'' ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesActivateRules
+- name: qualityprofilesAddProject
+  description: 'Associate a project with a quality profile. Requires one of the following permissions:
+    ''Administer Quality Profiles'' ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesAddProject
+- name: qualityprofilesBackup
+  description: Backup a quality profile in XML form. The exported profile can be restored through api/qualityprofiles/restore.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesBackup
+- name: qualityprofilesChangeParent
+  description: 'Change a quality profile''s parent. Requires one of the following permissions: ''Administer
+    Quality Profiles'' Edit righ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesChangeParent
+- name: qualityprofilesChangelog
+  description: 'Get the history of changes on a quality profile: rule activation/deactivation, change
+    in parameters/severity. Events ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesChangelog
+- name: qualityprofilesCopy
+  description: Copy a quality profile. Requires to be logged in and the 'Administer Quality Profiles'
+    permission.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesCopy
+- name: qualityprofilesCreate
+  description: Create a quality profile. Requires to be logged in and the 'Administer Quality Profiles'
+    permission.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesCreate
+- name: qualityprofilesDeactivateRule
+  description: 'Deactivate a rule on a quality profile. Requires one of the following permissions: ''Administer
+    Quality Profiles'' Edit...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesDeactivateRule
+- name: qualityprofilesDeactivateRules
+  description: 'Bulk deactivate rules on Quality profiles. Requires one of the following permissions:
+    ''Administer Quality Profiles'' E...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesDeactivateRules
+- name: qualityprofilesDelete
+  description: Delete a quality profile and all its descendants. The default quality profile cannot be
+    deleted. Requires one of the ...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesDelete
+- name: qualityprofilesInheritance
+  description: Show a quality profile's ancestors and children.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesInheritance
+- name: qualityprofilesProjects
+  description: List projects with their association status regarding a quality profile
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesProjects
+- name: qualityprofilesRemoveProject
+  description: 'Remove a project''s association with a quality profile. Requires one of the following
+    permissions: ''Administer Quality...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesRemoveProject
+- name: qualityprofilesRename
+  description: 'Rename a quality profile. Requires one of the following permissions: ''Administer Quality
+    Profiles'' Edit right on the ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesRename
+- name: qualityprofilesRestore
+  description: Restore a quality profile using an XML file. The restored profile name is taken from the
+    backup file, so if a profile...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesRestore
+- name: qualityprofilesSearch
+  description: Search quality profiles
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesSearch
+- name: qualityprofilesSetDefault
+  description: Select the default profile for a given language. Requires to be logged in and the 'Administer
+    Quality Profiles' permi...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#qualityprofilesSetDefault
+- name: rulesRepositories
+  description: List available rule repositories
+  source_operation: openapi/sonarsource-web-api-openapi.yml#rulesRepositories
+- name: rulesTags
+  description: List rule tags
+  source_operation: openapi/sonarsource-web-api-openapi.yml#rulesTags
+- name: rulesUpdate
+  description: Update an existing rule. Requires the 'Administer Quality Profiles' permission
+  source_operation: openapi/sonarsource-web-api-openapi.yml#rulesUpdate
+- name: settingsListDefinitions
+  description: List settings definitions. Requires 'Browse' permission when a component is specified To
+    access licensed settings, au...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#settingsListDefinitions
+- name: settingsReset
+  description: Remove a setting value. The settings defined in conf/sonar.properties are read-only and
+    can't be changed. Requires th...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#settingsReset
+- name: settingsSet
+  description: Update a setting value. Either 'value' or 'values' must be provided. The settings defined
+    in conf/sonar.properties ar...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#settingsSet
+- name: settingsValues
+  description: List settings values. If no value has been set for a setting, then the default value is
+    returned. Both component and ...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#settingsValues
+- name: sourcesRaw
+  description: Get source code as raw text. Require 'See Source Code' permission on file
+  source_operation: openapi/sonarsource-web-api-openapi.yml#sourcesRaw
+- name: sourcesScm
+  description: Get SCM information of source files. Require See Source Code permission on file's project
+    Each element of the result ...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#sourcesScm
+- name: sourcesShow
+  description: Get source code. Requires See Source Code permission on file's project, or organization
+    membership on public projects...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#sourcesShow
+- name: userGroupsAddUser
+  description: 'Add a user to a group. ''id'' or ''name'' must be provided. Requires the following permission:
+    ''Administer System''.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsAddUser
+- name: userGroupsCreate
+  description: 'Create a group. Requires the following permission: ''Administer System''.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsCreate
+- name: userGroupsDelete
+  description: Delete a group. The default groups cannot be deleted. 'id' or 'name' must be provided.
+    Requires the following permiss...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsDelete
+- name: userGroupsRemoveUser
+  description: 'Remove a user from a group. ''id'' or ''name'' must be provided. Requires the following
+    permission: ''Administer System''.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsRemoveUser
+- name: userGroupsSearch
+  description: 'Search for user groups. Requires the following permission: ''Administer System''.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsSearch
+- name: userGroupsUpdate
+  description: 'Update a group. Requires the following permission: ''Administer System''.'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsUpdate
+- name: userGroupsUsers
+  description: 'Search for users with membership information with respect to a group. Requires the following
+    permission: ''Administer ...'
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userGroupsUsers
+- name: userTokensGenerate
+  description: Generate a user access token. Please keep your tokens secret. They enable to authenticate
+    and analyze projects. The e...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userTokensGenerate
+- name: userTokensRevoke
+  description: Revoke an access token of the authenticated user.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userTokensRevoke
+- name: userTokensSearch
+  description: List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated
+    every hour, so it may no...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#userTokensSearch
+- name: usersGroups
+  description: Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#usersGroups
+- name: webhooksCreate
+  description: Create a Webhook. Requires 'Administer' permission on the specified project.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webhooksCreate
+- name: webhooksDelete
+  description: Delete a Webhook. Requires 'Administer' permission on the specified project, or global
+    'Administer' permission.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webhooksDelete
+- name: webhooksDeliveries
+  description: Get the recent deliveries for a specified project or Compute Engine task. Require 'Administer'
+    permission on the rela...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webhooksDeliveries
+- name: webhooksDelivery
+  description: Get a webhook delivery by its id. Note that additional information are returned by api/webhooks/delivery.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webhooksDelivery
+- name: webhooksList
+  description: Search for global webhooks or project webhooks. Webhooks are ordered by name. Requires
+    'Administer' permission on the...
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webhooksList
+- name: webhooksUpdate
+  description: Update a Webhook. Requires 'Administer' permission on the specified project, or global
+    'Administer' permission.
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webhooksUpdate
+- name: webservicesList
+  description: List web services
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webservicesList
+- name: webservicesResponseExample
+  description: Display web service response example
+  source_operation: openapi/sonarsource-web-api-openapi.yml#webservicesResponseExample

@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sonarsource-web-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerToken
+  type: http
+  scheme: bearer
+  description: User token as Bearer token.
+  sources:
+  - openapi/sonarsource-web-api-openapi.yml
+- name: basicToken
+  type: http
+  scheme: basic
+  description: User token as HTTP Basic username with empty password.
+  sources:
+  - openapi/sonarsource-web-api-openapi.yml

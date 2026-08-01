@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.sonarsource.com/sonarqube-cloud/deprecations-and-removals/,
+  https://docs.sonarsource.com/sonarqube-server/server-update-and-maintenance/maintenance/deprecations/deprecation-policy/,
+  https://status.sonarcloud.io, and per-action since/deprecatedSince markers in
+  https://sonarcloud.io/api/webservices/list.
+versioning:
+  scheme: path-based
+  current: v1
+  notes: >-
+    Web API endpoints live under /api/* and carry a "since" version on each action; a
+    newer /api/v2 REST surface exists for select capabilities. SonarQube Cloud is a
+    continuously-deployed SaaS (no user-pinned version), while SonarQube Server ships
+    dated LTA releases with published release notes.
+  docs: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+deprecation:
+  policy_url: https://docs.sonarsource.com/sonarqube-server/server-update-and-maintenance/maintenance/deprecations/deprecation-policy/
+  cloud_deprecations: https://docs.sonarsource.com/sonarqube-cloud/deprecations-and-removals/
+  sunset_header: false
+  notes: >-
+    SonarQube publishes a formal deprecation policy so users have notice before a feature
+    or API component is dropped on a planned date. Deprecated Web API actions are marked
+    with a deprecatedSince marker in the service catalog; removed controllers (e.g.
+    api/favourites, api/timemachine, api/user_properties, api/properties) return guidance
+    to their replacements.
+sla:
+  url: null
+  public_uptime_target: null
+  notes: No numeric public uptime SLA is published for standard SonarQube Cloud accounts.
+status_page: https://status.sonarcloud.io/
+deprecated_operations_source: openapi/sonarsource-web-api-openapi.yml
+deprecated_operations_note: >-
+  Operations flagged deprecated:true in the derived OpenAPI (removed/legacy controllers
+  and actions such as api/favourites, api/timemachine, api/properties, and issues bulk
+  legacy actions).

@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+host: https://sonarcloud.io
+note: >-
+  Probed the /.well-known/ discovery surface on the SonarQube Cloud host. The
+  security.txt path 301-redirects to the marketing site, and the OIDC/OAuth/api-catalog
+  paths return the SPA HTML fallback (Content-Type text/html) rather than a genuine
+  discovery document — i.e. no real well-known documents are published. Statuses are
+  recorded as observed; absence is valid data.
+documents:
+- path: /.well-known/security.txt
+  status: 301
+  content_type: redirect-to-marketing-site
+  file: null
+- path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  note: SPA fallback, not a genuine OIDC discovery document
+  file: null
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  note: SPA fallback, not a genuine RFC 8414 document
+  file: null
+- path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  note: SPA fallback, not a genuine RFC 9727 api-catalog
+  file: null
+- path: /.well-known/ai-plugin.json
+  status: 404
+  file: null

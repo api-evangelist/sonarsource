@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.sonarsource.com/sonarqube-server/server-update-and-maintenance/release-notes/
+  (SonarQube Server dated release notes) and
+  https://docs.sonarsource.com/sonarqube-cloud/deprecations-and-removals/ (SonarQube
+  Cloud change/deprecation surface). SonarQube Cloud is continuously deployed and does
+  not publish per-version release numbers; SonarQube Server ships dated LTA releases.
+scheme: >-
+  Product-versioned for SonarQube Server (YYYY.N LTA, e.g. 2026.1, 2026.2);
+  continuous delivery for SonarQube Cloud.
+current_lta: '2026.1'
+release_notes:
+  server: https://docs.sonarsource.com/sonarqube-server/server-update-and-maintenance/release-notes/
+  cloud_changes: https://docs.sonarsource.com/sonarqube-cloud/deprecations-and-removals/
+entries:
+- version: '2026.2'
+  product: SonarQube Server
+  url: https://docs.sonarsource.com/sonarqube-server/2026.2/server-update-and-maintenance/release-notes/
+  highlights: Relevant changes since the 2026.1 LTA version.
+- version: '2026.1'
+  product: SonarQube Server (LTA)
+  url: https://docs.sonarsource.com/sonarqube-server/2026.1/server-update-and-maintenance/release-notes/
+  highlights: 2026.1 Long-Term Active release; LTA-to-LTA notes cover changes from 2025.4 LTA.
+note: >-
+  For the Web API specifically, additions/removals are tracked per-action via the
+  since/deprecatedSince markers in /api/webservices/list and the Cloud
+  deprecations-and-removals page.

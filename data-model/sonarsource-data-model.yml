@@ -1,0 +1,114 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  openapi/sonarsource-web-api-openapi.yml — entities and relationships inferred from the
+  SonarQube Cloud Web API controllers and their id-reference parameters (project/component
+  key, rule key, issue key, quality gate/profile id, metric key).
+entities:
+- name: organization
+  key: organization
+  description: Top-level tenant on SonarQube Cloud that owns projects and members.
+- name: project
+  key: projectKey (component of qualifier TRK)
+  description: A codebase analyzed by SonarQube; the root component.
+- name: component
+  key: component
+  description: File, directory, module, or project within the analysis tree.
+- name: branch
+  key: branch
+  description: A branch of a project (main or long/short-lived).
+- name: pull_request
+  key: pullRequest
+  description: A pull request analysis attached to a project.
+- name: issue
+  key: issue
+  description: A code quality or security finding raised on a component by a rule.
+- name: hotspot
+  key: hotspot
+  description: A security hotspot requiring review on a component.
+- name: rule
+  key: rule
+  description: An analysis rule that raises issues; grouped into quality profiles.
+- name: quality_profile
+  key: qualityProfile
+  description: A named set of activated rules applied to a project by language.
+- name: quality_gate
+  key: gateId
+  description: Pass/fail conditions on measures that gate a project analysis.
+- name: metric
+  key: metric
+  description: A measurable dimension (bugs, coverage, duplications, etc.).
+- name: measure
+  description: The value of a metric on a component at an analysis.
+- name: analysis
+  key: analysis
+  description: A single scan of a project producing measures and issues.
+- name: user
+  key: login
+  description: A SonarQube user account.
+- name: user_group
+  key: name
+  description: A group of users for permission assignment.
+- name: user_token
+  description: An access token minted by a user to authenticate API/scanner requests.
+- name: webhook
+  key: webhook
+  description: An outbound HTTP callback fired on project analysis completion.
+- name: permission_template
+  description: A template that grants default permissions on new projects.
+relationships:
+- from: organization
+  to: project
+  type: has_many
+- from: project
+  to: branch
+  type: has_many
+- from: project
+  to: pull_request
+  type: has_many
+- from: project
+  to: analysis
+  type: has_many
+  via: projectKey
+- from: analysis
+  to: issue
+  type: has_many
+- from: component
+  to: issue
+  type: has_many
+  via: component
+- from: component
+  to: measure
+  type: has_many
+  via: component
+- from: measure
+  to: metric
+  type: belongs_to
+  via: metric
+- from: issue
+  to: rule
+  type: belongs_to
+  via: rule
+- from: quality_profile
+  to: rule
+  type: has_many
+- from: project
+  to: quality_profile
+  type: has_many
+- from: project
+  to: quality_gate
+  type: has_one
+  via: gateId
+- from: quality_gate
+  to: metric
+  type: has_many
+  via: metric
+- from: user
+  to: user_token
+  type: has_many
+- from: user_group
+  to: user
+  type: has_many
+- from: project
+  to: webhook
+  type: has_many

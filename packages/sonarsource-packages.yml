@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  Registry lookups (registry.npmjs.org, pypi.org, search.maven.org, api.nuget.org,
+  plugins.gradle.org, hub.docker.com) for first-party SonarSource scanner libraries.
+  These are the official client tools that run analysis and submit results to
+  SonarQube Cloud / Server.
+packages:
+- language: javascript
+  registry: npm
+  name: sonarqube-scanner
+  url: https://www.npmjs.com/package/sonarqube-scanner
+  install: npm install sonarqube-scanner
+  version: 5.0.0
+  repository: https://github.com/SonarSource/sonar-scanner-npm
+  official: true
+  description: SonarQube/SonarCloud Scanner for the JavaScript world.
+- language: python
+  registry: pypi
+  name: pysonar-scanner
+  url: https://pypi.org/project/pysonar-scanner/
+  install: pip install pysonar-scanner
+  official: true
+  description: Python wrapper for the SonarScanner CLI.
+- language: java
+  registry: maven-central
+  name: org.sonarsource.scanner.maven:sonar-maven-plugin
+  url: https://search.maven.org/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin
+  install: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+  version: 5.1.0.4751
+  official: true
+  description: Maven plugin to run SonarQube analysis as part of a Maven build.
+- language: java
+  registry: gradle-plugin-portal
+  name: org.sonarqube
+  url: https://plugins.gradle.org/plugin/org.sonarqube
+  install: "plugins { id \"org.sonarqube\" }"
+  official: true
+  description: Gradle plugin to run SonarQube analysis as part of a Gradle build.
+- language: dotnet
+  registry: nuget
+  name: dotnet-sonarscanner
+  url: https://www.nuget.org/packages/dotnet-sonarscanner
+  install: dotnet tool install --global dotnet-sonarscanner
+  official: true
+  description: SonarScanner for .NET distributed as a .NET Core global tool.
+- language: docker
+  registry: docker-hub
+  name: sonarsource/sonar-scanner-cli
+  url: https://hub.docker.com/r/sonarsource/sonar-scanner-cli
+  install: docker pull sonarsource/sonar-scanner-cli
+  official: true
+  description: Standalone SonarScanner CLI packaged as a Docker image.

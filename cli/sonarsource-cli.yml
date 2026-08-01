@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/ci-based-analysis/sonarscanner/
+  and the SonarScanner CLI distribution. The SonarScanner CLI is the language-agnostic
+  first-party command-line analyzer that submits results to SonarQube Cloud / Server.
+name: SonarScanner CLI
+binary: sonar-scanner
+description: >-
+  Command-line code analyzer. Runs on a project checkout, collects source and metadata,
+  and uploads the analysis to a SonarQube Cloud / Server instance where issues, quality
+  gates and measures are computed.
+install:
+- method: download
+  note: Standalone zip distributions per OS from the SonarSource repository.
+- method: docker
+  command: docker run --rm -v "$PWD:/usr/src" sonarsource/sonar-scanner-cli
+- method: npm
+  command: npm install -D sonarqube-scanner
+- method: dotnet
+  command: dotnet tool install --global dotnet-sonarscanner
+- method: maven
+  command: mvn sonar:sonar
+- method: gradle
+  command: gradle sonar
+key_parameters:
+- name: -Dsonar.host.url
+  description: URL of the SonarQube Cloud/Server instance (e.g. https://sonarcloud.io).
+- name: -Dsonar.token
+  description: User/analysis token used to authenticate the scan.
+- name: -Dsonar.projectKey
+  description: Unique key of the project being analyzed.
+- name: -Dsonar.organization
+  description: Organization key (SonarQube Cloud).
+- name: -Dsonar.sources
+  description: Comma-separated list of source directories to analyze.
+flows:
+- name: Analyze a project
+  command: sonar-scanner -Dsonar.projectKey=my_project -Dsonar.organization=my_org -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN
+related:
+  packages: packages/sonarsource-packages.yml
