@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication user_tokens API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user_tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a user access token. Please keep your tokens secret. They enable to authenticate and analyze projects. The e...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/user_tokens/generate",
+            "params": [
+              {
+                "name": "expirationDate",
+                "value": "2026-01-01T00:00:00+0000",
+                "type": "query",
+                "description": "Optional expiration date."
+              },
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "Deprecated and ignored. Tokens are always generated for the authenticated user."
+              },
+              {
+                "name": "name",
+                "value": "Project scan on Travis",
+                "type": "query",
+                "description": "Token name"
+              }
+            ]
+          },
+          "docs": "Generate a user access token. Please keep your tokens secret. They enable to authenticate and analyze projects. The endpoint generates a token for the logged in user."
+        },
+        {
+          "info": {
+            "name": "Revoke an access token of the authenticated user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/user_tokens/revoke",
+            "params": [
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "Deprecated and ignored. Tokens are always revoked for the authenticated user."
+              },
+              {
+                "name": "name",
+                "value": "Project scan on Travis",
+                "type": "query",
+                "description": "Token name"
+              }
+            ]
+          },
+          "docs": "Revoke an access token of the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated every hour, so it may no...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/user_tokens/search",
+            "params": [
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "Deprecated and ignored. Tokens are always listed for the authenticated user."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter tokens by type. If omitted, all tokens are returned."
+              }
+            ]
+          },
+          "docs": "List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated every hour, so it may not be accurate, for instance when a user is using a token many times in less than one hour."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

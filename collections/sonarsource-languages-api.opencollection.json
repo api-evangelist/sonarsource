@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication languages API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported programming languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/languages/list",
+            "params": [
+              {
+                "name": "ps",
+                "value": "25",
+                "type": "query",
+                "description": "The size of the list to return, 0 for all languages"
+              },
+              {
+                "name": "q",
+                "value": "java",
+                "type": "query",
+                "description": "A pattern to match language keys/names against"
+              }
+            ]
+          },
+          "docs": "List supported programming languages"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

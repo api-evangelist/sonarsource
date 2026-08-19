@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication components API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for projects. Used to provide the ability to search for any component but this option has been removed and web...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/components/search",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key"
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              },
+              {
+                "name": "q",
+                "value": "sonar",
+                "type": "query",
+                "description": "Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string"
+              }
+            ]
+          },
+          "docs": "Search for projects. Used to provide the ability to search for any component but this option has been removed and webservice 'api/components/tree' should be used instead for this purpose"
+        },
+        {
+          "info": {
+            "name": "Returns a component (file, directory, project) and its ancestors. The ancestors are ordered from the parent to the ro...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/components/show",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              }
+            ]
+          },
+          "docs": "Returns a component (file, directory, project) and its ancestors. The ancestors are ordered from the parent to the root project. Requires the following permission: 'Browse' on the project of the specified component."
+        },
+        {
+          "info": {
+            "name": "Navigate through components based on the chosen strategy. Requires the following permission: 'Browse' on the specifie...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/components/tree",
+            "params": [
+              {
+                "name": "asc",
+                "value": "",
+                "type": "query",
+                "description": "Ascending sort"
+              },
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Base component key. The search is based on this component."
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              },
+              {
+                "name": "q",
+                "value": "FILE_NAM",
+                "type": "query",
+                "description": "Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string"
+              },
+              {
+                "name": "qualifiers",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:BRC - Sub-projectsDIR - DirectoriesFIL - FilesTRK - ProjectsUTS - Test Files"
+              },
+              {
+                "name": "s",
+                "value": "name, path",
+                "type": "query",
+                "description": "Comma-separated list of sort fields"
+              },
+              {
+                "name": "strategy",
+                "value": "",
+                "type": "query",
+                "description": "Strategy to search for base component descendants:children: return the children components of the base component. Grandchildren components are not returnedall: return all the descendants components of the base component. Grandchildren are returned.leaves: return all the descendant components (files, in general) which don't have other children. They are the leaves of the component tree."
+              }
+            ]
+          },
+          "docs": "Navigate through components based on the chosen strategy. Requires the following permission: 'Browse' on the specified project. When limiting search with the q parameter, directories are not returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

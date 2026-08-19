@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication favorites API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "favorites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a project as favorite for the authenticated user. Only 100 components can be added as favorite. Requires authenti...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/favorites/add",
+            "params": [
+              {
+                "name": "component",
+                "value": "my_project:/src/foo/Bar.php",
+                "type": "query",
+                "description": "Component key. Only components with qualifier TRK are supported"
+              }
+            ]
+          },
+          "docs": "Add a project as favorite for the authenticated user. Only 100 components can be added as favorite. Requires authentication and the following permission: 'Browse' on the project."
+        },
+        {
+          "info": {
+            "name": "Remove a component (project, directory, file etc.) as favorite for the authenticated user. Requires authentication.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/favorites/remove",
+            "params": [
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              }
+            ]
+          },
+          "docs": "Remove a component (project, directory, file etc.) as favorite for the authenticated user. Requires authentication."
+        },
+        {
+          "info": {
+            "name": "Search for the authenticated user favorites. Requires authentication.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/favorites/search",
+            "params": [
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              }
+            ]
+          },
+          "docs": "Search for the authenticated user favorites. Requires authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

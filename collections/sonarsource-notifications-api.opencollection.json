@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication notifications API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a notification for the authenticated user. Requires one of the following permissions: Authentication if no login ...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/notifications/add",
+            "params": [
+              {
+                "name": "channel",
+                "value": "",
+                "type": "query",
+                "description": "Channel through which the notification is sent. For example, notifications can be sent by email."
+              },
+              {
+                "name": "login",
+                "value": "",
+                "type": "query",
+                "description": "User login"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "type",
+                "value": "SQ-MyNewIssues",
+                "type": "query",
+                "description": "Notification type. Possible values are for: Global notifications: CeReportTaskFailure, ChangesOnMyIssue, SQ-MyNewIssues Per project notifications: CeReportTaskFailure, ChangesOnMyIssue, NewAlerts, NewFalsePositiveIssue, NewIssues, SQ-MyNewIssues"
+              }
+            ]
+          },
+          "docs": "Add a notification for the authenticated user. Requires one of the following permissions: Authentication if no login is provided. If a project is provided, requires the 'Browse' permission on the specified project. If a project is provided, requires the 'Browse' permission on the specified project."
+        },
+        {
+          "info": {
+            "name": "List notifications of the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/notifications/list",
+            "params": [
+              {
+                "name": "login",
+                "value": "",
+                "type": "query",
+                "description": "User login"
+              }
+            ]
+          },
+          "docs": "List notifications of the authenticated user"
+        },
+        {
+          "info": {
+            "name": "Remove a notification for the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/notifications/remove",
+            "params": [
+              {
+                "name": "channel",
+                "value": "",
+                "type": "query",
+                "description": "Channel through which the notification is sent. For example, notifications can be sent by email."
+              },
+              {
+                "name": "login",
+                "value": "",
+                "type": "query",
+                "description": "User login"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "type",
+                "value": "SQ-MyNewIssues",
+                "type": "query",
+                "description": "Notification type. Possible values are for: Global notifications: CeReportTaskFailure, ChangesOnMyIssue, SQ-MyNewIssues Per project notifications: CeReportTaskFailure, ChangesOnMyIssue, NewAlerts, NewFalsePositiveIssue, NewIssues, SQ-MyNewIssues"
+              }
+            ]
+          },
+          "docs": "Remove a notification for the authenticated user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

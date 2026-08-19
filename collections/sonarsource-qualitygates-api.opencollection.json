@@ -1,0 +1,518 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication qualitygates API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "qualitygates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Copy a Quality Gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/copy",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "query",
+                "description": "The ID of the source quality gate"
+              },
+              {
+                "name": "name",
+                "value": "My Quality Gate",
+                "type": "query",
+                "description": "The name of the quality gate to create"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Copy a Quality Gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Create a Quality Gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/create",
+            "params": [
+              {
+                "name": "name",
+                "value": "My Quality Gate",
+                "type": "query",
+                "description": "The name of the quality gate to create"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Create a Quality Gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/create_condition",
+            "params": [
+              {
+                "name": "error",
+                "value": "10",
+                "type": "query",
+                "description": "Condition error threshold"
+              },
+              {
+                "name": "gateId",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the quality gate"
+              },
+              {
+                "name": "metric",
+                "value": "blocker_violations, vulnerabilities, new_code_smells",
+                "type": "query",
+                "description": "Condition metric. Only metric of the following types are allowed:INTMILLISECRATINGWORK_DURFLOATPERCENTLEVELFollowing metrics are forbidden:alert_statussecurity_hotspotsnew_security_hotspots"
+              },
+              {
+                "name": "op",
+                "value": "GT",
+                "type": "query",
+                "description": "Condition operator: LT = is lower thanGT = is greater than"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Delete a condition from a quality gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/delete_condition",
+            "params": [
+              {
+                "name": "id",
+                "value": "2",
+                "type": "query",
+                "description": "Condition ID"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Delete a condition from a quality gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Remove the association of a project from a quality gate. Requires one of the following permissions:'Administer Qualit...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/deselect",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              },
+              {
+                "name": "projectId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Remove the association of a project from a quality gate. Requires one of the following permissions:'Administer Quality Gates''Administer' rights on the project"
+        },
+        {
+          "info": {
+            "name": "Delete a Quality Gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/destroy",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the quality gate to delete"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Delete a Quality Gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Get the quality gate of a project. Requires one of the following permissions:'Administer' rights on the specified pro...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/qualitygates/get_by_project",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Get the quality gate of a project. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project"
+        },
+        {
+          "info": {
+            "name": "Get a list of quality gates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/qualitygates/list",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Get a list of quality gates"
+        },
+        {
+          "info": {
+            "name": "Get the quality gate status of a project or a Compute Engine task. Either 'analysisId', 'projectId' or 'projectKey' m...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/qualitygates/project_status",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "AU-TpxcA-iU5OvuD2FL1",
+                "type": "query",
+                "description": "Analysis id"
+              },
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "projectId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Project id. Doesn't work with branches or pull requests"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              }
+            ]
+          },
+          "docs": "Get the quality gate status of a project or a Compute Engine task. Either 'analysisId', 'projectId' or 'projectKey' must be provided The different statuses returned are: OK, WARN, ERROR, NONE. The NONE status is returned when there is no quality gate associated with the analysis. Returns an HTTP code 404 if the analysis associated with the task is not found or does not exist. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project"
+        },
+        {
+          "info": {
+            "name": "Rename a Quality Gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/rename",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the quality gate to rename"
+              },
+              {
+                "name": "name",
+                "value": "My Quality Gate",
+                "type": "query",
+                "description": "New name of the quality gate"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Rename a Quality Gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Search for projects associated (or not) to a quality gate. Only authorized projects for current user will be returned.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/qualitygates/search",
+            "params": [
+              {
+                "name": "gateId",
+                "value": "1",
+                "type": "query",
+                "description": "Quality Gate ID"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              },
+              {
+                "name": "page",
+                "value": "2",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Page size"
+              },
+              {
+                "name": "query",
+                "value": "abc",
+                "type": "query",
+                "description": "To search for projects containing this string. If this parameter is set, \"selected\" is set to \"all\"."
+              },
+              {
+                "name": "selected",
+                "value": "",
+                "type": "query",
+                "description": "Depending on the value, show only selected items (selected=selected), deselected items (selected=deselected), or all items with their selection status (selected=all)."
+              }
+            ]
+          },
+          "docs": "Search for projects associated (or not) to a quality gate. Only authorized projects for current user will be returned."
+        },
+        {
+          "info": {
+            "name": "Associate a project to a quality gate. The 'projectId' or 'projectKey' must be provided. Project id as a numeric valu...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/select",
+            "params": [
+              {
+                "name": "gateId",
+                "value": "1",
+                "type": "query",
+                "description": "Quality gate id"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              },
+              {
+                "name": "projectId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Project id. Project id as an numeric value is deprecated since 6.1"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Associate a project to a quality gate. The 'projectId' or 'projectKey' must be provided. Project id as a numeric value is deprecated since 6.1. Please use the id similar to 'AU-TpxcA-iU5OvuD2FLz'. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Set a quality gate as the default quality gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/set_as_default",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the quality gate to set as default"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Set a quality gate as the default quality gate. Requires the 'Administer Quality Gates' permission."
+        },
+        {
+          "info": {
+            "name": "Display the details of a quality gate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/qualitygates/show",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "query",
+                "description": "ID of the quality gate. Either id or name must be set"
+              },
+              {
+                "name": "name",
+                "value": "My Quality Gate",
+                "type": "query",
+                "description": "Name of the quality gate. Either id or name must be set"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Display the details of a quality gate"
+        },
+        {
+          "info": {
+            "name": "This webservice is no more available : a default quality gate is mandatory.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/unset_default"
+          },
+          "docs": "This webservice is no more available : a default quality gate is mandatory."
+        },
+        {
+          "info": {
+            "name": "Update a condition attached to a quality gate. Requires the 'Administer Quality Gates' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/qualitygates/update_condition",
+            "params": [
+              {
+                "name": "error",
+                "value": "10",
+                "type": "query",
+                "description": "Condition error threshold"
+              },
+              {
+                "name": "id",
+                "value": "10",
+                "type": "query",
+                "description": "Condition ID"
+              },
+              {
+                "name": "metric",
+                "value": "blocker_violations, vulnerabilities, new_code_smells",
+                "type": "query",
+                "description": "Condition metric. Only metric of the following types are allowed:INTMILLISECRATINGWORK_DURFLOATPERCENTLEVELFollowing metrics are forbidden:alert_statussecurity_hotspotsnew_security_hotspots"
+              },
+              {
+                "name": "op",
+                "value": "GT",
+                "type": "query",
+                "description": "Condition operator: LT = is lower thanGT = is greater than"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key."
+              }
+            ]
+          },
+          "docs": "Update a condition attached to a quality gate. Requires the 'Administer Quality Gates' permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

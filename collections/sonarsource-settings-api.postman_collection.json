@@ -1,0 +1,1439 @@
+{
+  "item": [
+    {
+      "id": "fc0436d1-94b9-4814-985c-587f36a88c05",
+      "name": "settings",
+      "description": {
+        "content": "Manage settings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42ac756b-8fd7-440c-9bbd-8004da087623",
+          "name": "List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, au...",
+          "request": {
+            "name": "List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, au...",
+            "description": {
+              "content": "List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, authentication is required To access secured settings, one of the following permissions is required: 'Execute Analysis''Administer' rights on the specified component",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "settings",
+                "list_definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Component key"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9399d101-c51b-4cee-b7aa-ad53bf657e40",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "list_definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2cc0a707-2495-4c52-b025-79af3956e0ac",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "list_definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "81564b5b-fa89-46ad-a09b-ea4a43ce72ca",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "list_definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbdedc1c-23b7-4061-a4b7-35191185aeb6",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "list_definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87db4dde-ee2f-49db-a626-16c13071a137",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "list_definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e0f06ed-4bb8-48a3-bb0d-e7722be5aeff",
+          "name": "Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires th...",
+          "request": {
+            "name": "Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires th...",
+            "description": {
+              "content": "Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "settings",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "branch",
+                  "value": "<string>",
+                  "description": "Branch key"
+                },
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Component key"
+                },
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "pullRequest",
+                  "value": "<string>",
+                  "description": "Pull request id"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0b761b2-35d9-49bb-9fea-09d83622a44e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.links.scm,sonar.debt.hoursInDay"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "624725c5-f894-4089-8b04-a8df2d9ffcf3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.links.scm,sonar.debt.hoursInDay"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "002524fd-90ba-46af-bcd7-957d7376ba2e",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.links.scm,sonar.debt.hoursInDay"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "353d4963-7c8d-4103-916a-e63442c622b5",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.links.scm,sonar.debt.hoursInDay"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0307938a-9007-47eb-8a74-35624a48dcb9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.links.scm,sonar.debt.hoursInDay"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c0e9415-c945-4c27-add8-3147b67a0e9f",
+          "name": "Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties ar...",
+          "request": {
+            "name": "Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties ar...",
+            "description": {
+              "content": "Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "settings",
+                "set"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Component key"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldValues",
+                  "value": "<string>",
+                  "description": "Setting field values. To set several values, the parameter must be called once for each value."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Setting key"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Organization key (for the Enterprise plan only)"
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "Setting value. To reset a value, please use the reset web service."
+                },
+                {
+                  "disabled": false,
+                  "key": "values",
+                  "value": "<string>",
+                  "description": "Setting multi value. To set several values, the parameter must be called once for each value."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e30fc80e-94a0-4362-9bc3-1e30128b9c34",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "fieldValues",
+                      "value": "fieldValues={\"firstField\":\"first value\", \"secondField\":\"second value\", \"thirdField\":\"third value\"}"
+                    },
+                    {
+                      "key": "key",
+                      "value": "sonar.links.scm"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "value",
+                      "value": "git@github.com:SonarSource/sonarqube.git"
+                    },
+                    {
+                      "key": "values",
+                      "value": "values=firstValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "secondValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "thirdValue"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e41fda1d-f710-4edc-ac9c-de5934060420",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "fieldValues",
+                      "value": "fieldValues={\"firstField\":\"first value\", \"secondField\":\"second value\", \"thirdField\":\"third value\"}"
+                    },
+                    {
+                      "key": "key",
+                      "value": "sonar.links.scm"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "value",
+                      "value": "git@github.com:SonarSource/sonarqube.git"
+                    },
+                    {
+                      "key": "values",
+                      "value": "values=firstValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "secondValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "thirdValue"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ce71617-84f7-4f70-b2ac-843ef03ff1b2",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "fieldValues",
+                      "value": "fieldValues={\"firstField\":\"first value\", \"secondField\":\"second value\", \"thirdField\":\"third value\"}"
+                    },
+                    {
+                      "key": "key",
+                      "value": "sonar.links.scm"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "value",
+                      "value": "git@github.com:SonarSource/sonarqube.git"
+                    },
+                    {
+                      "key": "values",
+                      "value": "values=firstValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "secondValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "thirdValue"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72e7137c-0e7a-42b6-b6b0-d29858b5e3ce",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "fieldValues",
+                      "value": "fieldValues={\"firstField\":\"first value\", \"secondField\":\"second value\", \"thirdField\":\"third value\"}"
+                    },
+                    {
+                      "key": "key",
+                      "value": "sonar.links.scm"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "value",
+                      "value": "git@github.com:SonarSource/sonarqube.git"
+                    },
+                    {
+                      "key": "values",
+                      "value": "values=firstValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "secondValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "thirdValue"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99b62906-b835-4241-a4bb-9bf809f26e17",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "fieldValues",
+                      "value": "fieldValues={\"firstField\":\"first value\", \"secondField\":\"second value\", \"thirdField\":\"third value\"}"
+                    },
+                    {
+                      "key": "key",
+                      "value": "sonar.links.scm"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "value",
+                      "value": "git@github.com:SonarSource/sonarqube.git"
+                    },
+                    {
+                      "key": "values",
+                      "value": "values=firstValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "secondValue"
+                    },
+                    {
+                      "key": "values",
+                      "value": "thirdValue"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1182b3e2-dd5d-400d-968d-ad41184a38b9",
+          "name": "List settings values. If no value has been set for a setting, then the default value is returned. Both component and ...",
+          "request": {
+            "name": "List settings values. If no value has been set for a setting, then the default value is returned. Both component and ...",
+            "description": {
+              "content": "List settings values. If no value has been set for a setting, then the default value is returned. Both component and organization parameters cannot be used together. Requires 'Browse' or 'Execute Analysis' permission when a component is specified. Requires to be member of the organization if one is specified. To access secured settings, one of the following permissions is required: 'Execute Analysis' or 'Administer' rights on the specified component The returned attributes are:'key': The key of the setting'value': The value of setting'inherited': True if the value is being inherited from a parent setting'parentValue: The value of the parent setting if the value is not inherited''parentOrigin: The origin of the parentValue (INSTANCE, ORGANIZATION, PROJECT)'",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "settings",
+                "values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Component key"
+                },
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "List of setting keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Organization key"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1b409ff-cd88-47d9-8667-7eb3c0b60926",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.test.inclusions,sonar.exclusions"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f5f653c-18ae-4c68-a9f4-d35496f7fe3d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.test.inclusions,sonar.exclusions"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "78fde336-90a2-4833-9d86-a04b414481cf",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.test.inclusions,sonar.exclusions"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e91e3b8-682d-43dc-9218-445f8a72aa3b",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.test.inclusions,sonar.exclusions"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fc6e33c-744c-40f9-bd5e-6eabcfb65c3a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "sonar.test.inclusions,sonar.exclusions"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "667d0020-6612-4a85-8b7d-d2df7a0c77e5",
+    "name": "SonarQube Cloud Web authentication settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

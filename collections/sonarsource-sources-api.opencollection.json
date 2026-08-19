@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication sources API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get source code as raw text. Require 'See Source Code' permission on file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/sources/raw",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "key",
+                "value": "my_project:src/foo/Bar.php",
+                "type": "query",
+                "description": "File key"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              }
+            ]
+          },
+          "docs": "Get source code as raw text. Require 'See Source Code' permission on file"
+        },
+        {
+          "info": {
+            "name": "Get SCM information of source files. Require See Source Code permission on file's project Each element of the result ...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/sources/scm",
+            "params": [
+              {
+                "name": "commits_by_line",
+                "value": "",
+                "type": "query",
+                "description": "Group lines by SCM commit if value is false, else display commits for each line, even if two consecutive lines relate to the same commit."
+              },
+              {
+                "name": "from",
+                "value": "10",
+                "type": "query",
+                "description": "First line to return. Starts at 1"
+              },
+              {
+                "name": "key",
+                "value": "my_project:/src/foo/Bar.php",
+                "type": "query",
+                "description": "File key"
+              },
+              {
+                "name": "to",
+                "value": "20",
+                "type": "query",
+                "description": "Last line to return (inclusive)"
+              }
+            ]
+          },
+          "docs": "Get SCM information of source files. Require See Source Code permission on file's project Each element of the result array is composed of:Line numberAuthor of the commitDatetime of the commit (before 5.2 it was only the Date)Revision of the commit (added in 5.2)"
+        },
+        {
+          "info": {
+            "name": "Get source code. Requires See Source Code permission on file's project, or organization membership on public projects...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/sources/show",
+            "params": [
+              {
+                "name": "from",
+                "value": "10",
+                "type": "query",
+                "description": "First line to return. Starts at 1"
+              },
+              {
+                "name": "key",
+                "value": "my_project:/src/foo/Bar.php",
+                "type": "query",
+                "description": "File key"
+              },
+              {
+                "name": "to",
+                "value": "20",
+                "type": "query",
+                "description": "Last line to return (inclusive)"
+              }
+            ]
+          },
+          "docs": "Get source code. Requires See Source Code permission on file's project, or organization membership on public projects. Each element of the result array is composed of:Line numberContent of the line"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

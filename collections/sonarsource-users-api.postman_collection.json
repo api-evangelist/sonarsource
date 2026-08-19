@@ -1,0 +1,439 @@
+{
+  "item": [
+    {
+      "id": "6dec0798-7ea4-4398-b576-f15094371602",
+      "name": "users",
+      "description": {
+        "content": "Manage users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "272f0b02-565d-48db-bc25-7bd96a4730f1",
+          "name": "Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.",
+          "request": {
+            "name": "Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.",
+            "description": {
+              "content": "Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "login",
+                  "value": "<string>",
+                  "description": "(Required) A user login"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "p",
+                  "value": "1",
+                  "description": "1-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "25",
+                  "description": "Page size. Must be greater than 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Limit search to group names that contain the supplied string."
+                },
+                {
+                  "disabled": false,
+                  "key": "selected",
+                  "value": "selected",
+                  "description": "Depending on the value, show only selected items (selected=selected), deselected items (selected=deselected), or all items with their selection status (selected=all)."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fa4950e-280c-418d-8ce5-5481cb8f1b4d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "login",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "users"
+                    },
+                    {
+                      "key": "selected",
+                      "value": "selected"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be4678a0-0bab-47f3-91c7-290750bc0faa",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "login",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "users"
+                    },
+                    {
+                      "key": "selected",
+                      "value": "selected"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f2aaa4d-0b9b-4b4f-92e3-fd45bed43e91",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "login",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "users"
+                    },
+                    {
+                      "key": "selected",
+                      "value": "selected"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9564a8c4-b7ad-4100-9a24-7d45d0743e9f",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "login",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "users"
+                    },
+                    {
+                      "key": "selected",
+                      "value": "selected"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8fbaa57-985a-477c-a1db-1d5e2314e7a5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "login",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "users"
+                    },
+                    {
+                      "key": "selected",
+                      "value": "selected"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1481838f-1e6c-4ae2-b47f-1ae8669c20a7",
+    "name": "SonarQube Cloud Web authentication users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

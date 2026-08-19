@@ -1,0 +1,1157 @@
+{
+  "item": [
+    {
+      "id": "5623c251-468d-4058-8a9f-2aacf6639929",
+      "name": "hotspots",
+      "description": {
+        "content": "Read and update Security Hotspots. Hotspots are deprecated and replaced by security issues (software quality) and vulnerabilities (type). Please use the API of security issues / vulnerabilities instea",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2af8822-e657-4365-bbfa-c13fcefe737c",
+          "name": "Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.",
+          "request": {
+            "name": "Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.",
+            "description": {
+              "content": "Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "hotspots",
+                "change_status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>",
+                  "description": "Comment text."
+                },
+                {
+                  "disabled": false,
+                  "key": "hotspot",
+                  "value": "<string>",
+                  "description": "(Required) Key of the Security Hotspot"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "<string>",
+                  "description": "Resolution of the Security Hotspot when new status is REVIEWED, otherwise must not be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) New status of the Security Hotspot."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7030842-f06a-4443-a693-fba6e50fd338",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "change_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "This is safe because user input is validated by the calling code"
+                    },
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27ac5d51-8de8-46d6-a154-6b7d3795f663",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "change_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "This is safe because user input is validated by the calling code"
+                    },
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "609a4705-d3b2-4468-af01-d9cccc3fc087",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "change_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "This is safe because user input is validated by the calling code"
+                    },
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e42a5f43-8029-4af1-82f4-ddded5b17381",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "change_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "This is safe because user input is validated by the calling code"
+                    },
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7b8451f-daa6-4d72-b05b-98a58a5da0ba",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "change_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "This is safe because user input is validated by the calling code"
+                    },
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6edd5b6d-e4d9-4903-b9ba-29cfa9564139",
+          "name": "Search for Security Hotpots.",
+          "request": {
+            "name": "Search for Security Hotpots.",
+            "description": {
+              "content": "Search for Security Hotpots.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "hotspots",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fileUuids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of file uuids. Returns only hotspots found in those files. If set, 'files' must not be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "files",
+                  "value": "<string>",
+                  "description": "Comma-separated list of file paths. Returns only hotspots found in those files. If set, 'fileUuids' must not be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "hotspots",
+                  "value": "<string>",
+                  "description": "Comma-separated list of Security Hotspot keys. This parameter is required unless projectKey is provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyMine",
+                  "value": "<string>",
+                  "description": "If 'projectKey' is provided, returns only Security Hotspots assigned to the current user"
+                },
+                {
+                  "disabled": false,
+                  "key": "p",
+                  "value": "1",
+                  "description": "1-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "projectKey",
+                  "value": "<string>",
+                  "description": "Key of the project or application. This parameter is required unless hotspots is provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "100",
+                  "description": "Page size. Must be greater than 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "<string>",
+                  "description": "If 'projectKey' is provided and if status is 'REVIEWED', only Security Hotspots with the specified resolution are returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "sinceLeakPeriod",
+                  "value": "false",
+                  "description": "If '%s' is provided, only Security Hotspots created since the leak period are returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "If 'projectKey' is provided, only Security Hotspots with the specified status are returned."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9515802-3b38-464e-b0e8-1ea6f3dc80ac",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUuids",
+                      "value": "AXAKhxssZ0nocQ78Us1K"
+                    },
+                    {
+                      "key": "files",
+                      "value": "src/main/java/com/sonarsource/FourthClass.java"
+                    },
+                    {
+                      "key": "hotspots",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "onlyMine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "projectKey",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c4930e4-ad64-4577-8aef-6d2de1902a94",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUuids",
+                      "value": "AXAKhxssZ0nocQ78Us1K"
+                    },
+                    {
+                      "key": "files",
+                      "value": "src/main/java/com/sonarsource/FourthClass.java"
+                    },
+                    {
+                      "key": "hotspots",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "onlyMine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "projectKey",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b7ed2a1-dbd6-4843-ac7d-11c9812069aa",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUuids",
+                      "value": "AXAKhxssZ0nocQ78Us1K"
+                    },
+                    {
+                      "key": "files",
+                      "value": "src/main/java/com/sonarsource/FourthClass.java"
+                    },
+                    {
+                      "key": "hotspots",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "onlyMine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "projectKey",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "655facf6-0401-4739-8ebb-960dc2a5d808",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUuids",
+                      "value": "AXAKhxssZ0nocQ78Us1K"
+                    },
+                    {
+                      "key": "files",
+                      "value": "src/main/java/com/sonarsource/FourthClass.java"
+                    },
+                    {
+                      "key": "hotspots",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "onlyMine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "projectKey",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eace3222-04bf-455f-a9f4-1b69b704e9cd",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileUuids",
+                      "value": "AXAKhxssZ0nocQ78Us1K"
+                    },
+                    {
+                      "key": "files",
+                      "value": "src/main/java/com/sonarsource/FourthClass.java"
+                    },
+                    {
+                      "key": "hotspots",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "onlyMine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "projectKey",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "095fc6e6-3e2e-47cf-8176-715f43aefd81",
+          "name": "Provides the details of a Security Hotspot.",
+          "request": {
+            "name": "Provides the details of a Security Hotspot.",
+            "description": {
+              "content": "Provides the details of a Security Hotspot.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "hotspots",
+                "show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hotspot",
+                  "value": "<string>",
+                  "description": "(Required) Key of the Security Hotspot"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27e5a084-6f1a-450b-bdc8-5096fb15dfc9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc5c7309-aa40-4f70-9f69-32f6dd143995",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "691ed55b-dc53-4c11-aa03-77a18172d080",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fffc0076-6efe-483c-a907-05defadc118a",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76131eb4-1474-4b83-b277-b798a08e79df",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "hotspots",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hotspot",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4d7ea81b-ef64-4b23-8e81-efab6f21bffd",
+    "name": "SonarQube Cloud Web authentication hotspots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,5202 @@
+{
+  "item": [
+    {
+      "id": "b09a6d27-c029-4e25-afa5-b6d41d2e2e6c",
+      "name": "issues",
+      "description": {
+        "content": "Read and update issues.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bf7f5c0-6e73-411c-93b4-8d996317806b",
+          "name": "Add a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+          "request": {
+            "name": "Add a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+            "description": {
+              "content": "Add a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "add_comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "isFeedback",
+                  "value": "false",
+                  "description": "Define is the given comment is a feedback"
+                },
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) Comment text"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0550a51-f12a-434c-b3c8-520ef0b3bee9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "add_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isFeedback",
+                      "value": "true"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "365b9371-f73b-4e8a-abb8-1b6e45ce1d6d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "add_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isFeedback",
+                      "value": "true"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "781b9f53-5796-4cc0-8f64-86d9689d25e7",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "add_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isFeedback",
+                      "value": "true"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb470531-49da-4828-9ed7-3ac569727e44",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "add_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isFeedback",
+                      "value": "true"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9af9153-065a-4ad1-966a-846e7393a3d0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "add_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "isFeedback",
+                      "value": "true"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4fe3e1e-3158-4418-9e67-2a8cc698dd50",
+          "name": "Assign/Unassign an issue. Requires authentication and Browse permission on project",
+          "request": {
+            "name": "Assign/Unassign an issue. Requires authentication and Browse permission on project",
+            "description": {
+              "content": "Assign/Unassign an issue. Requires authentication and Browse permission on project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "assign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assignee",
+                  "value": "<string>",
+                  "description": "Login of the assignee. When not set, it will unassign the issue. Use '_me' to assign to current user"
+                },
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44513e36-96a6-4614-aa36-7acd1ee6b76f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "assign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assignee",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd577789-0114-46c0-9b9e-919556aa4cd4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "assign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assignee",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ada4f80-f2f3-4031-b52b-3909eb88388d",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "assign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assignee",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae272157-a604-4ce3-8571-8e4fb675cf70",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "assign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assignee",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b9b0c4f-6530-4b22-b03a-850c4bad125c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "assign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assignee",
+                      "value": "admin"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23c266f0-74fb-4f93-8aeb-921d1ee764c4",
+          "name": "Search SCM accounts which match a given query. Requires authentication.",
+          "request": {
+            "name": "Search SCM accounts which match a given query. Requires authentication.",
+            "description": {
+              "content": "Search SCM accounts which match a given query. Requires authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "authors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "Project key"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "10",
+                  "description": "Page size. Must be greater than 0 and less or equal than 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Limit search to authors that contain the supplied string."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e1b80ac-56c1-4ddc-8ded-e4b6e9de5d38",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "luke"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c610de60-b066-4df1-b79c-12faf9246730",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "luke"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb07d327-ea5d-4b46-8b80-85d4e923a33e",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "luke"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d222e51-3c34-47b9-966a-8c46de27f39e",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "luke"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "740c282f-655d-4013-81f9-8367b231cbba",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "luke"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8d11d83-6f10-4bf4-ba86-afa618474217",
+          "name": "Bulk change on issues. Requires authentication.",
+          "request": {
+            "name": "Bulk change on issues. Requires authentication.",
+            "description": {
+              "content": "Bulk change on issues. Requires authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "bulk_change"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "add_tags",
+                  "value": "<string>",
+                  "description": "Add tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "assign",
+                  "value": "<string>",
+                  "description": "To assign the list of issues to a specific user (login), or un-assign all the issues"
+                },
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>",
+                  "description": "To add a comment to a list of issues"
+                },
+                {
+                  "disabled": false,
+                  "key": "do_transition",
+                  "value": "<string>",
+                  "description": "Transition"
+                },
+                {
+                  "disabled": false,
+                  "key": "isFeedback",
+                  "value": "false",
+                  "description": "Define if the given comment is a feedback"
+                },
+                {
+                  "disabled": false,
+                  "key": "issues",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of issue keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "remove_tags",
+                  "value": "<string>",
+                  "description": "Remove tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "sendNotifications",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "set_severity",
+                  "value": "<string>",
+                  "description": "To change the severity of the list of issues"
+                },
+                {
+                  "disabled": false,
+                  "key": "set_type",
+                  "value": "<string>",
+                  "description": "To change the type of the list of issues"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "675f663e-50a1-4b16-b0b5-ab05178ffaa1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "bulk_change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "add_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "assign",
+                      "value": "john.smith"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "Here is my comment"
+                    },
+                    {
+                      "key": "do_transition",
+                      "value": "reopen"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "remove_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "sendNotifications",
+                      "value": "false"
+                    },
+                    {
+                      "key": "set_severity",
+                      "value": "BLOCKER"
+                    },
+                    {
+                      "key": "set_type",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5000e0a5-f5cb-4239-8ab2-b3206ad61659",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "bulk_change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "add_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "assign",
+                      "value": "john.smith"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "Here is my comment"
+                    },
+                    {
+                      "key": "do_transition",
+                      "value": "reopen"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "remove_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "sendNotifications",
+                      "value": "false"
+                    },
+                    {
+                      "key": "set_severity",
+                      "value": "BLOCKER"
+                    },
+                    {
+                      "key": "set_type",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ddb6514-aded-4e3e-893d-820529c3d68e",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "bulk_change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "add_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "assign",
+                      "value": "john.smith"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "Here is my comment"
+                    },
+                    {
+                      "key": "do_transition",
+                      "value": "reopen"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "remove_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "sendNotifications",
+                      "value": "false"
+                    },
+                    {
+                      "key": "set_severity",
+                      "value": "BLOCKER"
+                    },
+                    {
+                      "key": "set_type",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23136a7a-ab18-4f06-a97b-438aa343de18",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "bulk_change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "add_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "assign",
+                      "value": "john.smith"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "Here is my comment"
+                    },
+                    {
+                      "key": "do_transition",
+                      "value": "reopen"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "remove_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "sendNotifications",
+                      "value": "false"
+                    },
+                    {
+                      "key": "set_severity",
+                      "value": "BLOCKER"
+                    },
+                    {
+                      "key": "set_type",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b786b97b-0256-4647-a23a-d665bbae92aa",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "bulk_change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "add_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "assign",
+                      "value": "john.smith"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "Here is my comment"
+                    },
+                    {
+                      "key": "do_transition",
+                      "value": "reopen"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "remove_tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "sendNotifications",
+                      "value": "false"
+                    },
+                    {
+                      "key": "set_severity",
+                      "value": "BLOCKER"
+                    },
+                    {
+                      "key": "set_type",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8966927-1a4c-43ec-89cc-f634e7dbb3dd",
+          "name": "Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.",
+          "request": {
+            "name": "Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.",
+            "description": {
+              "content": "Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "changelog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ed4cb19-1c70-47a0-8f96-f6a5a1f9f60f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8db49e87-fa14-4a99-8fd3-fb8244caffb9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33737b04-1fee-422d-a8c1-37f32718ba5b",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e8b5c59-ae07-431b-ab92-afedfad5d504",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd3b3146-9051-4ea7-8794-644dd1a91cbb",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a4cb1ad-974a-4cbe-83db-10c6d8db2338",
+          "name": "Delete a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+          "request": {
+            "name": "Delete a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+            "description": {
+              "content": "Delete a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "delete_comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>",
+                  "description": "(Required) Comment key"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b3dbcf9-9dea-4e58-8fb1-64c14faae1db",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "delete_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b45f9d6c-5698-43e7-bcf0-d355c08e815c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "delete_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea08619d-abd5-47a1-8011-1913e9413757",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "delete_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7eb53fd-5c3a-4444-ba9e-4385633c79fa",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "delete_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "615b56dd-842b-4fc0-8ff3-3a1c26ac496e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "delete_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5d2a42b-168a-436f-bf60-ebbeb3afa79f",
+          "name": "Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept...",
+          "request": {
+            "name": "Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept...",
+            "description": {
+              "content": "Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept', 'wontfix', and 'falsepositive' require the permission 'Administer Issues'. The transitions involving security hotspots require the permission 'Administer Security Hotspot'.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "do_transition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>",
+                  "description": "Comment text"
+                },
+                {
+                  "disabled": false,
+                  "key": "isFeedback",
+                  "value": "false",
+                  "description": "Define is the given comment is a feedback"
+                },
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                },
+                {
+                  "disabled": false,
+                  "key": "transition",
+                  "value": "<string>",
+                  "description": "(Required) Transition"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be929050-3070-4285-996f-fcc8fbea3fa2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "do_transition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "transition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9ba8874-4028-43a1-900e-e14c69690097",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "do_transition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "transition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3560357-846f-4d5c-a51b-721d6de91ebf",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "do_transition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "transition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bdbe175f-06db-48ab-8874-d82c18d85e0b",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "do_transition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "transition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b0405ce-179b-42a8-896a-4e55df9bd57a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "do_transition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    },
+                    {
+                      "key": "isFeedback",
+                      "value": "false"
+                    },
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "transition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6e4bfac-70f7-40a8-a77b-42d25f10c169",
+          "name": "Edit a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+          "request": {
+            "name": "Edit a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+            "description": {
+              "content": "Edit a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "edit_comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>",
+                  "description": "(Required) Comment key"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) Comment text"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "adbb0264-ba11-4ad4-a900-dd1be535219d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "edit_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1df47c9-8dc6-427c-b4f9-dc89c6c1b823",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "edit_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f54515b1-903e-4aad-91a5-883b5f4e7da8",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "edit_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9007aad-735f-4083-8b2f-6ccc93829fe2",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "edit_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e37c8f5-98f1-4be4-aa2b-22f68a91bf16",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "edit_comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comment",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "text",
+                      "value": "Won't fix because it doesn't apply to the context"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c57b92b1-c790-460d-b00c-2feb4cce4e13",
+          "name": "Search for issues. Requires the 'Browse' permission on the specified project(s).",
+          "request": {
+            "name": "Search for issues. Requires the 'Browse' permission on the specified project(s).",
+            "description": {
+              "content": "Search for issues. Requires the 'Browse' permission on the specified project(s).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additionalFields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of the optional fields to be returned in response. Action plans are dropped in 5.5, it is not returned in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "true",
+                  "description": "Ascending sort"
+                },
+                {
+                  "disabled": false,
+                  "key": "assigned",
+                  "value": "<string>",
+                  "description": "To retrieve assigned or unassigned issues"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignees",
+                  "value": "<string>",
+                  "description": "Comma-separated list of assignee logins. The value '__me__' can be used as a placeholder for user who performs the request"
+                },
+                {
+                  "disabled": false,
+                  "key": "author",
+                  "value": "<string>",
+                  "description": "SCM accounts. To set several values, the parameter must be called once for each value."
+                },
+                {
+                  "disabled": false,
+                  "key": "branch",
+                  "value": "<string>",
+                  "description": "Branch key"
+                },
+                {
+                  "disabled": false,
+                  "key": "cleanCodeAttributeCategories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of clean code attribute categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "complianceStandards",
+                  "value": "<string>",
+                  "description": "Set of compliance standards to filter on. Categories within a standard are comma-separated and behave as an 'or'. Multiple standards are separated by an ampersand and behave as an 'and'."
+                },
+                {
+                  "disabled": false,
+                  "key": "componentKeys",
+                  "value": "<string>",
+                  "description": "Comma-separated list of component keys. Retrieve issues associated to a specific list of components (and all its descendants). A component can be a project, directory or file."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<string>",
+                  "description": "To retrieve issues created after the given date (inclusive). Either a date (server timezone) or datetime can be provided. If this parameter is set, createdSince must not be set"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt",
+                  "value": "<string>",
+                  "description": "Datetime to retrieve issues created during a specific analysis"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<string>",
+                  "description": "To retrieve issues created before the given date (inclusive). Either a date (server timezone) or datetime can be provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdInLast",
+                  "value": "<string>",
+                  "description": "To retrieve issues created during a time span before the current time (exclusive). Accepted units are 'y' for year, 'm' for month, 'w' for week and 'd' for day. If this parameter is set, createdAfter must not be set"
+                },
+                {
+                  "disabled": false,
+                  "key": "cwe",
+                  "value": "<string>",
+                  "description": "Comma-separated list of CWE identifiers. Use 'unknown' to select issues not associated to any CWE."
+                },
+                {
+                  "disabled": false,
+                  "key": "facetMode",
+                  "value": "count",
+                  "description": "Choose the returned value for facet items, either count of issues or sum of remediation effort."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated list of the facets to be computed. No facet is computed by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "impactSeverities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of impact severities."
+                },
+                {
+                  "disabled": false,
+                  "key": "impactSoftwareQualities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of software qualities."
+                },
+                {
+                  "disabled": false,
+                  "key": "issueStatuses",
+                  "value": "<string>",
+                  "description": "Comma-separated list of issue statuses"
+                },
+                {
+                  "disabled": false,
+                  "key": "issues",
+                  "value": "<string>",
+                  "description": "Comma-separated list of issue keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "languages",
+                  "value": "<string>",
+                  "description": "Comma-separated list of languages. Available since 4.4"
+                },
+                {
+                  "disabled": false,
+                  "key": "onComponentOnly",
+                  "value": "false",
+                  "description": "Return only issues at a component's level, not on its descendants (modules, directories, files, etc). This parameter is only considered when componentKeys or componentUuids is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "owaspMobileTop10-2024",
+                  "value": "<string>",
+                  "description": "Comma-separated list of OWASP Mobile Top 10 - 2024 lowercase categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "owaspTop10",
+                  "value": "<string>",
+                  "description": "Comma-separated list of OWASP Top 10 lowercase categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "owaspTop10-2021",
+                  "value": "<string>",
+                  "description": "Comma-separated list of OWASP Top 10 - 2021 lowercase categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "p",
+                  "value": "1",
+                  "description": "1-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "50",
+                  "description": "Page size. Must be greater than 0 and less or equal than 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "pullRequest",
+                  "value": "<string>",
+                  "description": "Pull request id"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolutions",
+                  "value": "<string>",
+                  "description": "Comma-separated list of resolutions"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolved",
+                  "value": "<string>",
+                  "description": "To match resolved or unresolved issues"
+                },
+                {
+                  "disabled": false,
+                  "key": "rules",
+                  "value": "<string>",
+                  "description": "Comma-separated list of coding rule keys. Format is <repository>:<rule>"
+                },
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "<string>",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "severities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of severities"
+                },
+                {
+                  "disabled": false,
+                  "key": "sinceLeakPeriod",
+                  "value": "false",
+                  "description": "To retrieve issues created since the leak period. If this parameter is set to a truthy value, createdAfter must not be set and one component id or key must be provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "sonarsourceSecurity",
+                  "value": "<string>",
+                  "description": "Comma-separated list of SonarSource security categories. Use 'others' to select issues not associated with any category"
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "Comma-separated list of statuses"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Comma-separated list of types."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e79cd1f-ac9e-45af-8409-41011c5f3c4f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "assigned",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "admin,usera,__me__"
+                    },
+                    {
+                      "key": "author",
+                      "value": "author=torvalds@linux-foundation.org"
+                    },
+                    {
+                      "key": "author",
+                      "value": "linux@fondation.org"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "componentKeys",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdInLast",
+                      "value": "1m2w (1 month 2 weeks)"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "facetMode",
+                      "value": "count"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issueStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "5bccd6e8-f525-43a2-8d76-fcb13dde79ef"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "onComponentOnly",
+                      "value": "false"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "resolutions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolved",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rules",
+                      "value": "squid:AvoidCycles"
+                    },
+                    {
+                      "key": "s",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,convention"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff97caa8-55db-473c-9be7-0c172226dec6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "assigned",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "admin,usera,__me__"
+                    },
+                    {
+                      "key": "author",
+                      "value": "author=torvalds@linux-foundation.org"
+                    },
+                    {
+                      "key": "author",
+                      "value": "linux@fondation.org"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "componentKeys",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdInLast",
+                      "value": "1m2w (1 month 2 weeks)"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "facetMode",
+                      "value": "count"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issueStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "5bccd6e8-f525-43a2-8d76-fcb13dde79ef"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "onComponentOnly",
+                      "value": "false"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "resolutions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolved",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rules",
+                      "value": "squid:AvoidCycles"
+                    },
+                    {
+                      "key": "s",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,convention"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e914900-b263-41f7-a6cb-0c230c0a526c",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "assigned",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "admin,usera,__me__"
+                    },
+                    {
+                      "key": "author",
+                      "value": "author=torvalds@linux-foundation.org"
+                    },
+                    {
+                      "key": "author",
+                      "value": "linux@fondation.org"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "componentKeys",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdInLast",
+                      "value": "1m2w (1 month 2 weeks)"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "facetMode",
+                      "value": "count"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issueStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "5bccd6e8-f525-43a2-8d76-fcb13dde79ef"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "onComponentOnly",
+                      "value": "false"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "resolutions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolved",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rules",
+                      "value": "squid:AvoidCycles"
+                    },
+                    {
+                      "key": "s",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,convention"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "940fab0e-9724-4ff3-aaa8-630b5acf78c0",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "assigned",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "admin,usera,__me__"
+                    },
+                    {
+                      "key": "author",
+                      "value": "author=torvalds@linux-foundation.org"
+                    },
+                    {
+                      "key": "author",
+                      "value": "linux@fondation.org"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "componentKeys",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdInLast",
+                      "value": "1m2w (1 month 2 weeks)"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "facetMode",
+                      "value": "count"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issueStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "5bccd6e8-f525-43a2-8d76-fcb13dde79ef"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "onComponentOnly",
+                      "value": "false"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "resolutions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolved",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rules",
+                      "value": "squid:AvoidCycles"
+                    },
+                    {
+                      "key": "s",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,convention"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf6c304d-e348-490a-adb3-b275537c874a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "assigned",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "admin,usera,__me__"
+                    },
+                    {
+                      "key": "author",
+                      "value": "author=torvalds@linux-foundation.org"
+                    },
+                    {
+                      "key": "author",
+                      "value": "linux@fondation.org"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "componentKeys",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "createdInLast",
+                      "value": "1m2w (1 month 2 weeks)"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "facetMode",
+                      "value": "count"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issueStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "issues",
+                      "value": "5bccd6e8-f525-43a2-8d76-fcb13dde79ef"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "onComponentOnly",
+                      "value": "false"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "resolutions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolved",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rules",
+                      "value": "squid:AvoidCycles"
+                    },
+                    {
+                      "key": "s",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sinceLeakPeriod",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,convention"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "924809a2-9372-4c53-97c7-108cb3eccdc9",
+          "name": "Change severity. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified iss...",
+          "request": {
+            "name": "Change severity. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified iss...",
+            "description": {
+              "content": "Change severity. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified issue 'Administer Issues' rights on project of the specified issue",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "set_severity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>",
+                  "description": "(Required) New severity"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "238ce2ba-8536-43c6-88a1-569327eb4f78",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_severity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0bf6479-6293-4208-8de4-4306a176757c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_severity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e57b4ee8-86f1-4a75-9e5a-621547dca574",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_severity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce58b628-392d-446b-9f95-50b3f8e18109",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_severity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "388bc975-5977-4b45-8799-bbdd41a4d023",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_severity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60455ce7-289a-40fe-9dfe-fa65e3002eb7",
+          "name": "Set tags on an issue. Requires authentication and Browse permission on project",
+          "request": {
+            "name": "Set tags on an issue. Requires authentication and Browse permission on project",
+            "description": {
+              "content": "Set tags on an issue. Requires authentication and Browse permission on project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "set_tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of tags. All tags are removed if parameter is empty or not set."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d12a227-1f8f-4e7f-96bb-90d6d7d20042",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,cwe,misra-c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50c10aa7-4bd8-4e63-b0e5-b09a8b43f4d8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,cwe,misra-c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d13c739e-74a8-4795-abe1-917747ce6baf",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,cwe,misra-c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "552ac503-53ca-4361-b00d-0c091ea4148c",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,cwe,misra-c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e3f7617-312d-4359-8940-96052e81f2a3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,cwe,misra-c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c2364ca-8517-479d-adb7-1df188548ee7",
+          "name": "Change type of issue, for instance from 'code smell' to 'bug'. Requires the following permissions: 'Authentication' '...",
+          "request": {
+            "name": "Change type of issue, for instance from 'code smell' to 'bug'. Requires the following permissions: 'Authentication' '...",
+            "description": {
+              "content": "Change type of issue, for instance from 'code smell' to 'bug'. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified issue 'Administer Issues' rights on project of the specified issue",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "set_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "issue",
+                  "value": "<string>",
+                  "description": "(Required) Issue key"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) New type"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff44f993-f364-4795-94a7-9f769fe6eb81",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f13927ca-0a6d-46db-bb9a-8d0440bee1d3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22642cc1-9351-490e-b422-07c327497f00",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c860820b-4d31-4ab0-8c10-a2a6228d8510",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2927b21b-3e2a-4e11-8225-69c2722985cd",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "set_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issue",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7e33cb6-b182-4920-ad6c-f3680f64cd11",
+          "name": "List tags matching a given query",
+          "request": {
+            "name": "List tags matching a given query",
+            "description": {
+              "content": "List tags matching a given query",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "issues",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "Project key"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "10",
+                  "description": "Page size. Must be greater than 0 and less or equal than 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Limit search to tags that contain the supplied string."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02c11927-865d-4fba-9663-3eb80d68d4a7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a6fca75-c744-41a0-bbd6-1bfd883ef1de",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbe997d1-5f6a-4794-8db7-f96ae863d79a",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd04c228-feba-4151-a97a-7602c032283d",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24387688-3548-4703-8768-e9a624048af1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "issues",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "project",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "06ed9a26-7690-4c20-aa89-1307cb410e52",
+    "name": "SonarQube Cloud Web authentication issues API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

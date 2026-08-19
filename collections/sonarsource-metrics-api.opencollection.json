@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication metrics API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all custom metric domains.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/metrics/domains"
+          },
+          "docs": "List all custom metric domains."
+        },
+        {
+          "info": {
+            "name": "Search for metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/metrics/search",
+            "params": [
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of the fields to be returned in response. All the fields are returned by default."
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              }
+            ]
+          },
+          "docs": "Search for metrics"
+        },
+        {
+          "info": {
+            "name": "List all available metric types.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/metrics/types"
+          },
+          "docs": "List all available metric types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication webservices API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "webservices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List web services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/webservices/list"
+          },
+          "docs": "List web services"
+        },
+        {
+          "info": {
+            "name": "Display web service response example",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/webservices/response_example",
+            "params": [
+              {
+                "name": "action",
+                "value": "search",
+                "type": "query",
+                "description": "Action of the web service"
+              },
+              {
+                "name": "controller",
+                "value": "api/issues",
+                "type": "query",
+                "description": "Controller of the web service"
+              }
+            ]
+          },
+          "docs": "Display web service response example"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

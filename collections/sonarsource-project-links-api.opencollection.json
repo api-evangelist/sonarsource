@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication project_links API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project_links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_links/create",
+            "params": [
+              {
+                "name": "name",
+                "value": "Custom",
+                "type": "query",
+                "description": "Link name"
+              },
+              {
+                "name": "projectId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "url",
+                "value": "http://example.com",
+                "type": "query",
+                "description": "Link url"
+              }
+            ]
+          },
+          "docs": "Create a new project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission."
+        },
+        {
+          "info": {
+            "name": "Delete existing project link. Requires 'Administer' permission on the specified project, or global 'Administer' permi...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_links/delete",
+            "params": [
+              {
+                "name": "id",
+                "value": "17",
+                "type": "query",
+                "description": "Link id"
+              }
+            ]
+          },
+          "docs": "Delete existing project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission."
+        },
+        {
+          "info": {
+            "name": "List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one of the following permissions:...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_links/search",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Project Id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project Key"
+              }
+            ]
+          },
+          "docs": "List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

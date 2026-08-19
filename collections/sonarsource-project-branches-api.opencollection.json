@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication project_branches API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project_branches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a non-main branch of a project. Requires 'Administer' rights on the specified project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_branches/delete",
+            "params": [
+              {
+                "name": "branch",
+                "value": "branch1",
+                "type": "query",
+                "description": "Name of the branch"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Delete a non-main branch of a project. Requires 'Administer' rights on the specified project."
+        },
+        {
+          "info": {
+            "name": "List the branches of a project. The statistics are the overall counts on long branches, and the count of issues detec...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_branches/list",
+            "params": [
+              {
+                "name": "branchIds",
+                "value": "uuid1,uuid2,uuid3",
+                "type": "query",
+                "description": "List of up to 50 branch IDs - required unless project key is provided"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key - required unless branchIds is provided"
+              }
+            ]
+          },
+          "docs": "List the branches of a project. The statistics are the overall counts on long branches, and the count of issues detected on the changed code on short branches, and are only provided if the project parameter is specified. If the project parameter is specified, requires the user to have 'Browse' or 'Execute analysis' rights on that project. Otherwise, only returns branches from projects on which this user has 'Browse' or 'Execute analysis' rights."
+        },
+        {
+          "info": {
+            "name": "Rename the main branch of a project. Requires 'Administer' permission on the specified project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_branches/rename",
+            "params": [
+              {
+                "name": "name",
+                "value": "branch1",
+                "type": "query",
+                "description": "New name of the main branch"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Rename the main branch of a project. Requires 'Administer' permission on the specified project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

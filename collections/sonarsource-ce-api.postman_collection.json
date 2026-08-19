@@ -1,0 +1,1397 @@
+{
+  "item": [
+    {
+      "id": "302b01b0-15ee-4100-9fcc-91375df575a5",
+      "name": "ce",
+      "description": {
+        "content": "Get information on Compute Engine tasks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ffb0eff-9795-4495-aabe-1f0e6ca229cc",
+          "name": "Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration ...",
+          "request": {
+            "name": "Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration ...",
+            "description": {
+              "content": "Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration permission if componentId or component is set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ce",
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Key of the component (project) to filter on"
+                },
+                {
+                  "disabled": false,
+                  "key": "componentId",
+                  "value": "<string>",
+                  "description": "Id of the component (project) to filter on"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxExecutedAt",
+                  "value": "<string>",
+                  "description": "Maximum date of end of task processing (inclusive)"
+                },
+                {
+                  "disabled": false,
+                  "key": "minSubmittedAt",
+                  "value": "<string>",
+                  "description": "Minimum date of task submission (inclusive)"
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyCurrents",
+                  "value": "false",
+                  "description": "Filter on the last tasks (only the most recent finished task by project)"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "100",
+                  "description": "Page size. Must be greater than 0 and less or equal than 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied stringtask ids that are exactly the same as the supplied stringMust not be set together with componentId"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "SUCCESS,FAILED,CANCELED",
+                  "description": "Comma separated list of task statuses"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Task type"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c41f755-98bf-46cb-b059-c9500c93dd4e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "projectKey"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "maxExecutedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "minSubmittedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "onlyCurrents",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SUCCESS,FAILED,CANCELED"
+                    },
+                    {
+                      "key": "type",
+                      "value": "REPORT"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "253262c4-f20a-434a-b44c-fb0e88ac4a06",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "projectKey"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "maxExecutedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "minSubmittedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "onlyCurrents",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SUCCESS,FAILED,CANCELED"
+                    },
+                    {
+                      "key": "type",
+                      "value": "REPORT"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb323dce-99c0-423c-aa6b-c94e0f3e3faa",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "projectKey"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "maxExecutedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "minSubmittedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "onlyCurrents",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SUCCESS,FAILED,CANCELED"
+                    },
+                    {
+                      "key": "type",
+                      "value": "REPORT"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea1e93f1-fdf4-4396-9181-84c6f659d93c",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "projectKey"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "maxExecutedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "minSubmittedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "onlyCurrents",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SUCCESS,FAILED,CANCELED"
+                    },
+                    {
+                      "key": "type",
+                      "value": "REPORT"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f783eb90-4296-4149-8154-781e6cc85f9b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "projectKey"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "maxExecutedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "minSubmittedAt",
+                      "value": "2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "onlyCurrents",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SUCCESS,FAILED,CANCELED"
+                    },
+                    {
+                      "key": "type",
+                      "value": "REPORT"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92529124-dcf6-4cb4-8020-4a80e07b0e82",
+          "name": "Returns CE activity related metrics. Requires 'Administer' permission on the specified project.",
+          "request": {
+            "name": "Returns CE activity related metrics. Requires 'Administer' permission on the specified project.",
+            "description": {
+              "content": "Returns CE activity related metrics. Requires 'Administer' permission on the specified project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ce",
+                "activity_status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "componentId",
+                  "value": "<string>",
+                  "description": "Id of the component (project) to filter on"
+                },
+                {
+                  "disabled": false,
+                  "key": "componentKey",
+                  "value": "<string>",
+                  "description": "Key of the component (project) to filter on"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b94f2ea-6667-43be-b92d-d89a28e1ce83",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "componentKey",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e69c0e4c-2aac-4d0f-8f47-f301358eb359",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "componentKey",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bac9b91-f219-41fb-9e23-3f6cf22d027f",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "componentKey",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f9265c2-945b-43f1-9d90-985026e8047c",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "componentKey",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46c441b2-09ca-494a-8174-3f2ef66c3142",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "activity_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentId",
+                      "value": "AU-TpxcA-iU5OvuD2FL0"
+                    },
+                    {
+                      "key": "componentKey",
+                      "value": "my_project"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4f170a4-b797-4b9f-9d49-0a00e2b14863",
+          "name": "Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Require...",
+          "request": {
+            "name": "Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Require...",
+            "description": {
+              "content": "Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Requires the following permission: 'Browse' on the specified component. Either 'componentId' or 'component' must be provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ce",
+                "component"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "componentId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "973280d3-1057-455f-b5bb-788dd5b90662",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9bae666-b689-4989-aad7-25c273da84dc",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b98bfccc-89f6-42b8-a166-8f2cd1eee8aa",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da78e3cf-e25e-49df-a91e-3d9d8c32ecf3",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fde147b-730c-4801-81ac-e6f2bae055c3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3e21718-e00d-4051-8afe-f4da51dec852",
+          "name": "Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis'...",
+          "request": {
+            "name": "Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis'...",
+            "description": {
+              "content": "Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis' permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ce",
+                "task"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additionalFields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of the optional fields to be returned in response."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Id of task"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6e7371d-f457-4be0-a3ed-4bdbdc388d68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d52d025-719d-45b0-8d37-e1a097b8e8de",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "47c29380-3f3f-40ce-882d-e9f717d72827",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f68e7876-7a1a-445e-baaf-7f9777e3b6b7",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7275ea5a-a0b5-46c2-a947-3dae4f4a1ab9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ce",
+                    "task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "981aa43b-29f1-4af6-8b77-a5be60650151",
+    "name": "SonarQube Cloud Web authentication ce API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

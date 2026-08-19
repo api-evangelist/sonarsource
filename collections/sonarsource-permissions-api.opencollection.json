@@ -1,0 +1,737 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication permissions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add permission to a group. This service defaults to global permissions, but can be limited to project permissions by ...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/add_group",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "42",
+                "type": "query",
+                "description": "Group id (deprecated). Use 'groupName' and 'organization' instead."
+              },
+              {
+                "name": "groupName",
+                "value": "sonar-administrators",
+                "type": "query",
+                "description": "Group name or 'anyone' (case insensitive)"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "projectId",
+                "value": "ce4c03d6-430f-40a9-b777-ad877c00aa4d",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Add permission to a group. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. The group name or group id must be provided. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Add a group to a permission template. The group id or group name must be provided. Requires the permission 'Administe...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/add_group_to_template",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "42",
+                "type": "query",
+                "description": "Group id (deprecated). Use 'groupName' and 'organization' instead."
+              },
+              {
+                "name": "groupName",
+                "value": "sonar-administrators",
+                "type": "query",
+                "description": "Group name or 'anyone' (case insensitive)"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Add a group to a permission template. The group id or group name must be provided. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Add a project creator to a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/add_project_creator_to_template",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Add a project creator to a permission template. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Add permission to a user. This service defaults to global permissions, but can be limited to project permissions by p...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/add_user",
+            "params": [
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "User login"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "projectId",
+                "value": "ce4c03d6-430f-40a9-b777-ad877c00aa4d",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Add permission to a user. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Add a user to a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/add_user_to_template",
+            "params": [
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "User login"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Add a user to a permission template. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Apply a permission template to one project. The project id or project key must be provided. The template id or name m...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/apply_template",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "projectId",
+                "value": "ce4c03d6-430f-40a9-b777-ad877c00aa4d",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Apply a permission template to one project. The project id or project key must be provided. The template id or name must be provided. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Apply a permission template to several projects. The template id or name must be provided. Requires the permission 'A...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/bulk_apply_template",
+            "params": [
+              {
+                "name": "analyzedBefore",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Filter the projects for which last analysis is older than the given date (exclusive). Either a date (server timezone) or datetime can be provided."
+              },
+              {
+                "name": "onProvisionedOnly",
+                "value": "",
+                "type": "query",
+                "description": "Filter the projects that are provisioned"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "projects",
+                "value": "my_project,another_project",
+                "type": "query",
+                "description": "Comma-separated list of project keys"
+              },
+              {
+                "name": "q",
+                "value": "apac",
+                "type": "query",
+                "description": "Limit search to: project names that contain the supplied stringproject keys that are exactly the same as the supplied string"
+              },
+              {
+                "name": "qualifiers",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:TRK - Projects"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Apply a permission template to several projects. The template id or name must be provided. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Create a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/create_template",
+            "params": [
+              {
+                "name": "description",
+                "value": "Permissions for all projects related to the financial service",
+                "type": "query",
+                "description": "Description"
+              },
+              {
+                "name": "name",
+                "value": "Financial Service Permissions",
+                "type": "query",
+                "description": "Name"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization"
+              },
+              {
+                "name": "projectKeyPattern",
+                "value": ".*\\.finance\\..*",
+                "type": "query",
+                "description": "Project key pattern. Must be a valid Java regular expression"
+              }
+            ]
+          },
+          "docs": "Create a permission template. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Delete a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/delete_template",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Delete a permission template. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Remove a permission from a group. This service defaults to global permissions, but can be limited to project permissi...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/remove_group",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "42",
+                "type": "query",
+                "description": "Group id (deprecated). Use 'groupName' and 'organization' instead."
+              },
+              {
+                "name": "groupName",
+                "value": "sonar-administrators",
+                "type": "query",
+                "description": "Group name or 'anyone' (case insensitive)"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "projectId",
+                "value": "ce4c03d6-430f-40a9-b777-ad877c00aa4d",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Remove a permission from a group. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. The group id or group name must be provided, not both. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Remove a group from a permission template. The group id or group name must be provided. Requires the permission 'Admi...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/remove_group_from_template",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "42",
+                "type": "query",
+                "description": "Group id (deprecated). Use 'groupName' and 'organization' instead."
+              },
+              {
+                "name": "groupName",
+                "value": "sonar-administrators",
+                "type": "query",
+                "description": "Group name or 'anyone' (case insensitive)"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Remove a group from a permission template. The group id or group name must be provided. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Remove a project creator from a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/remove_project_creator_from_template",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Remove a project creator from a permission template. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Remove permission from a user. This service defaults to global permissions, but can be limited to project permissions...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/remove_user",
+            "params": [
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "User login"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for global permissions: admin, profileadmin, gateadmin, scan, provisioningPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "projectId",
+                "value": "ce4c03d6-430f-40a9-b777-ad877c00aa4d",
+                "type": "query",
+                "description": "Project id"
+              },
+              {
+                "name": "projectKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Remove permission from a user. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Remove a user from a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/remove_user_from_template",
+            "params": [
+              {
+                "name": "login",
+                "value": "g.hopper",
+                "type": "query",
+                "description": "User login"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "query",
+                "description": "PermissionPossible values for project permissions admin, codeviewer, issueadmin, securityhotspotadmin, architectureadmin, scan, user"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Remove a user from a permission template. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "List permission templates. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/permissions/search_templates",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization"
+              },
+              {
+                "name": "q",
+                "value": "defau",
+                "type": "query",
+                "description": "Limit search to permission template names that contain the supplied string."
+              }
+            ]
+          },
+          "docs": "List permission templates. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Set a permission template as default. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/set_default_template",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Key of organization, used when group name is set"
+              },
+              {
+                "name": "qualifier",
+                "value": "",
+                "type": "query",
+                "description": "Project qualifier. Filter the results with the specified qualifier. Possible values are:TRK - Projects"
+              },
+              {
+                "name": "templateId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Template id"
+              },
+              {
+                "name": "templateName",
+                "value": "Default Permission Template for Projects",
+                "type": "query",
+                "description": "Template name"
+              }
+            ]
+          },
+          "docs": "Set a permission template as default. Requires the permission 'Administer' on the organization."
+        },
+        {
+          "info": {
+            "name": "Update a permission template. Requires the permission 'Administer' on the organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/permissions/update_template",
+            "params": [
+              {
+                "name": "description",
+                "value": "Permissions for all projects related to the financial service",
+                "type": "query",
+                "description": "Description"
+              },
+              {
+                "name": "id",
+                "value": "af8cb8cc-1e78-4c4e-8c00-ee8e814009a5",
+                "type": "query",
+                "description": "Id"
+              },
+              {
+                "name": "name",
+                "value": "Financial Service Permissions",
+                "type": "query",
+                "description": "Name"
+              },
+              {
+                "name": "projectKeyPattern",
+                "value": ".*\\.finance\\..*",
+                "type": "query",
+                "description": "Project key pattern. Must be a valid Java regular expression"
+              }
+            ]
+          },
+          "docs": "Update a permission template. Requires the permission 'Administer' on the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

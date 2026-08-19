@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication timemachine API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "timemachine",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "The web service is removed and you're invited to use api/measures/search_history instead",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/timemachine/index"
+          },
+          "docs": "The web service is removed and you're invited to use api/measures/search_history instead"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Logout a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/authentication/logout"
+          },
+          "docs": "Logout a user."
+        },
+        {
+          "info": {
+            "name": "Check credentials. Returns true for anonymous user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/authentication/validate"
+          },
+          "docs": "Check credentials. Returns true for anonymous user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

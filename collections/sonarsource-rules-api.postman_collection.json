@@ -1,0 +1,2675 @@
+{
+  "item": [
+    {
+      "id": "1cb3833a-538b-4de2-a54b-889acfd46d1e",
+      "name": "rules",
+      "description": {
+        "content": "Get and update some details of automatic rules, and manage custom rules.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e6c4e02-1045-42f0-9ab3-587b5ad18810",
+          "name": "List available rule repositories",
+          "request": {
+            "name": "List available rule repositories",
+            "description": {
+              "content": "List available rule repositories",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules",
+                "repositories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "A language key; if provided, only repositories for the given language will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "A pattern to match repository keys/names against"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8d247df-a262-4d48-a701-e4650fa6e845",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "repositories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "q",
+                      "value": "squid"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a65e99f4-d0d9-4332-9723-77e73abe1fb6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "repositories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "q",
+                      "value": "squid"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6af563da-ec75-436b-bbeb-269d79cf9afc",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "repositories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "q",
+                      "value": "squid"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bd0672a-ffff-41e0-8184-46d3647e4ed6",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "repositories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "q",
+                      "value": "squid"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56540802-b014-458e-8ffb-7b7eef738e8c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "repositories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "q",
+                      "value": "squid"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "690fe068-563d-471c-ba57-c26a41949fe5",
+          "name": "Search for a collection of relevant rules matching a specified query. Since 5.5, following fields in the response hav...",
+          "request": {
+            "name": "Search for a collection of relevant rules matching a specified query. Since 5.5, following fields in the response hav...",
+            "description": {
+              "content": "Search for a collection of relevant rules matching a specified query. Since 5.5, following fields in the response have been deprecated :\"effortToFixDescription\" becomes \"gapDescription\"\"debtRemFnCoeff\" becomes \"remFnGapMultiplier\"\"defaultDebtRemFnCoeff\" becomes \"defaultRemFnGapMultiplier\"\"debtRemFnOffset\" becomes \"remFnBaseEffort\"\"defaultDebtRemFnOffset\" becomes \"defaultRemFnBaseEffort\"\"debtOverloaded\" becomes \"remFnOverloaded\"",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "activation",
+                  "value": "<string>",
+                  "description": "Filter rules that are activated or deactivated on the selected Quality profile. Ignored if the parameter 'qprofile' is not set."
+                },
+                {
+                  "disabled": false,
+                  "key": "active_severities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of activation severities, i.e the severity of rules in Quality profiles."
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "true",
+                  "description": "Ascending sort"
+                },
+                {
+                  "disabled": false,
+                  "key": "available_since",
+                  "value": "<string>",
+                  "description": "Filters rules added since date. Format is yyyy-MM-dd"
+                },
+                {
+                  "disabled": false,
+                  "key": "cleanCodeAttributeCategories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of Clean Code Attribute Categories"
+                },
+                {
+                  "disabled": false,
+                  "key": "complianceStandards",
+                  "value": "<string>",
+                  "description": "Set of compliance standards to filter on. Categories within a standard are comma-separated and behave as an 'or'. Multiple standards are separated by an ampersand and behave as an 'and'."
+                },
+                {
+                  "disabled": false,
+                  "key": "cwe",
+                  "value": "<string>",
+                  "description": "Comma-separated list of CWE identifiers. Use 'unknown' to select rules not associated to any CWE."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Comma-separated list of the fields to be returned in response. All the fields are returned by default, except actives.Since 5.5, following fields have been deprecated :\"defaultDebtRemFn\" becomes \"defaultRemFn\"\"debtRemFn\" becomes \"remFn\"\"effortToFixDescription\" becomes \"gapDescription\"\"debtOverloaded\" becomes \"remFnOverloaded\""
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated list of the facets to be computed. No facet is computed by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "impactSeverities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of Software Quality Severities"
+                },
+                {
+                  "disabled": false,
+                  "key": "impactSoftwareQualities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of Software Qualities"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_external",
+                  "value": "false",
+                  "description": "Include external engine rules in the results"
+                },
+                {
+                  "disabled": false,
+                  "key": "inheritance",
+                  "value": "<string>",
+                  "description": "Comma-separated list of values of inheritance for a rule within a quality profile. Used only if the parameter 'activation' is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_template",
+                  "value": "<string>",
+                  "description": "Filter template rules"
+                },
+                {
+                  "disabled": false,
+                  "key": "languages",
+                  "value": "<string>",
+                  "description": "Comma-separated list of languages"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "owaspMobileTop10-2024",
+                  "value": "<string>",
+                  "description": "Comma-separated list of OWASP Mobile Top 10 (2024) lowercase categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "owaspTop10",
+                  "value": "<string>",
+                  "description": "Comma-separated list of OWASP Top 10 lowercase categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "owaspTop10-2021",
+                  "value": "<string>",
+                  "description": "Comma-separated list of OWASP Top 10 (2021) lowercase categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "p",
+                  "value": "1",
+                  "description": "1-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "100",
+                  "description": "Page size. Must be greater than 0 and less or equal than 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "UTF-8 search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "qprofile",
+                  "value": "<string>",
+                  "description": "Quality profile key to filter on. Used only if the parameter 'activation' is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "repositories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of repositories"
+                },
+                {
+                  "disabled": false,
+                  "key": "rule_key",
+                  "value": "<string>",
+                  "description": "Key of rule to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "rule_keys",
+                  "value": "<string>",
+                  "description": "Rule keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "<string>",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "severities",
+                  "value": "<string>",
+                  "description": "Comma-separated list of default severities. Not the same than severity of rules in Quality profiles."
+                },
+                {
+                  "disabled": false,
+                  "key": "sonarsourceSecurity",
+                  "value": "<string>",
+                  "description": "Comma-separated list of SonarSource security categories. Use 'others' to select rules not associated with any category"
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "Comma-separated list of status codes"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of tags. Returned rules match any of the tags (OR operator)"
+                },
+                {
+                  "disabled": false,
+                  "key": "template_key",
+                  "value": "<string>",
+                  "description": "Key of the template rule to filter on. Used to search for the custom rules based on this template."
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Comma-separated list of types. Returned rules match any of the tags (OR operator)"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8627145e-e15d-4ff2-980d-66fd2ab5e2fe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "available_since",
+                      "value": "2014-06-22"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "false"
+                    },
+                    {
+                      "key": "inheritance",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "xpath"
+                    },
+                    {
+                      "key": "qprofile",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "repositories",
+                      "value": "checkstyle,findbugs"
+                    },
+                    {
+                      "key": "rule_key",
+                      "value": "squid:S001"
+                    },
+                    {
+                      "key": "rule_keys",
+                      "value": "squid:S1002,squid:S1003"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "READY"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "template_key",
+                      "value": "java:S001"
+                    },
+                    {
+                      "key": "types",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd51d715-5502-4a6c-93e7-c8641cc0632a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "available_since",
+                      "value": "2014-06-22"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "false"
+                    },
+                    {
+                      "key": "inheritance",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "xpath"
+                    },
+                    {
+                      "key": "qprofile",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "repositories",
+                      "value": "checkstyle,findbugs"
+                    },
+                    {
+                      "key": "rule_key",
+                      "value": "squid:S001"
+                    },
+                    {
+                      "key": "rule_keys",
+                      "value": "squid:S1002,squid:S1003"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "READY"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "template_key",
+                      "value": "java:S001"
+                    },
+                    {
+                      "key": "types",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1d33af5-3f80-4fbf-89db-7ede4e02fb32",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "available_since",
+                      "value": "2014-06-22"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "false"
+                    },
+                    {
+                      "key": "inheritance",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "xpath"
+                    },
+                    {
+                      "key": "qprofile",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "repositories",
+                      "value": "checkstyle,findbugs"
+                    },
+                    {
+                      "key": "rule_key",
+                      "value": "squid:S001"
+                    },
+                    {
+                      "key": "rule_keys",
+                      "value": "squid:S1002,squid:S1003"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "READY"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "template_key",
+                      "value": "java:S001"
+                    },
+                    {
+                      "key": "types",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45012092-5654-4d94-b27c-b12def329285",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "available_since",
+                      "value": "2014-06-22"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "false"
+                    },
+                    {
+                      "key": "inheritance",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "xpath"
+                    },
+                    {
+                      "key": "qprofile",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "repositories",
+                      "value": "checkstyle,findbugs"
+                    },
+                    {
+                      "key": "rule_key",
+                      "value": "squid:S001"
+                    },
+                    {
+                      "key": "rule_keys",
+                      "value": "squid:S1002,squid:S1003"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "READY"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "template_key",
+                      "value": "java:S001"
+                    },
+                    {
+                      "key": "types",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4aea71ac-8f75-47eb-b30f-5bfc3a988aca",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active_severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "available_since",
+                      "value": "2014-06-22"
+                    },
+                    {
+                      "key": "cleanCodeAttributeCategories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "complianceStandards",
+                      "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16"
+                    },
+                    {
+                      "key": "sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned",
+                      "value": "log-injection"
+                    },
+                    {
+                      "key": "cwe",
+                      "value": "12,125,unknown"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSeverities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactSoftwareQualities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "false"
+                    },
+                    {
+                      "key": "inheritance",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "java,js"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "owaspMobileTop10-2024",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owaspTop10-2021",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "xpath"
+                    },
+                    {
+                      "key": "qprofile",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "repositories",
+                      "value": "checkstyle,findbugs"
+                    },
+                    {
+                      "key": "rule_key",
+                      "value": "squid:S001"
+                    },
+                    {
+                      "key": "rule_keys",
+                      "value": "squid:S1002,squid:S1003"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "severities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sonarsourceSecurity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "READY"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "security,java8"
+                    },
+                    {
+                      "key": "template_key",
+                      "value": "java:S001"
+                    },
+                    {
+                      "key": "types",
+                      "value": "BUG"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e03709a-35be-4b8e-9f2c-29664f211b8d",
+          "name": "Get detailed information about a rule Since 5.5, following fields in the response have been deprecated :\"effortToFixD...",
+          "request": {
+            "name": "Get detailed information about a rule Since 5.5, following fields in the response have been deprecated :\"effortToFixD...",
+            "description": {
+              "content": "Get detailed information about a rule Since 5.5, following fields in the response have been deprecated :\"effortToFixDescription\" becomes \"gapDescription\"\"debtRemFnCoeff\" becomes \"remFnGapMultiplier\"\"defaultDebtRemFnCoeff\" becomes \"defaultRemFnGapMultiplier\"\"debtRemFnOffset\" becomes \"remFnBaseEffort\"\"defaultDebtRemFnOffset\" becomes \"defaultRemFnBaseEffort\"\"debtOverloaded\" becomes \"remFnOverloaded\"In 7.1, the field 'scope' has been added.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules",
+                "show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "actives",
+                  "value": "false",
+                  "description": "Show rule's activations for all profiles (\"active rules\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Rule key"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) Organization key"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e6e282a-8321-4bf6-9fff-53074fe50cb1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actives",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:EmptyBlock"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2776739c-287d-4106-ac4a-584785d54ea0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actives",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:EmptyBlock"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90495f91-eb91-4d65-9893-a62ed179cce7",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actives",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:EmptyBlock"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe24c0bb-f8ce-43f4-a998-c70c30ed47b9",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actives",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:EmptyBlock"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc9d6892-8eae-45d0-b0c5-651cc4d8e73b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actives",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:EmptyBlock"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adc39bd4-aa1d-433d-8795-bf254c7ff595",
+          "name": "List rule tags",
+          "request": {
+            "name": "List rule tags",
+            "description": {
+              "content": "List rule tags",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "10",
+                  "description": "Page size. Must be greater than 0 and less or equal than 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Limit search to tags that contain the supplied string."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e265863-b106-4121-94f7-9b23f39ca593",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ad337cc-d177-49a0-b360-6af1a337e6c0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3b401c5-89ef-4785-b4d5-8ceb26a6bb41",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bac37718-2440-4710-9d87-3d95e6a4a362",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2634204b-fec5-49ae-bd65-e4c115f8ad1a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "q",
+                      "value": "misra"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bb22e22-4aad-4332-a710-c6ff45fd0957",
+          "name": "Update an existing rule. Requires the 'Administer Quality Profiles' permission",
+          "request": {
+            "name": "Update an existing rule. Requires the 'Administer Quality Profiles' permission",
+            "description": {
+              "content": "Update an existing rule. Requires the 'Administer Quality Profiles' permission",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "rules",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "debt_sub_characteristic",
+                  "value": "<string>",
+                  "description": "Debt characteristics are no more supported. This parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Key of the rule to update"
+                },
+                {
+                  "disabled": false,
+                  "key": "markdown_description",
+                  "value": "<string>",
+                  "description": "Rule description (mandatory for custom rule and manual rule)"
+                },
+                {
+                  "disabled": false,
+                  "key": "markdown_note",
+                  "value": "<string>",
+                  "description": "Optional note in markdown format. Use empty value to remove current note. Note is not changed if the parameter is not set."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Rule name (mandatory for custom rule)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "(Required) Organization key"
+                },
+                {
+                  "disabled": false,
+                  "key": "params",
+                  "value": "<string>",
+                  "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only when updating a custom rule)"
+                },
+                {
+                  "disabled": false,
+                  "key": "remediation_fn_base_effort",
+                  "value": "<string>",
+                  "description": "Base effort of the remediation function of the rule"
+                },
+                {
+                  "disabled": false,
+                  "key": "remediation_fn_type",
+                  "value": "<string>",
+                  "description": "Type of the remediation function of the rule"
+                },
+                {
+                  "disabled": false,
+                  "key": "remediation_fy_gap_multiplier",
+                  "value": "<string>",
+                  "description": "Gap multiplier of the remediation function of the rule"
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>",
+                  "description": "Rule severity (Only when updating a custom rule)"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Rule status (Only when updating a custom rule)"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Optional comma-separated list of tags to set. Use blank value to remove current tags. Tags are not changed if the parameter is not set."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d86d8bc5-d830-4f54-9b48-e29086c1084b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debt_sub_characteristic",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:NullCheck"
+                    },
+                    {
+                      "key": "markdown_description",
+                      "value": "Description of my custom rule"
+                    },
+                    {
+                      "key": "markdown_note",
+                      "value": "my *note*"
+                    },
+                    {
+                      "key": "name",
+                      "value": "My custom rule"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fn_base_effort",
+                      "value": "1d"
+                    },
+                    {
+                      "key": "remediation_fn_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fy_gap_multiplier",
+                      "value": "3min"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "java8,security"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5474ef6e-a8d5-4245-88ea-388171db5bb3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debt_sub_characteristic",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:NullCheck"
+                    },
+                    {
+                      "key": "markdown_description",
+                      "value": "Description of my custom rule"
+                    },
+                    {
+                      "key": "markdown_note",
+                      "value": "my *note*"
+                    },
+                    {
+                      "key": "name",
+                      "value": "My custom rule"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fn_base_effort",
+                      "value": "1d"
+                    },
+                    {
+                      "key": "remediation_fn_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fy_gap_multiplier",
+                      "value": "3min"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "java8,security"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d94e7bd-733b-43b8-8178-543ab5cd533a",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debt_sub_characteristic",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:NullCheck"
+                    },
+                    {
+                      "key": "markdown_description",
+                      "value": "Description of my custom rule"
+                    },
+                    {
+                      "key": "markdown_note",
+                      "value": "my *note*"
+                    },
+                    {
+                      "key": "name",
+                      "value": "My custom rule"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fn_base_effort",
+                      "value": "1d"
+                    },
+                    {
+                      "key": "remediation_fn_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fy_gap_multiplier",
+                      "value": "3min"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "java8,security"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a5a503a-2ff3-4681-aab8-eed1ce48cae3",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debt_sub_characteristic",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:NullCheck"
+                    },
+                    {
+                      "key": "markdown_description",
+                      "value": "Description of my custom rule"
+                    },
+                    {
+                      "key": "markdown_note",
+                      "value": "my *note*"
+                    },
+                    {
+                      "key": "name",
+                      "value": "My custom rule"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fn_base_effort",
+                      "value": "1d"
+                    },
+                    {
+                      "key": "remediation_fn_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fy_gap_multiplier",
+                      "value": "3min"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "java8,security"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6833b9d3-8258-4bc9-b83d-ba9f438e9f5c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "rules",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debt_sub_characteristic",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "javascript:NullCheck"
+                    },
+                    {
+                      "key": "markdown_description",
+                      "value": "Description of my custom rule"
+                    },
+                    {
+                      "key": "markdown_note",
+                      "value": "my *note*"
+                    },
+                    {
+                      "key": "name",
+                      "value": "My custom rule"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "my-org"
+                    },
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fn_base_effort",
+                      "value": "1d"
+                    },
+                    {
+                      "key": "remediation_fn_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remediation_fy_gap_multiplier",
+                      "value": "3min"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "java8,security"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fd38bd93-fb25-4801-a725-f85df97d1692",
+    "name": "SonarQube Cloud Web authentication rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

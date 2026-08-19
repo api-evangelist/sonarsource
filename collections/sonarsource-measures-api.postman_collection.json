@@ -1,0 +1,1651 @@
+{
+  "item": [
+    {
+      "id": "1867fe25-d378-4544-91de-ac58dd910534",
+      "name": "measures",
+      "description": {
+        "content": "Get components or children with specified measures.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dac3b3a7-6c51-4b1d-968f-24b9c8f256c6",
+          "name": "Return component with specified measures. The componentId or the component parameter must be provided. Requires the f...",
+          "request": {
+            "name": "Return component with specified measures. The componentId or the component parameter must be provided. Requires the f...",
+            "description": {
+              "content": "Return component with specified measures. The componentId or the component parameter must be provided. Requires the following permission: 'Browse' on the project of specified component.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "measures",
+                "component"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additionalFields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of additional fields that can be returned in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "branch",
+                  "value": "<string>",
+                  "description": "Branch key"
+                },
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Component key"
+                },
+                {
+                  "disabled": false,
+                  "key": "componentId",
+                  "value": "<string>",
+                  "description": "Component id"
+                },
+                {
+                  "disabled": false,
+                  "key": "developerId",
+                  "value": "<string>",
+                  "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "developerKey",
+                  "value": "<string>",
+                  "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricKeys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of metric keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "pullRequest",
+                  "value": "<string>",
+                  "description": "Pull request id"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f3b1493-4f8b-4875-ab26-f378eec343d1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bec44911-2131-4d35-b3de-895e51e955c6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6be3eebc-182e-431b-ad52-71b363063fd9",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0ef9239-b5cb-44c4-a5cb-fb0fad6136e5",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d988a088-d646-4bef-aabd-45949e589358",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "AU-Tpxb--iU5OvuD2FLy"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e020e790-7c57-4e50-9fa7-2fe15955f2af",
+          "name": "Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the componen...",
+          "request": {
+            "name": "Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the componen...",
+            "description": {
+              "content": "Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the component parameter must be provided. Requires the following permission: 'Browse' on the specified project. When limiting search with the q parameter, directories are not returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "measures",
+                "component_tree"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additionalFields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of additional fields that can be returned in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "asc",
+                  "value": "true",
+                  "description": "Ascending sort"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseComponentId",
+                  "value": "<string>",
+                  "description": "Base component id. The search is based on this component."
+                },
+                {
+                  "disabled": false,
+                  "key": "branch",
+                  "value": "<string>",
+                  "description": "Branch key"
+                },
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "Component key. The search is based on this component."
+                },
+                {
+                  "disabled": false,
+                  "key": "developerId",
+                  "value": "<string>",
+                  "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "developerKey",
+                  "value": "<string>",
+                  "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricKeys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of metric keys. Types DATA, DISTRIB are not allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricPeriodSort",
+                  "value": "<string>",
+                  "description": "Sort measures by leak period or not ?. The 's' parameter must contain the 'metricPeriod' value."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricSort",
+                  "value": "<string>",
+                  "description": "Metric key to sort by. The 's' parameter must contain the 'metric' or 'metricPeriod' value. It must be part of the 'metricKeys' parameter"
+                },
+                {
+                  "disabled": false,
+                  "key": "metricSortFilter",
+                  "value": "all",
+                  "description": "Filter components. Sort must be on a metric. Possible values are: all: return all componentswithMeasuresOnly: filter out components that do not have a measure on the sorted metric"
+                },
+                {
+                  "disabled": false,
+                  "key": "p",
+                  "value": "1",
+                  "description": "1-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "100",
+                  "description": "Page size. Must be greater than 0 and less or equal than 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "pullRequest",
+                  "value": "<string>",
+                  "description": "Pull request id"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string"
+                },
+                {
+                  "disabled": false,
+                  "key": "qualifiers",
+                  "value": "<string>",
+                  "description": "Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:BRC - Sub-projectsDIR - DirectoriesFIL - FilesTRK - ProjectsUTS - Test Files"
+                },
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "name",
+                  "description": "Comma-separated list of sort fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "strategy",
+                  "value": "all",
+                  "description": "Strategy to search for base component descendants:children: return the children components of the base component. Grandchildren components are not returnedall: return all the descendants components of the base component. Grandchildren are returned.leaves: return all the descendant components (files, in general) which don't have other children. They are the leaves of the component tree."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ae1338f-e0c3-47c3-88bd-ff1b3962c009",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component_tree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "baseComponentId",
+                      "value": "AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "metricPeriodSort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricSort",
+                      "value": "ncloc"
+                    },
+                    {
+                      "key": "metricSortFilter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "q",
+                      "value": "FILE_NAM"
+                    },
+                    {
+                      "key": "qualifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "all"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "928a3c12-1a7e-4949-a338-cf42761ae4da",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component_tree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "baseComponentId",
+                      "value": "AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "metricPeriodSort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricSort",
+                      "value": "ncloc"
+                    },
+                    {
+                      "key": "metricSortFilter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "q",
+                      "value": "FILE_NAM"
+                    },
+                    {
+                      "key": "qualifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "all"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d13e4a03-02ce-4676-b5ab-8116132b2c4d",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component_tree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "baseComponentId",
+                      "value": "AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "metricPeriodSort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricSort",
+                      "value": "ncloc"
+                    },
+                    {
+                      "key": "metricSortFilter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "q",
+                      "value": "FILE_NAM"
+                    },
+                    {
+                      "key": "qualifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "all"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f9b68fc0-fd10-47a2-b8cf-89385e1e7cd2",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component_tree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "baseComponentId",
+                      "value": "AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "metricPeriodSort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricSort",
+                      "value": "ncloc"
+                    },
+                    {
+                      "key": "metricSortFilter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "q",
+                      "value": "FILE_NAM"
+                    },
+                    {
+                      "key": "qualifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "all"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "770b224a-0f60-4108-b356-8ab0dcb42ed1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "component_tree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asc",
+                      "value": "true"
+                    },
+                    {
+                      "key": "baseComponentId",
+                      "value": "AU-TpxcA-iU5OvuD2FLz"
+                    },
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "developerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "developerKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricKeys",
+                      "value": "ncloc,complexity,violations"
+                    },
+                    {
+                      "key": "metricPeriodSort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricSort",
+                      "value": "ncloc"
+                    },
+                    {
+                      "key": "metricSortFilter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "q",
+                      "value": "FILE_NAM"
+                    },
+                    {
+                      "key": "qualifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "s",
+                      "value": "name"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "all"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86262e39-fa85-4e7c-b2dd-451a5a1ed282",
+          "name": "Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of mea...",
+          "request": {
+            "name": "Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of mea...",
+            "description": {
+              "content": "Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of measures for each metric. Requires the following permission: 'Browse' on the specified component",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "measures",
+                "search_history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "branch",
+                  "value": "<string>",
+                  "description": "Branch key"
+                },
+                {
+                  "disabled": false,
+                  "key": "component",
+                  "value": "<string>",
+                  "description": "(Required) Component key"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Filter measures created after the given date (inclusive). Either a date (server timezone) or datetime can be provided"
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of metric keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "p",
+                  "value": "1",
+                  "description": "1-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "ps",
+                  "value": "100",
+                  "description": "Page size. Must be greater than 0 and less or equal than 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "pullRequest",
+                  "value": "<string>",
+                  "description": "Pull request id"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "Filter measures created before the given date (inclusive). Either a date (server timezone) or datetime can be provided"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24222c66-c2b4-4dde-bf09-1edc9535ce36",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "search_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "ncloc,coverage,new_violations"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f99b1c99-47e1-4526-88fe-3648d34d6a7e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "search_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "ncloc,coverage,new_violations"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3e2ff37-c643-4f8a-8be5-0d391af42cd8",
+              "name": "Unauthorized - authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "search_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "ncloc,coverage,new_violations"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f848f14-f5d2-452b-ba07-f817b66d4c79",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "search_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "ncloc,coverage,new_violations"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d87d141-1028-4b32-bb49-924837ea7352",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "measures",
+                    "search_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branch",
+                      "value": "feature/my_branch"
+                    },
+                    {
+                      "key": "component",
+                      "value": "my_project"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "ncloc,coverage,new_violations"
+                    },
+                    {
+                      "key": "p",
+                      "value": "42"
+                    },
+                    {
+                      "key": "ps",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pullRequest",
+                      "value": "5461"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2017-10-19 or 2017-10-19T13:00:00+0200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sonarcloud.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "306e2cb3-441c-4ec2-aa05-d2ea200d7e35",
+    "name": "SonarQube Cloud Web authentication measures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.\n\nContact Support:\n Name: SonarSource",
+      "type": "text/plain"
+    }
+  }
+}

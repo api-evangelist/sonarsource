@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication project_badges API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project_badges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on the specified project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_badges/ai_code_assurance",
+            "params": [
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project or application key"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Security token"
+              }
+            ]
+          },
+          "docs": "Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on the specified project."
+        },
+        {
+          "info": {
+            "name": "Generate badge for project's measure as an SVG. Requires a security token for private projects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_badges/measure",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Long-lived branch key"
+              },
+              {
+                "name": "metric",
+                "value": "",
+                "type": "query",
+                "description": "Metric key"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project or application key"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Security token"
+              }
+            ]
+          },
+          "docs": "Generate badge for project's measure as an SVG. Requires a security token for private projects."
+        },
+        {
+          "info": {
+            "name": "Generate badge for project's quality gate as an SVG. Requires a security token for private projects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_badges/quality_gate",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Long-lived branch key"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project or application key"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Security token"
+              }
+            ]
+          },
+          "docs": "Generate badge for project's quality gate as an SVG. Requires a security token for private projects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

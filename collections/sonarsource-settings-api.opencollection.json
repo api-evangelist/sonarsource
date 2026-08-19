@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication settings API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, au...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/settings/list_definitions",
+            "params": [
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              }
+            ]
+          },
+          "docs": "List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, authentication is required To access secured settings, one of the following permissions is required: 'Execute Analysis''Administer' rights on the specified component"
+        },
+        {
+          "info": {
+            "name": "Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires th...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/settings/reset",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              },
+              {
+                "name": "keys",
+                "value": "sonar.links.scm,sonar.debt.hoursInDay",
+                "type": "query",
+                "description": "Comma-separated list of keys"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              }
+            ]
+          },
+          "docs": "Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component."
+        },
+        {
+          "info": {
+            "name": "Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties ar...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/settings/set",
+            "params": [
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              },
+              {
+                "name": "fieldValues",
+                "value": "fieldValues={\"firstField\":\"first value\", \"secondField\":\"second value\", \"thirdField\":\"third value\"}",
+                "type": "query",
+                "description": "Setting field values. To set several values, the parameter must be called once for each value."
+              },
+              {
+                "name": "key",
+                "value": "sonar.links.scm",
+                "type": "query",
+                "description": "Setting key"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key (for the Enterprise plan only)"
+              },
+              {
+                "name": "value",
+                "value": "git@github.com:SonarSource/sonarqube.git",
+                "type": "query",
+                "description": "Setting value. To reset a value, please use the reset web service."
+              },
+              {
+                "name": "values",
+                "value": "values=firstValue&values=secondValue&values=thirdValue",
+                "type": "query",
+                "description": "Setting multi value. To set several values, the parameter must be called once for each value."
+              }
+            ]
+          },
+          "docs": "Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component."
+        },
+        {
+          "info": {
+            "name": "List settings values. If no value has been set for a setting, then the default value is returned. Both component and ...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/settings/values",
+            "params": [
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              },
+              {
+                "name": "keys",
+                "value": "sonar.test.inclusions,sonar.exclusions",
+                "type": "query",
+                "description": "List of setting keys"
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key"
+              }
+            ]
+          },
+          "docs": "List settings values. If no value has been set for a setting, then the default value is returned. Both component and organization parameters cannot be used together. Requires 'Browse' or 'Execute Analysis' permission when a component is specified. Requires to be member of the organization if one is specified. To access secured settings, one of the following permissions is required: 'Execute Analysis' or 'Administer' rights on the specified component The returned attributes are:'key': The key of "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

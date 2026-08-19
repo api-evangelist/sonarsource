@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication project_tags API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project_tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_tags/search",
+            "params": [
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 100"
+              },
+              {
+                "name": "q",
+                "value": "off",
+                "type": "query",
+                "description": "Limit search to tags that contain the supplied string."
+              }
+            ]
+          },
+          "docs": "Search tags"
+        },
+        {
+          "info": {
+            "name": "Set tags on a project. Requires the following permission: 'Administer' rights on the specified project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_tags/set",
+            "params": [
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "tags",
+                "value": "finance, offshore",
+                "type": "query",
+                "description": "Comma-separated list of tags"
+              }
+            ]
+          },
+          "docs": "Set tags on a project. Requires the following permission: 'Administer' rights on the specified project"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication favourites API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "favourites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "The web service is removed and you're invited to use api/favorites instead",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/favourites/index"
+          },
+          "docs": "The web service is removed and you're invited to use api/favorites instead"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

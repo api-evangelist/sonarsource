@@ -1,0 +1,648 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication issues API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "issues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/add_comment",
+            "params": [
+              {
+                "name": "isFeedback",
+                "value": "true",
+                "type": "query",
+                "description": "Define is the given comment is a feedback"
+              },
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              },
+              {
+                "name": "text",
+                "value": "Won't fix because it doesn't apply to the context",
+                "type": "query",
+                "description": "Comment text"
+              }
+            ]
+          },
+          "docs": "Add a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue."
+        },
+        {
+          "info": {
+            "name": "Assign/Unassign an issue. Requires authentication and Browse permission on project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/assign",
+            "params": [
+              {
+                "name": "assignee",
+                "value": "admin",
+                "type": "query",
+                "description": "Login of the assignee. When not set, it will unassign the issue. Use '_me' to assign to current user"
+              },
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              }
+            ]
+          },
+          "docs": "Assign/Unassign an issue. Requires authentication and Browse permission on project"
+        },
+        {
+          "info": {
+            "name": "Search SCM accounts which match a given query. Requires authentication.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/issues/authors",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 100"
+              },
+              {
+                "name": "q",
+                "value": "luke",
+                "type": "query",
+                "description": "Limit search to authors that contain the supplied string."
+              }
+            ]
+          },
+          "docs": "Search SCM accounts which match a given query. Requires authentication."
+        },
+        {
+          "info": {
+            "name": "Bulk change on issues. Requires authentication.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/bulk_change",
+            "params": [
+              {
+                "name": "add_tags",
+                "value": "security,java8",
+                "type": "query",
+                "description": "Add tags"
+              },
+              {
+                "name": "assign",
+                "value": "john.smith",
+                "type": "query",
+                "description": "To assign the list of issues to a specific user (login), or un-assign all the issues"
+              },
+              {
+                "name": "comment",
+                "value": "Here is my comment",
+                "type": "query",
+                "description": "To add a comment to a list of issues"
+              },
+              {
+                "name": "do_transition",
+                "value": "reopen",
+                "type": "query",
+                "description": "Transition"
+              },
+              {
+                "name": "isFeedback",
+                "value": "false",
+                "type": "query",
+                "description": "Define if the given comment is a feedback"
+              },
+              {
+                "name": "issues",
+                "value": "AU-Tpxb--iU5OvuD2FLy,AU-TpxcA-iU5OvuD2FLz",
+                "type": "query",
+                "description": "Comma-separated list of issue keys"
+              },
+              {
+                "name": "remove_tags",
+                "value": "security,java8",
+                "type": "query",
+                "description": "Remove tags"
+              },
+              {
+                "name": "sendNotifications",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "set_severity",
+                "value": "BLOCKER",
+                "type": "query",
+                "description": "To change the severity of the list of issues"
+              },
+              {
+                "name": "set_type",
+                "value": "BUG",
+                "type": "query",
+                "description": "To change the type of the list of issues"
+              }
+            ]
+          },
+          "docs": "Bulk change on issues. Requires authentication."
+        },
+        {
+          "info": {
+            "name": "Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/issues/changelog",
+            "params": [
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              }
+            ]
+          },
+          "docs": "Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue."
+        },
+        {
+          "info": {
+            "name": "Delete a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/delete_comment",
+            "params": [
+              {
+                "name": "comment",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Comment key"
+              }
+            ]
+          },
+          "docs": "Delete a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue."
+        },
+        {
+          "info": {
+            "name": "Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/do_transition",
+            "params": [
+              {
+                "name": "comment",
+                "value": "Won't fix because it doesn't apply to the context",
+                "type": "query",
+                "description": "Comment text"
+              },
+              {
+                "name": "isFeedback",
+                "value": "",
+                "type": "query",
+                "description": "Define is the given comment is a feedback"
+              },
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              },
+              {
+                "name": "transition",
+                "value": "",
+                "type": "query",
+                "description": "Transition"
+              }
+            ]
+          },
+          "docs": "Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept', 'wontfix', and 'falsepositive' require the permission 'Administer Issues'. The transitions involving security hotspots require the permission 'Administer Security Hotspot'."
+        },
+        {
+          "info": {
+            "name": "Edit a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/edit_comment",
+            "params": [
+              {
+                "name": "comment",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Comment key"
+              },
+              {
+                "name": "text",
+                "value": "Won't fix because it doesn't apply to the context",
+                "type": "query",
+                "description": "Comment text"
+              }
+            ]
+          },
+          "docs": "Edit a comment. Requires authentication and the following permission: 'Browse' on the project of the specified issue."
+        },
+        {
+          "info": {
+            "name": "Search for issues. Requires the 'Browse' permission on the specified project(s).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/issues/search",
+            "params": [
+              {
+                "name": "additionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of the optional fields to be returned in response. Action plans are dropped in 5.5, it is not returned in the response."
+              },
+              {
+                "name": "asc",
+                "value": "",
+                "type": "query",
+                "description": "Ascending sort"
+              },
+              {
+                "name": "assigned",
+                "value": "",
+                "type": "query",
+                "description": "To retrieve assigned or unassigned issues"
+              },
+              {
+                "name": "assignees",
+                "value": "admin,usera,__me__",
+                "type": "query",
+                "description": "Comma-separated list of assignee logins. The value '__me__' can be used as a placeholder for user who performs the request"
+              },
+              {
+                "name": "author",
+                "value": "author=torvalds@linux-foundation.org&author=linux@fondation.org",
+                "type": "query",
+                "description": "SCM accounts. To set several values, the parameter must be called once for each value."
+              },
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "cleanCodeAttributeCategories",
+                "value": "ADAPTABLE,INTENTIONAL",
+                "type": "query",
+                "description": "Comma-separated list of clean code attribute categories."
+              },
+              {
+                "name": "complianceStandards",
+                "value": "owasp_asvs:urn:sonar-security-standard:owasp:asvs:5.0=15,16&sonar_standard:urn:sonar-security-standard:sonar:standard:unversioned=log-injection",
+                "type": "query",
+                "description": "Set of compliance standards to filter on. Categories within a standard are comma-separated and behave as an 'or'. Multiple standards are separated by an ampersand and behave as an 'and'."
+              },
+              {
+                "name": "componentKeys",
+                "value": "my_project",
+                "type": "query",
+                "description": "Comma-separated list of component keys. Retrieve issues associated to a specific list of components (and all its descendants). A component can be a project, directory or file."
+              },
+              {
+                "name": "createdAfter",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "To retrieve issues created after the given date (inclusive). Either a date (server timezone) or datetime can be provided. If this parameter is set, createdSince must not be set"
+              },
+              {
+                "name": "createdAt",
+                "value": "2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Datetime to retrieve issues created during a specific analysis"
+              },
+              {
+                "name": "createdBefore",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "To retrieve issues created before the given date (inclusive). Either a date (server timezone) or datetime can be provided."
+              },
+              {
+                "name": "createdInLast",
+                "value": "1m2w (1 month 2 weeks)",
+                "type": "query",
+                "description": "To retrieve issues created during a time span before the current time (exclusive). Accepted units are 'y' for year, 'm' for month, 'w' for week and 'd' for day. If this parameter is set, createdAfter must not be set"
+              },
+              {
+                "name": "cwe",
+                "value": "12,125,unknown",
+                "type": "query",
+                "description": "Comma-separated list of CWE identifiers. Use 'unknown' to select issues not associated to any CWE."
+              },
+              {
+                "name": "facetMode",
+                "value": "",
+                "type": "query",
+                "description": "Choose the returned value for facet items, either count of issues or sum of remediation effort."
+              },
+              {
+                "name": "facets",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of the facets to be computed. No facet is computed by default."
+              },
+              {
+                "name": "impactSeverities",
+                "value": "HIGH,LOW",
+                "type": "query",
+                "description": "Comma-separated list of impact severities."
+              },
+              {
+                "name": "impactSoftwareQualities",
+                "value": "MAINTAINABILITY,RELIABILITY",
+                "type": "query",
+                "description": "Comma-separated list of software qualities."
+              },
+              {
+                "name": "issueStatuses",
+                "value": "OPEN,ACCEPTED",
+                "type": "query",
+                "description": "Comma-separated list of issue statuses"
+              },
+              {
+                "name": "issues",
+                "value": "5bccd6e8-f525-43a2-8d76-fcb13dde79ef",
+                "type": "query",
+                "description": "Comma-separated list of issue keys"
+              },
+              {
+                "name": "languages",
+                "value": "java,js",
+                "type": "query",
+                "description": "Comma-separated list of languages. Available since 4.4"
+              },
+              {
+                "name": "onComponentOnly",
+                "value": "",
+                "type": "query",
+                "description": "Return only issues at a component's level, not on its descendants (modules, directories, files, etc). This parameter is only considered when componentKeys or componentUuids is set."
+              },
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key"
+              },
+              {
+                "name": "owaspMobileTop10-2024",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of OWASP Mobile Top 10 - 2024 lowercase categories."
+              },
+              {
+                "name": "owaspTop10",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of OWASP Top 10 lowercase categories."
+              },
+              {
+                "name": "owaspTop10-2021",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of OWASP Top 10 - 2021 lowercase categories."
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              },
+              {
+                "name": "resolutions",
+                "value": "FIXED,REMOVED",
+                "type": "query",
+                "description": "Comma-separated list of resolutions"
+              },
+              {
+                "name": "resolved",
+                "value": "",
+                "type": "query",
+                "description": "To match resolved or unresolved issues"
+              },
+              {
+                "name": "rules",
+                "value": "squid:AvoidCycles",
+                "type": "query",
+                "description": "Comma-separated list of coding rule keys. Format is <repository>:<rule>"
+              },
+              {
+                "name": "s",
+                "value": "",
+                "type": "query",
+                "description": "Sort field"
+              },
+              {
+                "name": "severities",
+                "value": "BLOCKER,CRITICAL",
+                "type": "query",
+                "description": "Comma-separated list of severities"
+              },
+              {
+                "name": "sinceLeakPeriod",
+                "value": "",
+                "type": "query",
+                "description": "To retrieve issues created since the leak period. If this parameter is set to a truthy value, createdAfter must not be set and one component id or key must be provided."
+              },
+              {
+                "name": "sonarsourceSecurity",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of SonarSource security categories. Use 'others' to select issues not associated with any category"
+              },
+              {
+                "name": "statuses",
+                "value": "OPEN,REOPENED",
+                "type": "query",
+                "description": "Comma-separated list of statuses"
+              },
+              {
+                "name": "tags",
+                "value": "security,convention",
+                "type": "query",
+                "description": "Comma-separated list of tags."
+              },
+              {
+                "name": "types",
+                "value": "CODE_SMELL,BUG",
+                "type": "query",
+                "description": "Comma-separated list of types."
+              }
+            ]
+          },
+          "docs": "Search for issues. Requires the 'Browse' permission on the specified project(s)."
+        },
+        {
+          "info": {
+            "name": "Change severity. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified iss...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/set_severity",
+            "params": [
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "New severity"
+              }
+            ]
+          },
+          "docs": "Change severity. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified issue 'Administer Issues' rights on project of the specified issue"
+        },
+        {
+          "info": {
+            "name": "Set tags on an issue. Requires authentication and Browse permission on project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/set_tags",
+            "params": [
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              },
+              {
+                "name": "tags",
+                "value": "security,cwe,misra-c",
+                "type": "query",
+                "description": "Comma-separated list of tags. All tags are removed if parameter is empty or not set."
+              }
+            ]
+          },
+          "docs": "Set tags on an issue. Requires authentication and Browse permission on project"
+        },
+        {
+          "info": {
+            "name": "Change type of issue, for instance from 'code smell' to 'bug'. Requires the following permissions: 'Authentication' '...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/issues/set_type",
+            "params": [
+              {
+                "name": "issue",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Issue key"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "New type"
+              }
+            ]
+          },
+          "docs": "Change type of issue, for instance from 'code smell' to 'bug'. Requires the following permissions: 'Authentication' 'Browse' rights on project of the specified issue 'Administer Issues' rights on project of the specified issue"
+        },
+        {
+          "info": {
+            "name": "List tags matching a given query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/issues/tags",
+            "params": [
+              {
+                "name": "organization",
+                "value": "my-org",
+                "type": "query",
+                "description": "Organization key"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 100"
+              },
+              {
+                "name": "q",
+                "value": "misra",
+                "type": "query",
+                "description": "Limit search to tags that contain the supplied string."
+              }
+            ]
+          },
+          "docs": "List tags matching a given query"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

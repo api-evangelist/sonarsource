@@ -1,0 +1,267 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication measures API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "measures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return component with specified measures. The componentId or the component parameter must be provided. Requires the f...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/measures/component",
+            "params": [
+              {
+                "name": "additionalFields",
+                "value": "periods,metrics",
+                "type": "query",
+                "description": "Comma-separated list of additional fields that can be returned in the response."
+              },
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              },
+              {
+                "name": "componentId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Component id"
+              },
+              {
+                "name": "developerId",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+              },
+              {
+                "name": "developerKey",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+              },
+              {
+                "name": "metricKeys",
+                "value": "ncloc,complexity,violations",
+                "type": "query",
+                "description": "Comma-separated list of metric keys"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              }
+            ]
+          },
+          "docs": "Return component with specified measures. The componentId or the component parameter must be provided. Requires the following permission: 'Browse' on the project of specified component."
+        },
+        {
+          "info": {
+            "name": "Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the componen...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/measures/component_tree",
+            "params": [
+              {
+                "name": "additionalFields",
+                "value": "periods,metrics",
+                "type": "query",
+                "description": "Comma-separated list of additional fields that can be returned in the response."
+              },
+              {
+                "name": "asc",
+                "value": "",
+                "type": "query",
+                "description": "Ascending sort"
+              },
+              {
+                "name": "baseComponentId",
+                "value": "AU-TpxcA-iU5OvuD2FLz",
+                "type": "query",
+                "description": "Base component id. The search is based on this component."
+              },
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key. The search is based on this component."
+              },
+              {
+                "name": "developerId",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+              },
+              {
+                "name": "developerKey",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated parameter, used previously with the Developer Cockpit plugin. No measures are returned if parameter is set."
+              },
+              {
+                "name": "metricKeys",
+                "value": "ncloc,complexity,violations",
+                "type": "query",
+                "description": "Comma-separated list of metric keys. Types DATA, DISTRIB are not allowed."
+              },
+              {
+                "name": "metricPeriodSort",
+                "value": "",
+                "type": "query",
+                "description": "Sort measures by leak period or not ?. The 's' parameter must contain the 'metricPeriod' value."
+              },
+              {
+                "name": "metricSort",
+                "value": "ncloc",
+                "type": "query",
+                "description": "Metric key to sort by. The 's' parameter must contain the 'metric' or 'metricPeriod' value. It must be part of the 'metricKeys' parameter"
+              },
+              {
+                "name": "metricSortFilter",
+                "value": "",
+                "type": "query",
+                "description": "Filter components. Sort must be on a metric. Possible values are: all: return all componentswithMeasuresOnly: filter out components that do not have a measure on the sorted metric"
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              },
+              {
+                "name": "q",
+                "value": "FILE_NAM",
+                "type": "query",
+                "description": "Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied string"
+              },
+              {
+                "name": "qualifiers",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of component qualifiers. Filter the results with the specified qualifiers. Possible values are:BRC - Sub-projectsDIR - DirectoriesFIL - FilesTRK - ProjectsUTS - Test Files"
+              },
+              {
+                "name": "s",
+                "value": "name,path",
+                "type": "query",
+                "description": "Comma-separated list of sort fields"
+              },
+              {
+                "name": "strategy",
+                "value": "",
+                "type": "query",
+                "description": "Strategy to search for base component descendants:children: return the children components of the base component. Grandchildren components are not returnedall: return all the descendants components of the base component. Grandchildren are returned.leaves: return all the descendant components (files, in general) which don't have other children. They are the leaves of the component tree."
+              }
+            ]
+          },
+          "docs": "Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the component parameter must be provided. Requires the following permission: 'Browse' on the specified project. When limiting search with the q parameter, directories are not returned."
+        },
+        {
+          "info": {
+            "name": "Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of mea...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/measures/search_history",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key"
+              },
+              {
+                "name": "from",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Filter measures created after the given date (inclusive). Either a date (server timezone) or datetime can be provided"
+              },
+              {
+                "name": "metrics",
+                "value": "ncloc,coverage,new_violations",
+                "type": "query",
+                "description": "Comma-separated list of metric keys"
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 1000"
+              },
+              {
+                "name": "pullRequest",
+                "value": "5461",
+                "type": "query",
+                "description": "Pull request id"
+              },
+              {
+                "name": "to",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Filter measures created before the given date (inclusive). Either a date (server timezone) or datetime can be provided"
+              }
+            ]
+          },
+          "docs": "Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of measures for each metric. Requires the following permission: 'Browse' on the specified component"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

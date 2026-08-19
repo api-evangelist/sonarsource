@@ -1,0 +1,295 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication projects API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete one or several projects. Only the 1'000 first items in project filters are taken into account. Requires 'Admin...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/projects/bulk_delete",
+            "params": [
+              {
+                "name": "analyzedBefore",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Filter the projects for which last analysis is older than the given date (exclusive). Either a date (server timezone) or datetime can be provided."
+              },
+              {
+                "name": "onProvisionedOnly",
+                "value": "",
+                "type": "query",
+                "description": "Filter the projects that are provisioned"
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "The key of the organization"
+              },
+              {
+                "name": "projects",
+                "value": "my_project,another_project",
+                "type": "query",
+                "description": "Comma-separated list of project keys"
+              },
+              {
+                "name": "q",
+                "value": "sonar",
+                "type": "query",
+                "description": "Limit to: component names that contain the supplied stringcomponent keys that contain the supplied string"
+              },
+              {
+                "name": "qualifiers",
+                "value": "",
+                "type": "query",
+                "description": "No longer used"
+              }
+            ]
+          },
+          "docs": "Delete one or several projects. Only the 1'000 first items in project filters are taken into account. Requires 'Administer System' permission. At least one parameter is required among analyzedBefore, projects and q"
+        },
+        {
+          "info": {
+            "name": "Bulk update a project or module key and all its sub-components keys. The bulk update allows to replace a part of the ...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/projects/bulk_update_key",
+            "params": [
+              {
+                "name": "dryRun",
+                "value": "",
+                "type": "query",
+                "description": "Simulate bulk update. No component key is updated."
+              },
+              {
+                "name": "from",
+                "value": "_old",
+                "type": "query",
+                "description": "String to match in components keys"
+              },
+              {
+                "name": "project",
+                "value": "my_old_project",
+                "type": "query",
+                "description": "Project or module key"
+              },
+              {
+                "name": "to",
+                "value": "_new",
+                "type": "query",
+                "description": "String replacement in components keys"
+              }
+            ]
+          },
+          "docs": "Bulk update a project or module key and all its sub-components keys. The bulk update allows to replace a part of the current key by another string on the current project and all its sub-modules. It's possible to simulate the bulk update by setting the parameter 'dryRun' at true. No key is updated with a dry run. Ex: to rename a project with key 'my_project' to 'my_new_project' and all its sub-components keys, call the WS with parameters: project: my_project from: my_ to: my_new_Requires the perm"
+        },
+        {
+          "info": {
+            "name": "Create a project. Requires 'Create Projects' permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/projects/create",
+            "params": [
+              {
+                "name": "branch",
+                "value": "branch-5.0",
+                "type": "query",
+                "description": "SCM Branch of the project. The key of the project will become key:branch, for instance 'SonarQube:branch-5.0'"
+              },
+              {
+                "name": "name",
+                "value": "SonarQube",
+                "type": "query",
+                "description": "Name of the project. If name is longer than 500, it is abbreviated."
+              },
+              {
+                "name": "newCodeDefinitionType",
+                "value": "days",
+                "type": "query",
+                "description": "Project New Code Definition Type New code definitions of the following types are allowed:previous_versiondaysdateversion"
+              },
+              {
+                "name": "newCodeDefinitionValue",
+                "value": "30",
+                "type": "query",
+                "description": "Project New Code Definition Value For each new code definition type, a different value is expected:value is 'previous_version', when the new code definition type is previous_versionvalue should be a date , when the new code definition type is datevalue should be version string, when the new code definition type is versionvalue should be a number between 1 and 90, when the new code definition type is days"
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "The key of the organization"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Key of the project"
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query",
+                "description": "Whether the created project should be visible to everyone, or only specific user/groups. If no visibility is specified, the default project visibility will be private for plans that allow private projects."
+              }
+            ]
+          },
+          "docs": "Create a project. Requires 'Create Projects' permission"
+        },
+        {
+          "info": {
+            "name": "Delete a project. Requires 'Administer System' permission or 'Administer' permission on the project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/projects/delete",
+            "params": [
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Delete a project. Requires 'Administer System' permission or 'Administer' permission on the project."
+        },
+        {
+          "info": {
+            "name": "Search for projects. Results are filtered to projects the caller has access to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/projects/search",
+            "params": [
+              {
+                "name": "analyzedBefore",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Filter the projects for which last analysis is older than the given date (exclusive). Either a date (server timezone) or datetime can be provided."
+              },
+              {
+                "name": "onProvisionedOnly",
+                "value": "",
+                "type": "query",
+                "description": "Filter the projects that are provisioned"
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "The key of the organization"
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "projects",
+                "value": "my_project,another_project",
+                "type": "query",
+                "description": "Comma-separated list of project keys"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              },
+              {
+                "name": "q",
+                "value": "sonar",
+                "type": "query",
+                "description": "Limit search to: component names that contain the supplied stringcomponent keys that contain the supplied string"
+              },
+              {
+                "name": "qualifiers",
+                "value": "",
+                "type": "query",
+                "description": "No longer used"
+              }
+            ]
+          },
+          "docs": "Search for projects. Results are filtered to projects the caller has access to."
+        },
+        {
+          "info": {
+            "name": "Update a project or module key and all its sub-components keys. Requires the permission 'Administer' on the specified...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/projects/update_key",
+            "params": [
+              {
+                "name": "from",
+                "value": "my_old_project",
+                "type": "query",
+                "description": "Project or module key"
+              },
+              {
+                "name": "to",
+                "value": "my_new_project",
+                "type": "query",
+                "description": "New component key"
+              }
+            ]
+          },
+          "docs": "Update a project or module key and all its sub-components keys. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Updates visibility of a project. Requires 'Project administer' permission on the specified project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/projects/update_visibility",
+            "params": [
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query",
+                "description": "New visibility"
+              }
+            ]
+          },
+          "docs": "Updates visibility of a project. Requires 'Project administer' permission on the specified project"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

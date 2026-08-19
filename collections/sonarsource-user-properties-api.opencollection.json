@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication user_properties API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user_properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "This web service is removed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/user_properties/index"
+          },
+          "docs": "This web service is removed"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

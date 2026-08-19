@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication project_analyses API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project_analyses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created. Requires the permission...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_analyses/create_event",
+            "params": [
+              {
+                "name": "analysis",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Analysis key"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Category"
+              },
+              {
+                "name": "name",
+                "value": "5.6",
+                "type": "query",
+                "description": "Name"
+              }
+            ]
+          },
+          "docs": "Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Delete a project analysis. Requires the permission 'Administer' on the project of the specified analysis.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_analyses/delete",
+            "params": [
+              {
+                "name": "analysis",
+                "value": "AU-TpxcA-iU5OvuD2FL1",
+                "type": "query",
+                "description": "Analysis key"
+              }
+            ]
+          },
+          "docs": "Delete a project analysis. Requires the permission 'Administer' on the project of the specified analysis."
+        },
+        {
+          "info": {
+            "name": "Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted. Requires the permission...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_analyses/delete_event",
+            "params": [
+              {
+                "name": "event",
+                "value": "AU-TpxcA-iU5OvuD2FLz",
+                "type": "query",
+                "description": "Event key"
+              }
+            ]
+          },
+          "docs": "Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Search a project analyses and attached events. Requires the following permission: 'Browse' on the specified project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/project_analyses/search",
+            "params": [
+              {
+                "name": "branch",
+                "value": "feature/my_branch",
+                "type": "query",
+                "description": "Key of a long lived branch"
+              },
+              {
+                "name": "category",
+                "value": "OTHER",
+                "type": "query",
+                "description": "Event category. Filter analyses that have at least one event of the category specified."
+              },
+              {
+                "name": "from",
+                "value": "2013-05-01",
+                "type": "query",
+                "description": "Filter analyses created after the given date (inclusive). Either a date (server timezone) or datetime can be provided"
+              },
+              {
+                "name": "p",
+                "value": "42",
+                "type": "query",
+                "description": "1-based page number"
+              },
+              {
+                "name": "project",
+                "value": "my_project",
+                "type": "query",
+                "description": "Project key"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 500"
+              },
+              {
+                "name": "to",
+                "value": "2017-10-19 or 2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Filter analyses created before the given date (inclusive). Either a date (server timezone) or datetime can be provided"
+              }
+            ]
+          },
+          "docs": "Search a project analyses and attached events. Requires the following permission: 'Browse' on the specified project"
+        },
+        {
+          "info": {
+            "name": "Set an analysis as the baseline of the New Code Period on a project or a long-lived branch. This manually set baselin...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_analyses/set_baseline",
+            "params": [
+              {
+                "name": "analysis",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Analysis key"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Set an analysis as the baseline of the New Code Period on a project or a long-lived branch. This manually set baseline overrides the `sonar.leak.period` setting. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting a manual baseline rest...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_analyses/unset_baseline",
+            "params": [
+              {
+                "name": "branch",
+                "value": "",
+                "type": "query",
+                "description": "Branch key"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Project key"
+              }
+            ]
+          },
+          "docs": "Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting a manual baseline restores the use of the `sonar.leak.period` setting. Requires the permission 'Administer' on the specified project."
+        },
+        {
+          "info": {
+            "name": "Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated. Requires the permissio...",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sonarcloud.io/api/project_analyses/update_event",
+            "params": [
+              {
+                "name": "event",
+                "value": "AU-TpxcA-iU5OvuD2FL5",
+                "type": "query",
+                "description": "Event key"
+              },
+              {
+                "name": "name",
+                "value": "5.6",
+                "type": "query",
+                "description": "New name"
+              }
+            ]
+          },
+          "docs": "Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated. Requires the permission 'Administer' on the specified project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

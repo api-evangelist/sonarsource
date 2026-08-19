@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication properties API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "This web service is deprecated, please use api/settings/values instead.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/properties/index",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Only json response format is available"
+              },
+              {
+                "name": "id",
+                "value": "sonar.test.inclusions",
+                "type": "query",
+                "description": "Setting key"
+              },
+              {
+                "name": "resource",
+                "value": "my_project",
+                "type": "query",
+                "description": "Component key or database id"
+              }
+            ]
+          },
+          "docs": "This web service is deprecated, please use api/settings/values instead."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

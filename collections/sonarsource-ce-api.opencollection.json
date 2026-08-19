@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SonarQube Cloud Web authentication ce API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration ...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/ce/activity",
+            "params": [
+              {
+                "name": "component",
+                "value": "projectKey",
+                "type": "query",
+                "description": "Key of the component (project) to filter on"
+              },
+              {
+                "name": "componentId",
+                "value": "AU-TpxcA-iU5OvuD2FL0",
+                "type": "query",
+                "description": "Id of the component (project) to filter on"
+              },
+              {
+                "name": "maxExecutedAt",
+                "value": "2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Maximum date of end of task processing (inclusive)"
+              },
+              {
+                "name": "minSubmittedAt",
+                "value": "2017-10-19T13:00:00+0200",
+                "type": "query",
+                "description": "Minimum date of task submission (inclusive)"
+              },
+              {
+                "name": "onlyCurrents",
+                "value": "",
+                "type": "query",
+                "description": "Filter on the last tasks (only the most recent finished task by project)"
+              },
+              {
+                "name": "ps",
+                "value": "20",
+                "type": "query",
+                "description": "Page size. Must be greater than 0 and less or equal than 1000"
+              },
+              {
+                "name": "q",
+                "value": "Apache",
+                "type": "query",
+                "description": "Limit search to: component names that contain the supplied stringcomponent keys that are exactly the same as the supplied stringtask ids that are exactly the same as the supplied stringMust not be set together with componentId"
+              },
+              {
+                "name": "status",
+                "value": "IN_PROGRESS,SUCCESS",
+                "type": "query",
+                "description": "Comma separated list of task statuses"
+              },
+              {
+                "name": "type",
+                "value": "REPORT",
+                "type": "query",
+                "description": "Task type"
+              }
+            ]
+          },
+          "docs": "Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration permission if componentId or component is set."
+        },
+        {
+          "info": {
+            "name": "Returns CE activity related metrics. Requires 'Administer' permission on the specified project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/ce/activity_status",
+            "params": [
+              {
+                "name": "componentId",
+                "value": "AU-TpxcA-iU5OvuD2FL0",
+                "type": "query",
+                "description": "Id of the component (project) to filter on"
+              },
+              {
+                "name": "componentKey",
+                "value": "my_project",
+                "type": "query",
+                "description": "Key of the component (project) to filter on"
+              }
+            ]
+          },
+          "docs": "Returns CE activity related metrics. Requires 'Administer' permission on the specified project."
+        },
+        {
+          "info": {
+            "name": "Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Require...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/ce/component",
+            "params": [
+              {
+                "name": "component",
+                "value": "my_project",
+                "type": "query"
+              },
+              {
+                "name": "componentId",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Requires the following permission: 'Browse' on the specified component. Either 'componentId' or 'component' must be provided."
+        },
+        {
+          "info": {
+            "name": "Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis'...",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sonarcloud.io/api/ce/task",
+            "params": [
+              {
+                "name": "additionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of the optional fields to be returned in response."
+              },
+              {
+                "name": "id",
+                "value": "AU-Tpxb--iU5OvuD2FLy",
+                "type": "query",
+                "description": "Id of task"
+              }
+            ]
+          },
+          "docs": "Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis' permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

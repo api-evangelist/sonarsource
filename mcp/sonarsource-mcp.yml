@@ -456,3 +456,9 @@ tools:
 - name: webservicesResponseExample
   description: Display web service response example
   source_operation: openapi/sonarsource-web-api-openapi.yml#webservicesResponseExample
+deployment:
+  mode: none
+  verified: derived
+  tools: 123
+  checked: '2026-08-12'
+  source: catalog MCP census
