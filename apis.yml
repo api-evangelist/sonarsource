@@ -149,7 +149,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Favourites
+  - favourites
   tags_raw:
   - favourites
   properties:
@@ -203,7 +203,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Language
+  - languages
   tags_raw:
   - languages
   properties:
@@ -221,7 +221,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Measures
+  - measures
   tags_raw:
   - measures
   properties:
@@ -380,8 +380,7 @@ apis:
   description: Manage project tags
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
-  tags:
-  - ProjectTags
+  tags: []
   tags_raw:
   - project_tags
   properties:
@@ -435,7 +434,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Quality Gates
+  - qualitygates
   tags_raw:
   - qualitygates
   properties:
@@ -469,7 +468,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Rules
+  - rules
   tags_raw:
   - rules
   properties:
@@ -523,7 +522,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Time Machine
+  - timemachine
   tags_raw:
   - timemachine
   properties:
@@ -540,8 +539,7 @@ apis:
   description: Manage user groups.
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
-  tags:
-  - User Groups
+  tags: []
   tags_raw:
   - user_groups
   properties:
@@ -558,8 +556,7 @@ apis:
   description: Removed since 6.3, please use api/favorites and api/notifications instead
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
-  tags:
-  - User Properties
+  tags: []
   tags_raw:
   - user_properties
   properties:
@@ -576,8 +573,7 @@ apis:
   description: List, create, and delete a user's access tokens.
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
-  tags:
-  - User Tokens
+  tags: []
   tags_raw:
   - user_tokens
   properties:
@@ -631,7 +627,7 @@ apis:
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
-  - Web Services
+  - webservices
   tags_raw:
   - webservices
   properties:
