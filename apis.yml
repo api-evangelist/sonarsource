@@ -650,6 +650,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Website
+  url: https://www.sonarsource.com/
 - type: CapabilityMap
   url: capabilities/sonarsource-capability-edges.yml
   name: SonarSource Business Capability Map
