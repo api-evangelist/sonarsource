@@ -430,24 +430,6 @@ apis:
     url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   - type: DataModel
     url: data-model/sonarsource-data-model.yml
-- aid: sonarsource:sonarsource-qualitygates-api
-  name: SonarSource qualitygates API
-  description: Manage quality gates, including conditions and project association.
-  humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
-  baseURL: https://sonarcloud.io/api
-  tags:
-  - Quality Gates
-  tags_raw:
-  - qualitygates
-  properties:
-  - type: OpenAPI
-    url: openapi/sonarsource-qualitygates-api-openapi.yml
-  - type: APIReference
-    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
-  - type: Documentation
-    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
-  - type: DataModel
-    url: data-model/sonarsource-data-model.yml
 - aid: sonarsource:sonarsource-qualityprofiles-api
   name: SonarSource qualityprofiles API
   description: Manage quality profiles.
@@ -512,24 +494,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/sonarsource-sources-api-openapi.yml
-  - type: APIReference
-    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
-  - type: Documentation
-    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
-  - type: DataModel
-    url: data-model/sonarsource-data-model.yml
-- aid: sonarsource:sonarsource-timemachine-api
-  name: SonarSource timemachine API
-  description: Removed since 6.3, please use api/measures/search_history instead
-  humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
-  baseURL: https://sonarcloud.io/api
-  tags:
-  - Time Machine
-  tags_raw:
-  - timemachine
-  properties:
-  - type: OpenAPI
-    url: openapi/sonarsource-timemachine-api-openapi.yml
   - type: APIReference
     url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   - type: Documentation
@@ -626,18 +590,48 @@ apis:
     url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   - type: DataModel
     url: data-model/sonarsource-data-model.yml
-- aid: sonarsource:sonarsource-webservices-api
-  name: SonarSource webservices API
+- aid: sonarsource:sonarsource-quality-gates-api
+  name: SonarSource Quality Gates API
+  description: Manage quality gates, including conditions and project association.
+  humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+  baseURL: https://sonarcloud.io/api
+  tags:
+  - Quality Gates
+  properties:
+  - type: OpenAPI
+    url: openapi/sonarsource-quality-gates-api-openapi.yml
+  - type: APIReference
+    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+  - type: Documentation
+    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+  - type: DataModel
+    url: data-model/sonarsource-data-model.yml
+- aid: sonarsource:sonarsource-time-machine-api
+  name: SonarSource Time Machine API
+  description: Removed since 6.3, please use api/measures/search_history instead
+  humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+  baseURL: https://sonarcloud.io/api
+  tags:
+  - Time Machine
+  properties:
+  - type: OpenAPI
+    url: openapi/sonarsource-time-machine-api-openapi.yml
+  - type: APIReference
+    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+  - type: Documentation
+    url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
+  - type: DataModel
+    url: data-model/sonarsource-data-model.yml
+- aid: sonarsource:sonarsource-web-services-api
+  name: SonarSource Web Services API
   description: Get information on the web api supported on this instance.
   humanURL: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   baseURL: https://sonarcloud.io/api
   tags:
   - Web Services
-  tags_raw:
-  - webservices
   properties:
   - type: OpenAPI
-    url: openapi/sonarsource-webservices-api-openapi.yml
+    url: openapi/sonarsource-web-services-api-openapi.yml
   - type: APIReference
     url: https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/web-api/
   - type: Documentation
