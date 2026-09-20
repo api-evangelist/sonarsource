@@ -1,0 +1,16 @@
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://docs.sonarsource.com/sonarqube-cloud/appendices/web-api
+sources:
+- https://docs.sonarsource.com/sonarqube-cloud/appendices/web-api
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: false
+note: Page mentions that some APIs are rate-limited and that calls fail with a 429 status code, but states
+  no numeric limits or headers.
+limit_count: 0
+limits: []
+exceeded_status: 429

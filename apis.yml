@@ -644,6 +644,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: RateLimits
+  url: rate-limits/sonarsource-rate-limits.yml
 - type: Plans
   url: plans/sonarsource-plans-pricing.yml
 - type: Website
