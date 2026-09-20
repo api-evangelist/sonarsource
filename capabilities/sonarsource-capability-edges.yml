@@ -1,0 +1,105 @@
+slug: sonarsource
+provider: SonarSource
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: issues
+  spec_file: sonarsource-issues-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: POST /api/issues/set_type — 'Change type of issue, for instance from 'code smell' to 'bug'';
+    POST /api/issues/assign — 'Assign/Unassign an issue'; POST /api/issues/do_transition — 'Do workflow
+    transition on an issue'
+  reason: Full defect lifecycle over code-analysis findings (assign, comment, transition, severity, type
+    bug/code smell) — this is defect management within software quality engineering, not generic ITSM
+    incident handling.
+- tag: qualitygates
+  spec_file: sonarsource-qualitygates-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission.
+  reason: Quality gates define pass/fail conditions applied to code analysis and gate builds — squarely
+    software quality engineering for software products.
+- tag: qualityprofiles
+  spec_file: sonarsource-qualityprofiles-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: 'Activate a rule on a Quality Profile. Requires one of the following permissions: ''Administer
+    Quality Profiles'''
+  reason: Quality profiles are the rule sets governing automated code analysis; managing them is stewardship
+    of the software quality/test-and-analysis regime.
+- tag: webhooks
+  spec_file: sonarsource-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.85
+  evidence: Create a Webhook... Get the recent deliveries for a specified project or Compute Engine task
+  reason: Lifecycle CRUD of outbound webhook subscriptions plus delivery inspection maps directly to Webhook
+    & Event Subscription Management.
+- tag: rules
+  spec_file: sonarsource-rules-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.8
+  evidence: Search for a collection of relevant rules matching a specified query
+  reason: Rules are the static-analysis checks used to detect code quality and security defects, part
+    of the software quality engineering practice rather than any enterprise policy/compliance capability.
+- tag: user_groups
+  spec_file: sonarsource-user-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: 'Add a user to a group... Requires the following permission: ''Administer System'''
+  reason: CRUD over user groups and group membership with administer-system permissions is identity and
+    access management (group-based authorisation).
+- tag: user_tokens
+  spec_file: sonarsource-user-tokens-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: Generate a user access token. Please keep your tokens secret. They enable to authenticate
+    and analyze projects.
+  reason: Issuance and revocation of user access tokens/credentials is credential and access management.
+    Could also be read as developer credential management, but this is internal analysis-user authentication,
+    so IAM is the safer fit.
+- tag: permissions
+  spec_file: sonarsource-permissions-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /api/permissions/add_user — 'Add permission to a user. This service defaults to global
+    permissions, but can be limited to project permissions'; POST /api/permissions/create_template — 'Create
+    a permission template'
+  reason: Grants and revokes user/group permissions globally and per project, with reusable permission
+    templates — authorisation administration, i.e. Identity & Access Management. Some risk this is judged
+    as in-product admin plumbing, so not high confidence.
+- tag: users
+  spec_file: sonarsource-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.
+  reason: Single operation exposing user-to-group membership for administration; thin but clearly access
+    administration rather than HR employee records.
