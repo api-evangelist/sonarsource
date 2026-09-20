@@ -10,6 +10,14 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: tiered-subscription
+delivery:
+  delivery: open-core
+  method: page
+  read: '2026-09-20'
+  evidence: In addition, SonarQube offers a Community Build, which is an open source edition suitable
+    for developers and small teams.
+  free_edition: Community Build
+  managed_tier: Team
 published: true
 note: FAQ also mentions 'prices start at $32 per month (previously listed at $65)' for the Team plan,
   inconsistent with the $68/$34 shown in the plan card. Enterprise is contact sales.
