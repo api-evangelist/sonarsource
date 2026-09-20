@@ -8,6 +8,19 @@ note: ESTIMATES, not quotes. Computed by API Evangelist from the prices this pro
   publish to replace it — publish that and the estimate is retired.
 audience_of_source_pricing: business-product
 pricing_basis: tiered-subscription
+delivery: open-core
+delivery_method: keyword
+free_self_hosted_tiers:
+- 'OSS maintainers: Free forever'
+managed_premium:
+  grade: A
+  usd_per_month: 20.0
+  plan: Gitar AI Code Review
+  price_text: $20 /user/mo, billed annually
+  same_product: unverified
+  meaning: the cheapest priced tier beside the free edition on the same page. When same_product is verified-by-name
+    it is the provider's own price for operating what it gives away; when unverified it may be a different
+    product. Self-hosting cost itself is unmeasured.
 estimate_count: 2
 estimates:
 - kind: entry_cost
