@@ -26,7 +26,8 @@ edges:
     bug/code smell) — this is defect management within software quality engineering, not generic ITSM
     incident handling.
 - tag: qualitygates
-  spec_file: sonarsource-qualitygates-api-openapi.yml
+  spec_file: sonarsource-quality-gates-api-openapi.yml
+  reanchored_from: sonarsource-qualitygates-api-openapi.yml
   capability_id: BC-4200.50
   capability_id_l1: BC-4200
   capability_name: Software Quality Engineering
