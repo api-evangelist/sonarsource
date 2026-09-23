@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Properties API
+  title: SonarQube Cloud Web Properties API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: properties
+- name: Properties
   description: This web service is deprecated, please use api/settings instead.
 paths:
   /api/properties/index:
     get:
       operationId: propertiesIndex
-      summary: This web service is deprecated, please use api/settings/values instead.
+      summary: This web service is deprecated, please use api/settings/values instead
       description: This web service is deprecated, please use api/settings/values instead.
       tags:
-      - properties
+      - Properties
       parameters:
       - name: format
         in: query

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Favorites API
+  title: SonarQube Cloud Web Favorites API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: favorites
+- name: Favorites
   description: Manage user favorites
 paths:
   /api/favorites/add:
     post:
       operationId: favoritesAdd
-      summary: Add a project as favorite for the authenticated user. Only 100 components can be added as favorite. Requires authenti...
+      summary: Add a project as favorite for the authenticated user.
       description: 'Add a project as favorite for the authenticated user. Only 100 components can be added as favorite. Requires authentication and the following permission: ''Browse'' on the project.'
       tags:
-      - favorites
+      - Favorites
       parameters:
       - name: component
         in: query
@@ -45,10 +45,10 @@ paths:
   /api/favorites/remove:
     post:
       operationId: favoritesRemove
-      summary: Remove a component (project, directory, file etc.) as favorite for the authenticated user. Requires authentication.
+      summary: Remove a component (project, directory, file etc.) as favorite for the…
       description: Remove a component (project, directory, file etc.) as favorite for the authenticated user. Requires authentication.
       tags:
-      - favorites
+      - Favorites
       parameters:
       - name: component
         in: query
@@ -71,10 +71,10 @@ paths:
   /api/favorites/search:
     get:
       operationId: favoritesSearch
-      summary: Search for the authenticated user favorites. Requires authentication.
+      summary: Search for the authenticated user favorites. Requires authentication
       description: Search for the authenticated user favorites. Requires authentication.
       tags:
-      - favorites
+      - Favorites
       parameters:
       - name: p
         in: query

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Settings API
+  title: SonarQube Cloud Web Settings API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: settings
+- name: Settings
   description: Manage settings.
 paths:
   /api/settings/list_definitions:
     get:
       operationId: settingsListDefinitions
-      summary: List settings definitions. Requires 'Browse' permission when a component is specified To access licensed settings, au...
+      summary: List settings definitions.
       description: 'List settings definitions. Requires ''Browse'' permission when a component is specified To access licensed settings, authentication is required To access secured settings, one of the following permissions is required: ''Execute Analysis''''Administer'' rights on the specified component'
       tags:
-      - settings
+      - Settings
       parameters:
       - name: component
         in: query
@@ -45,10 +45,10 @@ paths:
   /api/settings/reset:
     post:
       operationId: settingsReset
-      summary: Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires th...
+      summary: Remove a setting value.
       description: Remove a setting value. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component.
       tags:
-      - settings
+      - Settings
       parameters:
       - name: branch
         in: query
@@ -99,10 +99,10 @@ paths:
   /api/settings/set:
     post:
       operationId: settingsSet
-      summary: Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties ar...
+      summary: Update a setting value.
       description: Update a setting value. Either 'value' or 'values' must be provided. The settings defined in conf/sonar.properties are read-only and can't be changed. Requires the permission 'Administer' on the specified component.
       tags:
-      - settings
+      - Settings
       parameters:
       - name: component
         in: query
@@ -161,10 +161,10 @@ paths:
   /api/settings/values:
     get:
       operationId: settingsValues
-      summary: List settings values. If no value has been set for a setting, then the default value is returned. Both component and ...
+      summary: List settings values.
       description: 'List settings values. If no value has been set for a setting, then the default value is returned. Both component and organization parameters cannot be used together. Requires ''Browse'' or ''Execute Analysis'' permission when a component is specified. Requires to be member of the organization if one is specified. To access secured settings, one of the following permissions is required: ''Execute Analysis'' or ''Administer'' rights on the specified component The returned attributes are:''key'': The key of the setting''value'': The value of setting''inherited'': True if the value is being inherited from a parent setting''parentValue: The value of the parent setting if the value is not inherited''''parentOrigin: The origin of the parentValue (INSTANCE, ORGANIZATION, PROJECT)'''
       tags:
-      - settings
+      - Settings
       parameters:
       - name: component
         in: query

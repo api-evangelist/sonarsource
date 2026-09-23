@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Project Branches API
+  title: SonarQube Cloud Web Project Branches API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/project_branches/delete:
     post:
       operationId: projectBranchesDelete
-      summary: Delete a non-main branch of a project. Requires 'Administer' rights on the specified project.
+      summary: Delete a non-main branch of a project.
       description: Delete a non-main branch of a project. Requires 'Administer' rights on the specified project.
       tags:
       - project_branches
@@ -52,7 +52,7 @@ paths:
   /api/project_branches/list:
     get:
       operationId: projectBranchesList
-      summary: List the branches of a project. The statistics are the overall counts on long branches, and the count of issues detec...
+      summary: List the branches of a project.
       description: List the branches of a project. The statistics are the overall counts on long branches, and the count of issues detected on the changed code on short branches, and are only provided if the project parameter is specified. If the project parameter is specified, requires the user to have 'Browse' or 'Execute analysis' rights on that project. Otherwise, only returns branches from projects on which this user has 'Browse' or 'Execute analysis' rights.
       tags:
       - project_branches
@@ -85,7 +85,7 @@ paths:
   /api/project_branches/rename:
     post:
       operationId: projectBranchesRename
-      summary: Rename the main branch of a project. Requires 'Administer' permission on the specified project.
+      summary: Rename the main branch of a project.
       description: Rename the main branch of a project. Requires 'Administer' permission on the specified project.
       tags:
       - project_branches

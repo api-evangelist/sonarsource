@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Project Analyses API
+  title: SonarQube Cloud Web Project Analyses API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/project_analyses/create_event:
     post:
       operationId: projectAnalysesCreateEvent
-      summary: Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created. Requires the permission...
+      summary: Create a project analysis event.
       description: Create a project analysis event. Only event of category 'VERSION' and 'OTHER' can be created. Requires the permission 'Administer' on the specified project.
       tags:
       - project_analyses
@@ -63,7 +63,7 @@ paths:
   /api/project_analyses/delete:
     post:
       operationId: projectAnalysesDelete
-      summary: Delete a project analysis. Requires the permission 'Administer' on the project of the specified analysis.
+      summary: Delete a project analysis.
       description: Delete a project analysis. Requires the permission 'Administer' on the project of the specified analysis.
       tags:
       - project_analyses
@@ -89,7 +89,7 @@ paths:
   /api/project_analyses/delete_event:
     post:
       operationId: projectAnalysesDeleteEvent
-      summary: Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted. Requires the permission...
+      summary: Delete a project analysis event.
       description: Delete a project analysis event. Only event of category 'VERSION' and 'OTHER' can be deleted. Requires the permission 'Administer' on the specified project.
       tags:
       - project_analyses
@@ -115,7 +115,7 @@ paths:
   /api/project_analyses/search:
     get:
       operationId: projectAnalysesSearch
-      summary: 'Search a project analyses and attached events. Requires the following permission: ''Browse'' on the specified project'
+      summary: Search a project analyses and attached events.
       description: 'Search a project analyses and attached events. Requires the following permission: ''Browse'' on the specified project'
       tags:
       - project_analyses
@@ -191,7 +191,7 @@ paths:
   /api/project_analyses/set_baseline:
     post:
       operationId: projectAnalysesSetBaseline
-      summary: Set an analysis as the baseline of the New Code Period on a project or a long-lived branch. This manually set baselin...
+      summary: Set an analysis as the baseline of the New Code Period on a project or a…
       description: Set an analysis as the baseline of the New Code Period on a project or a long-lived branch. This manually set baseline overrides the `sonar.leak.period` setting. Requires the permission 'Administer' on the specified project.
       tags:
       - project_analyses
@@ -229,7 +229,7 @@ paths:
   /api/project_analyses/unset_baseline:
     post:
       operationId: projectAnalysesUnsetBaseline
-      summary: Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting a manual baseline rest...
+      summary: Unset any manually-set New Code Period baseline on a project or a long-lived…
       description: Unset any manually-set New Code Period baseline on a project or a long-lived branch. Unsetting a manual baseline restores the use of the `sonar.leak.period` setting. Requires the permission 'Administer' on the specified project.
       tags:
       - project_analyses
@@ -260,7 +260,7 @@ paths:
   /api/project_analyses/update_event:
     post:
       operationId: projectAnalysesUpdateEvent
-      summary: Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated. Requires the permissio...
+      summary: Update a project analysis event.
       description: Update a project analysis event. Only events of category 'VERSION' and 'OTHER' can be updated. Requires the permission 'Administer' on the specified project.
       tags:
       - project_analyses

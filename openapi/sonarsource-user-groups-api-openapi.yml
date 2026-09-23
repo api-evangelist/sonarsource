@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication User Groups API
+  title: SonarQube Cloud Web User Groups API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: user_groups
+- name: User Groups
   description: Manage user groups.
 paths:
   /api/user_groups/add_user:
     post:
       operationId: userGroupsAddUser
-      summary: 'Add a user to a group. ''id'' or ''name'' must be provided. Requires the following permission: ''Administer System''.'
+      summary: Add a user to a group.
       description: 'Add a user to a group. ''id'' or ''name'' must be provided. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: id
         in: query
@@ -66,10 +66,10 @@ paths:
   /api/user_groups/create:
     post:
       operationId: userGroupsCreate
-      summary: 'Create a group. Requires the following permission: ''Administer System''.'
+      summary: 'Create a group. Requires the following permission: ''Administer System'''
       description: 'Create a group. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: description
         in: query
@@ -108,10 +108,10 @@ paths:
   /api/user_groups/delete:
     post:
       operationId: userGroupsDelete
-      summary: Delete a group. The default groups cannot be deleted. 'id' or 'name' must be provided. Requires the following permiss...
+      summary: Delete a group.
       description: 'Delete a group. The default groups cannot be deleted. ''id'' or ''name'' must be provided. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: id
         in: query
@@ -148,10 +148,10 @@ paths:
   /api/user_groups/remove_user:
     post:
       operationId: userGroupsRemoveUser
-      summary: 'Remove a user from a group. ''id'' or ''name'' must be provided. Requires the following permission: ''Administer System''.'
+      summary: Remove a user from a group.
       description: 'Remove a user from a group. ''id'' or ''name'' must be provided. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: id
         in: query
@@ -195,10 +195,10 @@ paths:
   /api/user_groups/search:
     get:
       operationId: userGroupsSearch
-      summary: 'Search for user groups. Requires the following permission: ''Administer System''.'
+      summary: 'Search for user groups. Requires the following permission: ''Administer System'''
       description: 'Search for user groups. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: f
         in: query
@@ -254,10 +254,10 @@ paths:
   /api/user_groups/update:
     post:
       operationId: userGroupsUpdate
-      summary: 'Update a group. Requires the following permission: ''Administer System''.'
+      summary: 'Update a group. Requires the following permission: ''Administer System'''
       description: 'Update a group. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: description
         in: query
@@ -296,10 +296,10 @@ paths:
   /api/user_groups/users:
     get:
       operationId: userGroupsUsers
-      summary: 'Search for users with membership information with respect to a group. Requires the following permission: ''Administer ...'
+      summary: Search for users with membership information with respect to a group.
       description: 'Search for users with membership information with respect to a group. Requires the following permission: ''Administer System''.'
       tags:
-      - user_groups
+      - User Groups
       parameters:
       - name: id
         in: query

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Notifications API
+  title: SonarQube Cloud Web Notifications API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: notifications
+- name: Notifications
   description: Manage notifications of the authenticated user
 paths:
   /api/notifications/add:
     post:
       operationId: notificationsAdd
-      summary: 'Add a notification for the authenticated user. Requires one of the following permissions: Authentication if no login ...'
+      summary: Add a notification for the authenticated user.
       description: 'Add a notification for the authenticated user. Requires one of the following permissions: Authentication if no login is provided. If a project is provided, requires the ''Browse'' permission on the specified project. If a project is provided, requires the ''Browse'' permission on the specified project.'
       tags:
-      - notifications
+      - Notifications
       parameters:
       - name: channel
         in: query
@@ -68,9 +68,8 @@ paths:
     get:
       operationId: notificationsList
       summary: List notifications of the authenticated user
-      description: List notifications of the authenticated user
       tags:
-      - notifications
+      - Notifications
       parameters:
       - name: login
         in: query
@@ -93,9 +92,8 @@ paths:
     post:
       operationId: notificationsRemove
       summary: Remove a notification for the authenticated user
-      description: Remove a notification for the authenticated user
       tags:
-      - notifications
+      - Notifications
       parameters:
       - name: channel
         in: query

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Projects API
+  title: SonarQube Cloud Web Projects API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: projects
+- name: Projects
   description: Manage project existence.
 paths:
   /api/projects/bulk_delete:
     post:
       operationId: projectsBulkDelete
-      summary: Delete one or several projects. Only the 1'000 first items in project filters are taken into account. Requires 'Admin...
+      summary: Delete one or several projects.
       description: Delete one or several projects. Only the 1'000 first items in project filters are taken into account. Requires 'Administer System' permission. At least one parameter is required among analyzedBefore, projects and q
       tags:
-      - projects
+      - Projects
       parameters:
       - name: analyzedBefore
         in: query
@@ -86,10 +86,10 @@ paths:
   /api/projects/bulk_update_key:
     post:
       operationId: projectsBulkUpdateKey
-      summary: Bulk update a project or module key and all its sub-components keys. The bulk update allows to replace a part of the ...
+      summary: Bulk update a project or module key and all its sub-components keys.
       description: 'Bulk update a project or module key and all its sub-components keys. The bulk update allows to replace a part of the current key by another string on the current project and all its sub-modules. It''s possible to simulate the bulk update by setting the parameter ''dryRun'' at true. No key is updated with a dry run. Ex: to rename a project with key ''my_project'' to ''my_new_project'' and all its sub-components keys, call the WS with parameters: project: my_project from: my_ to: my_new_Requires the permission ''Administer'' on the specified project.'
       tags:
-      - projects
+      - Projects
       parameters:
       - name: dryRun
         in: query
@@ -140,9 +140,8 @@ paths:
     post:
       operationId: projectsCreate
       summary: Create a project. Requires 'Create Projects' permission
-      description: Create a project. Requires 'Create Projects' permission
       tags:
-      - projects
+      - Projects
       parameters:
       - name: branch
         in: query
@@ -209,10 +208,10 @@ paths:
   /api/projects/delete:
     post:
       operationId: projectsDelete
-      summary: Delete a project. Requires 'Administer System' permission or 'Administer' permission on the project.
+      summary: Delete a project.
       description: Delete a project. Requires 'Administer System' permission or 'Administer' permission on the project.
       tags:
-      - projects
+      - Projects
       parameters:
       - name: project
         in: query
@@ -235,10 +234,10 @@ paths:
   /api/projects/search:
     get:
       operationId: projectsSearch
-      summary: Search for projects. Results are filtered to projects the caller has access to.
+      summary: Search for projects. Results are filtered to projects the caller has access to
       description: Search for projects. Results are filtered to projects the caller has access to.
       tags:
-      - projects
+      - Projects
       parameters:
       - name: analyzedBefore
         in: query
@@ -318,10 +317,10 @@ paths:
   /api/projects/update_key:
     post:
       operationId: projectsUpdateKey
-      summary: Update a project or module key and all its sub-components keys. Requires the permission 'Administer' on the specified...
+      summary: Update a project or module key and all its sub-components keys.
       description: Update a project or module key and all its sub-components keys. Requires the permission 'Administer' on the specified project.
       tags:
-      - projects
+      - Projects
       parameters:
       - name: from
         in: query
@@ -351,10 +350,10 @@ paths:
   /api/projects/update_visibility:
     post:
       operationId: projectsUpdateVisibility
-      summary: Updates visibility of a project. Requires 'Project administer' permission on the specified project
+      summary: Updates visibility of a project.
       description: Updates visibility of a project. Requires 'Project administer' permission on the specified project
       tags:
-      - projects
+      - Projects
       parameters:
       - name: project
         in: query

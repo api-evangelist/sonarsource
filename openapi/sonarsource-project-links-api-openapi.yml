@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Project Links API
+  title: SonarQube Cloud Web Project Links API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/project_links/create:
     post:
       operationId: projectLinksCreate
-      summary: Create a new project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      summary: Create a new project link.
       description: Create a new project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
       tags:
       - project_links
@@ -68,7 +68,7 @@ paths:
   /api/project_links/delete:
     post:
       operationId: projectLinksDelete
-      summary: Delete existing project link. Requires 'Administer' permission on the specified project, or global 'Administer' permi...
+      summary: Delete existing project link.
       description: Delete existing project link. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
       tags:
       - project_links
@@ -94,7 +94,7 @@ paths:
   /api/project_links/search:
     get:
       operationId: projectLinksSearch
-      summary: List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one of the following permissions:...
+      summary: List links of a project.
       description: List links of a project. The 'projectId' or 'projectKey' must be provided. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project
       tags:
       - project_links

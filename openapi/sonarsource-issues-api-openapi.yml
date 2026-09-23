@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Issues API
+  title: SonarQube Cloud Web Issues API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: issues
+- name: Issues
   description: Read and update issues.
 paths:
   /api/issues/add_comment:
     post:
       operationId: issuesAddComment
-      summary: 'Add a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      summary: Add a comment.
       description: 'Add a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
       tags:
-      - issues
+      - Issues
       parameters:
       - name: isFeedback
         in: query
@@ -60,10 +60,10 @@ paths:
   /api/issues/assign:
     post:
       operationId: issuesAssign
-      summary: Assign/Unassign an issue. Requires authentication and Browse permission on project
+      summary: Assign/Unassign an issue.
       description: Assign/Unassign an issue. Requires authentication and Browse permission on project
       tags:
-      - issues
+      - Issues
       parameters:
       - name: assignee
         in: query
@@ -93,10 +93,10 @@ paths:
   /api/issues/authors:
     get:
       operationId: issuesAuthors
-      summary: Search SCM accounts which match a given query. Requires authentication.
+      summary: Search SCM accounts which match a given query. Requires authentication
       description: Search SCM accounts which match a given query. Requires authentication.
       tags:
-      - issues
+      - Issues
       parameters:
       - name: organization
         in: query
@@ -141,10 +141,10 @@ paths:
   /api/issues/bulk_change:
     post:
       operationId: issuesBulkChange
-      summary: Bulk change on issues. Requires authentication.
+      summary: Bulk change on issues. Requires authentication
       description: Bulk change on issues. Requires authentication.
       tags:
-      - issues
+      - Issues
       parameters:
       - name: add_tags
         in: query
@@ -260,10 +260,10 @@ paths:
   /api/issues/changelog:
     get:
       operationId: issuesChangelog
-      summary: Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.
+      summary: Display changelog of an issue.
       description: Display changelog of an issue. Requires the 'Browse' permission on the project of the specified issue.
       tags:
-      - issues
+      - Issues
       parameters:
       - name: issue
         in: query
@@ -286,10 +286,10 @@ paths:
   /api/issues/delete_comment:
     post:
       operationId: issuesDeleteComment
-      summary: 'Delete a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      summary: Delete a comment.
       description: 'Delete a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
       tags:
-      - issues
+      - Issues
       parameters:
       - name: comment
         in: query
@@ -312,10 +312,10 @@ paths:
   /api/issues/do_transition:
     post:
       operationId: issuesDoTransition
-      summary: Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept...
+      summary: Do workflow transition on an issue.
       description: Do workflow transition on an issue. Requires authentication and Browse permission on project. The transitions 'accept', 'wontfix', and 'falsepositive' require the permission 'Administer Issues'. The transitions involving security hotspots require the permission 'Administer Security Hotspot'.
       tags:
-      - issues
+      - Issues
       parameters:
       - name: comment
         in: query
@@ -371,10 +371,10 @@ paths:
   /api/issues/edit_comment:
     post:
       operationId: issuesEditComment
-      summary: 'Edit a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
+      summary: Edit a comment.
       description: 'Edit a comment. Requires authentication and the following permission: ''Browse'' on the project of the specified issue.'
       tags:
-      - issues
+      - Issues
       parameters:
       - name: comment
         in: query
@@ -404,10 +404,10 @@ paths:
   /api/issues/search:
     get:
       operationId: issuesSearch
-      summary: Search for issues. Requires the 'Browse' permission on the specified project(s).
+      summary: Search for issues. Requires the 'Browse' permission on the specified project(s)
       description: Search for issues. Requires the 'Browse' permission on the specified project(s).
       tags:
-      - issues
+      - Issues
       parameters:
       - name: additionalFields
         in: query
@@ -862,10 +862,10 @@ paths:
   /api/issues/set_severity:
     post:
       operationId: issuesSetSeverity
-      summary: 'Change severity. Requires the following permissions: ''Authentication'' ''Browse'' rights on project of the specified iss...'
+      summary: Change severity.
       description: 'Change severity. Requires the following permissions: ''Authentication'' ''Browse'' rights on project of the specified issue ''Administer Issues'' rights on project of the specified issue'
       tags:
-      - issues
+      - Issues
       parameters:
       - name: issue
         in: query
@@ -902,9 +902,8 @@ paths:
     post:
       operationId: issuesSetTags
       summary: Set tags on an issue. Requires authentication and Browse permission on project
-      description: Set tags on an issue. Requires authentication and Browse permission on project
       tags:
-      - issues
+      - Issues
       parameters:
       - name: issue
         in: query
@@ -934,10 +933,10 @@ paths:
   /api/issues/set_type:
     post:
       operationId: issuesSetType
-      summary: 'Change type of issue, for instance from ''code smell'' to ''bug''. Requires the following permissions: ''Authentication'' ''...'
+      summary: Change type of issue, for instance from 'code smell' to 'bug'.
       description: 'Change type of issue, for instance from ''code smell'' to ''bug''. Requires the following permissions: ''Authentication'' ''Browse'' rights on project of the specified issue ''Administer Issues'' rights on project of the specified issue'
       tags:
-      - issues
+      - Issues
       parameters:
       - name: issue
         in: query
@@ -972,9 +971,8 @@ paths:
     get:
       operationId: issuesTags
       summary: List tags matching a given query
-      description: List tags matching a given query
       tags:
-      - issues
+      - Issues
       parameters:
       - name: organization
         in: query

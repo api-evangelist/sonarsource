@@ -1,0 +1,35 @@
+# Front Door AI Index — sonarsource — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: sonarsource
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.sonarsource.com
+  final_host: www.sonarsource.com
+  ownership: own
+  owner: sonarsource
+  shares_host_with:
+  - sonar
+  - sonarqube
+  inherited_from: null
+  verdict: scored
+  score: 52
+  host_score: 52
+  density: 33.02
+  words: 1575
+  tiers:
+    agentic: 14
+    core: 32
+    model: 6
+  ambiguous: 25
+  top_terms:
+    AI: 32
+    agent: 25
+    agentic: 10
+    Claude: 4
+    copilot: 2
+    AI agent: 1
+    GPT: 1
+    MCP: 1
+    OpenAI: 1

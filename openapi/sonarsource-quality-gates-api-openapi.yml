@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Qualitygates API
+  title: SonarQube Cloud Web Qualitygates API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: qualitygates
+- name: Quality Gates
   description: Manage quality gates, including conditions and project association.
 paths:
   /api/qualitygates/copy:
     post:
       operationId: qualitygatesCopy
-      summary: Copy a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      summary: Copy a Quality Gate. Requires the 'Administer Quality Gates' permission
       description: Copy a Quality Gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: id
         in: query
@@ -60,10 +60,10 @@ paths:
   /api/qualitygates/create:
     post:
       operationId: qualitygatesCreate
-      summary: Create a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      summary: Create a Quality Gate. Requires the 'Administer Quality Gates' permission
       description: Create a Quality Gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: name
         in: query
@@ -95,10 +95,10 @@ paths:
   /api/qualitygates/create_condition:
     post:
       operationId: qualitygatesCreateCondition
-      summary: Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission.
+      summary: Add a new condition to a quality gate.
       description: Add a new condition to a quality gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: error
         in: query
@@ -154,10 +154,10 @@ paths:
   /api/qualitygates/delete_condition:
     post:
       operationId: qualitygatesDeleteCondition
-      summary: Delete a condition from a quality gate. Requires the 'Administer Quality Gates' permission.
+      summary: Delete a condition from a quality gate.
       description: Delete a condition from a quality gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: id
         in: query
@@ -188,10 +188,10 @@ paths:
   /api/qualitygates/deselect:
     post:
       operationId: qualitygatesDeselect
-      summary: Remove the association of a project from a quality gate. Requires one of the following permissions:'Administer Qualit...
+      summary: Remove the association of a project from a quality gate.
       description: Remove the association of a project from a quality gate. Requires one of the following permissions:'Administer Quality Gates''Administer' rights on the project
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: organization
         in: query
@@ -229,10 +229,10 @@ paths:
   /api/qualitygates/destroy:
     post:
       operationId: qualitygatesDestroy
-      summary: Delete a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      summary: Delete a Quality Gate. Requires the 'Administer Quality Gates' permission
       description: Delete a Quality Gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: id
         in: query
@@ -263,10 +263,10 @@ paths:
   /api/qualitygates/get_by_project:
     get:
       operationId: qualitygatesGetByProject
-      summary: Get the quality gate of a project. Requires one of the following permissions:'Administer' rights on the specified pro...
+      summary: Get the quality gate of a project.
       description: Get the quality gate of a project. Requires one of the following permissions:'Administer' rights on the specified project'Browse' on the specified project
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: organization
         in: query
@@ -298,9 +298,8 @@ paths:
     get:
       operationId: qualitygatesList
       summary: Get a list of quality gates
-      description: Get a list of quality gates
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: organization
         in: query
@@ -324,10 +323,10 @@ paths:
   /api/qualitygates/project_status:
     get:
       operationId: qualitygatesProjectStatus
-      summary: Get the quality gate status of a project or a Compute Engine task. Either 'analysisId', 'projectId' or 'projectKey' m...
+      summary: Get the quality gate status of a project or a Compute Engine task.
       description: 'Get the quality gate status of a project or a Compute Engine task. Either ''analysisId'', ''projectId'' or ''projectKey'' must be provided The different statuses returned are: OK, WARN, ERROR, NONE. The NONE status is returned when there is no quality gate associated with the analysis. Returns an HTTP code 404 if the analysis associated with the task is not found or does not exist. Requires one of the following permissions:''Administer'' rights on the specified project''Browse'' on the specified project'
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: analysisId
         in: query
@@ -379,10 +378,10 @@ paths:
   /api/qualitygates/rename:
     post:
       operationId: qualitygatesRename
-      summary: Rename a Quality Gate. Requires the 'Administer Quality Gates' permission.
+      summary: Rename a Quality Gate. Requires the 'Administer Quality Gates' permission
       description: Rename a Quality Gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: id
         in: query
@@ -421,10 +420,10 @@ paths:
   /api/qualitygates/search:
     get:
       operationId: qualitygatesSearch
-      summary: Search for projects associated (or not) to a quality gate. Only authorized projects for current user will be returned.
+      summary: Search for projects associated (or not) to a quality gate.
       description: Search for projects associated (or not) to a quality gate. Only authorized projects for current user will be returned.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: gateId
         in: query
@@ -488,10 +487,10 @@ paths:
   /api/qualitygates/select:
     post:
       operationId: qualitygatesSelect
-      summary: Associate a project to a quality gate. The 'projectId' or 'projectKey' must be provided. Project id as a numeric valu...
+      summary: Associate a project to a quality gate.
       description: Associate a project to a quality gate. The 'projectId' or 'projectKey' must be provided. Project id as a numeric value is deprecated since 6.1. Please use the id similar to 'AU-TpxcA-iU5OvuD2FLz'. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: gateId
         in: query
@@ -536,10 +535,10 @@ paths:
   /api/qualitygates/set_as_default:
     post:
       operationId: qualitygatesSetAsDefault
-      summary: Set a quality gate as the default quality gate. Requires the 'Administer Quality Gates' permission.
+      summary: Set a quality gate as the default quality gate.
       description: Set a quality gate as the default quality gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: id
         in: query
@@ -571,9 +570,8 @@ paths:
     get:
       operationId: qualitygatesShow
       summary: Display the details of a quality gate
-      description: Display the details of a quality gate
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: id
         in: query
@@ -611,10 +609,10 @@ paths:
   /api/qualitygates/unset_default:
     post:
       operationId: qualitygatesUnsetDefault
-      summary: 'This webservice is no more available : a default quality gate is mandatory.'
+      summary: 'This webservice is no more available : a default quality gate is mandatory'
       description: 'This webservice is no more available : a default quality gate is mandatory.'
       tags:
-      - qualitygates
+      - Quality Gates
       parameters: []
       responses:
         '200':
@@ -631,10 +629,10 @@ paths:
   /api/qualitygates/update_condition:
     post:
       operationId: qualitygatesUpdateCondition
-      summary: Update a condition attached to a quality gate. Requires the 'Administer Quality Gates' permission.
+      summary: Update a condition attached to a quality gate.
       description: Update a condition attached to a quality gate. Requires the 'Administer Quality Gates' permission.
       tags:
-      - qualitygates
+      - Quality Gates
       parameters:
       - name: error
         in: query

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Rules API
+  title: SonarQube Cloud Web Rules API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,15 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: rules
+- name: Rules
   description: Get and update some details of automatic rules, and manage custom rules.
 paths:
   /api/rules/repositories:
     get:
       operationId: rulesRepositories
       summary: List available rule repositories
-      description: List available rule repositories
       tags:
-      - rules
+      - Rules
       parameters:
       - name: language
         in: query
@@ -52,10 +51,10 @@ paths:
   /api/rules/search:
     get:
       operationId: rulesSearch
-      summary: Search for a collection of relevant rules matching a specified query. Since 5.5, following fields in the response hav...
+      summary: Search for a collection of relevant rules matching a specified query.
       description: Search for a collection of relevant rules matching a specified query. Since 5.5, following fields in the response have been deprecated :"effortToFixDescription" becomes "gapDescription""debtRemFnCoeff" becomes "remFnGapMultiplier""defaultDebtRemFnCoeff" becomes "defaultRemFnGapMultiplier""debtRemFnOffset" becomes "remFnBaseEffort""defaultDebtRemFnOffset" becomes "defaultRemFnBaseEffort""debtOverloaded" becomes "remFnOverloaded"
       tags:
-      - rules
+      - Rules
       parameters:
       - name: activation
         in: query
@@ -479,10 +478,10 @@ paths:
   /api/rules/show:
     get:
       operationId: rulesShow
-      summary: Get detailed information about a rule Since 5.5, following fields in the response have been deprecated :"effortToFixD...
+      summary: Get detailed information about a rule Since 5.5, following fields in the…
       description: Get detailed information about a rule Since 5.5, following fields in the response have been deprecated :"effortToFixDescription" becomes "gapDescription""debtRemFnCoeff" becomes "remFnGapMultiplier""defaultDebtRemFnCoeff" becomes "defaultRemFnGapMultiplier""debtRemFnOffset" becomes "remFnBaseEffort""defaultDebtRemFnOffset" becomes "defaultRemFnBaseEffort""debtOverloaded" becomes "remFnOverloaded"In 7.1, the field 'scope' has been added.
       tags:
-      - rules
+      - Rules
       parameters:
       - name: actives
         in: query
@@ -526,9 +525,8 @@ paths:
     get:
       operationId: rulesTags
       summary: List rule tags
-      description: List rule tags
       tags:
-      - rules
+      - Rules
       parameters:
       - name: organization
         in: query
@@ -567,9 +565,8 @@ paths:
     post:
       operationId: rulesUpdate
       summary: Update an existing rule. Requires the 'Administer Quality Profiles' permission
-      description: Update an existing rule. Requires the 'Administer Quality Profiles' permission
       tags:
-      - rules
+      - Rules
       parameters:
       - name: debt_sub_characteristic
         in: query

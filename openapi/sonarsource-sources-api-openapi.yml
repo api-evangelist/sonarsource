@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Sources API
+  title: SonarQube Cloud Web Sources API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,15 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: sources
+- name: Sources
   description: Get details on source files. See also api/tests.
 paths:
   /api/sources/raw:
     get:
       operationId: sourcesRaw
       summary: Get source code as raw text. Require 'See Source Code' permission on file
-      description: Get source code as raw text. Require 'See Source Code' permission on file
       tags:
-      - sources
+      - Sources
       parameters:
       - name: branch
         in: query
@@ -59,10 +58,10 @@ paths:
   /api/sources/scm:
     get:
       operationId: sourcesScm
-      summary: Get SCM information of source files. Require See Source Code permission on file's project Each element of the result ...
+      summary: Get SCM information of source files.
       description: Get SCM information of source files. Require See Source Code permission on file's project Each element of the result array is composed of:Line numberAuthor of the commitDatetime of the commit (before 5.2 it was only the Date)Revision of the commit (added in 5.2)
       tags:
-      - sources
+      - Sources
       parameters:
       - name: commits_by_line
         in: query
@@ -112,10 +111,10 @@ paths:
   /api/sources/show:
     get:
       operationId: sourcesShow
-      summary: Get source code. Requires See Source Code permission on file's project, or organization membership on public projects...
+      summary: Get source code.
       description: Get source code. Requires See Source Code permission on file's project, or organization membership on public projects. Each element of the result array is composed of:Line numberContent of the line
       tags:
-      - sources
+      - Sources
       parameters:
       - name: from
         in: query

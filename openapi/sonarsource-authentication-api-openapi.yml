@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: authentication
+- name: Authentication
   description: Handle authentication.
 paths:
   /api/authentication/logout:
     post:
       operationId: authenticationLogout
-      summary: Logout a user.
+      summary: Logout a user
       description: Logout a user.
       tags:
-      - authentication
+      - Authentication
       parameters: []
       responses:
         '200':
@@ -38,10 +38,10 @@ paths:
   /api/authentication/validate:
     get:
       operationId: authenticationValidate
-      summary: Check credentials. Returns true for anonymous user.
+      summary: Check credentials. Returns true for anonymous user
       description: Check credentials. Returns true for anonymous user.
       tags:
-      - authentication
+      - Authentication
       parameters: []
       responses:
         '200':

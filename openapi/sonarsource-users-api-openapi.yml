@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Users API
+  title: SonarQube Cloud Web Users API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: users
+- name: Users
   description: Manage users.
 paths:
   /api/users/groups:
     get:
       operationId: usersGroups
-      summary: Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.
+      summary: Lists the groups a user belongs to.
       description: Lists the groups a user belongs to. Requires the permission 'Administer' on the organization.
       tags:
-      - users
+      - Users
       parameters:
       - name: login
         in: query

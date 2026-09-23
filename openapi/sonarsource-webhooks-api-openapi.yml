@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Webhooks API
+  title: SonarQube Cloud Web Webhooks API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: webhooks
+- name: Webhooks
   description: Webhooks allow to notify external services when a project analysis is done
 paths:
   /api/webhooks/create:
     post:
       operationId: webhooksCreate
-      summary: Create a Webhook. Requires 'Administer' permission on the specified project.
+      summary: Create a Webhook. Requires 'Administer' permission on the specified project
       description: Create a Webhook. Requires 'Administer' permission on the specified project.
       tags:
-      - webhooks
+      - Webhooks
       parameters:
       - name: name
         in: query
@@ -78,10 +78,10 @@ paths:
   /api/webhooks/delete:
     post:
       operationId: webhooksDelete
-      summary: Delete a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      summary: Delete a Webhook.
       description: Delete a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
       tags:
-      - webhooks
+      - Webhooks
       parameters:
       - name: webhook
         in: query
@@ -105,10 +105,10 @@ paths:
   /api/webhooks/deliveries:
     get:
       operationId: webhooksDeliveries
-      summary: Get the recent deliveries for a specified project or Compute Engine task. Require 'Administer' permission on the rela...
+      summary: Get the recent deliveries for a specified project or Compute Engine task.
       description: Get the recent deliveries for a specified project or Compute Engine task. Require 'Administer' permission on the related project. Note that additional information are returned by api/webhooks/delivery.
       tags:
-      - webhooks
+      - Webhooks
       parameters:
       - name: ceTaskId
         in: query
@@ -161,10 +161,10 @@ paths:
   /api/webhooks/delivery:
     get:
       operationId: webhooksDelivery
-      summary: Get a webhook delivery by its id. Note that additional information are returned by api/webhooks/delivery.
+      summary: Get a webhook delivery by its id.
       description: Get a webhook delivery by its id. Note that additional information are returned by api/webhooks/delivery.
       tags:
-      - webhooks
+      - Webhooks
       parameters:
       - name: deliveryId
         in: query
@@ -187,10 +187,10 @@ paths:
   /api/webhooks/list:
     get:
       operationId: webhooksList
-      summary: Search for global webhooks or project webhooks. Webhooks are ordered by name. Requires 'Administer' permission on the...
+      summary: Search for global webhooks or project webhooks.
       description: Search for global webhooks or project webhooks. Webhooks are ordered by name. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
       tags:
-      - webhooks
+      - Webhooks
       parameters:
       - name: organization
         in: query
@@ -220,10 +220,10 @@ paths:
   /api/webhooks/update:
     post:
       operationId: webhooksUpdate
-      summary: Update a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
+      summary: Update a Webhook.
       description: Update a Webhook. Requires 'Administer' permission on the specified project, or global 'Administer' permission.
       tags:
-      - webhooks
+      - Webhooks
       parameters:
       - name: name
         in: query

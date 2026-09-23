@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Qualityprofiles API
+  title: SonarQube Cloud Web Qualityprofiles API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/qualityprofiles/activate_rule:
     post:
       operationId: qualityprofilesActivateRule
-      summary: 'Activate a rule on a Quality Profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit r...'
+      summary: Activate a rule on a Quality Profile.
       description: 'Activate a rule on a Quality Profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -82,7 +82,7 @@ paths:
   /api/qualityprofiles/activate_rules:
     post:
       operationId: qualityprofilesActivateRules
-      summary: 'Bulk-activate rules on one quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' ...'
+      summary: Bulk-activate rules on one quality profile.
       description: 'Bulk-activate rules on one quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -416,7 +416,7 @@ paths:
   /api/qualityprofiles/add_project:
     post:
       operationId: qualityprofilesAddProject
-      summary: 'Associate a project with a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' ...'
+      summary: Associate a project with a quality profile.
       description: 'Associate a project with a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile Administer right on the specified project'
       tags:
       - qualityprofiles
@@ -526,7 +526,7 @@ paths:
   /api/qualityprofiles/backup:
     get:
       operationId: qualityprofilesBackup
-      summary: Backup a quality profile in XML form. The exported profile can be restored through api/qualityprofiles/restore.
+      summary: Backup a quality profile in XML form.
       description: Backup a quality profile in XML form. The exported profile can be restored through api/qualityprofiles/restore.
       tags:
       - qualityprofiles
@@ -622,7 +622,7 @@ paths:
   /api/qualityprofiles/change_parent:
     post:
       operationId: qualityprofilesChangeParent
-      summary: 'Change a quality profile''s parent. Requires one of the following permissions: ''Administer Quality Profiles'' Edit righ...'
+      summary: Change a quality profile's parent.
       description: 'Change a quality profile''s parent. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -732,7 +732,7 @@ paths:
   /api/qualityprofiles/changelog:
     get:
       operationId: qualityprofilesChangelog
-      summary: 'Get the history of changes on a quality profile: rule activation/deactivation, change in parameters/severity. Events ...'
+      summary: 'Get the history of changes on a quality profile: rule activation/deactivation…'
       description: 'Get the history of changes on a quality profile: rule activation/deactivation, change in parameters/severity. Events are ordered by date in descending order (most recent first).'
       tags:
       - qualityprofiles
@@ -858,7 +858,7 @@ paths:
   /api/qualityprofiles/copy:
     post:
       operationId: qualityprofilesCopy
-      summary: Copy a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      summary: Copy a quality profile.
       description: Copy a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
       tags:
       - qualityprofiles
@@ -891,7 +891,7 @@ paths:
   /api/qualityprofiles/create:
     post:
       operationId: qualityprofilesCreate
-      summary: Create a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
+      summary: Create a quality profile.
       description: Create a quality profile. Requires to be logged in and the 'Administer Quality Profiles' permission.
       tags:
       - qualityprofiles
@@ -982,7 +982,7 @@ paths:
   /api/qualityprofiles/deactivate_rule:
     post:
       operationId: qualityprofilesDeactivateRule
-      summary: 'Deactivate a rule on a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit...'
+      summary: Deactivate a rule on a quality profile.
       description: 'Deactivate a rule on a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -1015,7 +1015,7 @@ paths:
   /api/qualityprofiles/deactivate_rules:
     post:
       operationId: qualityprofilesDeactivateRules
-      summary: 'Bulk deactivate rules on Quality profiles. Requires one of the following permissions: ''Administer Quality Profiles'' E...'
+      summary: Bulk deactivate rules on Quality profiles.
       description: 'Bulk deactivate rules on Quality profiles. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -1344,7 +1344,7 @@ paths:
   /api/qualityprofiles/delete:
     post:
       operationId: qualityprofilesDelete
-      summary: Delete a quality profile and all its descendants. The default quality profile cannot be deleted. Requires one of the ...
+      summary: Delete a quality profile and all its descendants.
       description: 'Delete a quality profile and all its descendants. The default quality profile cannot be deleted. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -1441,7 +1441,6 @@ paths:
     get:
       operationId: qualityprofilesExport
       summary: Deprecated. Use GET /api/qualityprofiles/backup instead
-      description: Deprecated. Use GET /api/qualityprofiles/backup instead
       tags:
       - qualityprofiles
       parameters:
@@ -1538,7 +1537,7 @@ paths:
   /api/qualityprofiles/exporters:
     get:
       operationId: qualityprofilesExporters
-      summary: Deprecated. No more custom profile exporters.
+      summary: Deprecated. No more custom profile exporters
       description: Deprecated. No more custom profile exporters.
       tags:
       - qualityprofiles
@@ -1558,7 +1557,7 @@ paths:
   /api/qualityprofiles/importers:
     get:
       operationId: qualityprofilesImporters
-      summary: Deprecated. No more custom profile importers.
+      summary: Deprecated. No more custom profile importers
       description: Deprecated. No more custom profile importers.
       tags:
       - qualityprofiles
@@ -1578,7 +1577,7 @@ paths:
   /api/qualityprofiles/inheritance:
     get:
       operationId: qualityprofilesInheritance
-      summary: Show a quality profile's ancestors and children.
+      summary: Show a quality profile's ancestors and children
       description: Show a quality profile's ancestors and children.
       tags:
       - qualityprofiles
@@ -1675,7 +1674,6 @@ paths:
     get:
       operationId: qualityprofilesProjects
       summary: List projects with their association status regarding a quality profile
-      description: List projects with their association status regarding a quality profile
       tags:
       - qualityprofiles
       parameters:
@@ -1734,7 +1732,7 @@ paths:
   /api/qualityprofiles/remove_project:
     post:
       operationId: qualityprofilesRemoveProject
-      summary: 'Remove a project''s association with a quality profile. Requires one of the following permissions: ''Administer Quality...'
+      summary: Remove a project's association with a quality profile.
       description: 'Remove a project''s association with a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile Administer right on the specified project'
       tags:
       - qualityprofiles
@@ -1844,7 +1842,7 @@ paths:
   /api/qualityprofiles/rename:
     post:
       operationId: qualityprofilesRename
-      summary: 'Rename a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the ...'
+      summary: Rename a quality profile.
       description: 'Rename a quality profile. Requires one of the following permissions: ''Administer Quality Profiles'' Edit right on the specified quality profile'
       tags:
       - qualityprofiles
@@ -1878,7 +1876,7 @@ paths:
   /api/qualityprofiles/restore:
     post:
       operationId: qualityprofilesRestore
-      summary: Restore a quality profile using an XML file. The restored profile name is taken from the backup file, so if a profile...
+      summary: Restore a quality profile using an XML file.
       description: Restore a quality profile using an XML file. The restored profile name is taken from the backup file, so if a profile with the same name and language already exists, it will be overwritten. Requires to be logged in and the 'Administer Quality Profiles' permission.
       tags:
       - qualityprofiles
@@ -1910,7 +1908,7 @@ paths:
   /api/qualityprofiles/restore_built_in:
     post:
       operationId: qualityprofilesRestoreBuiltIn
-      summary: This web service has no effect since 6.4. It's no more possible to restore built-in quality profiles because they are...
+      summary: This web service has no effect since 6.4.
       description: This web service has no effect since 6.4. It's no more possible to restore built-in quality profiles because they are automatically updated and read only. Returns HTTP code 410.
       tags:
       - qualityprofiles
@@ -1931,7 +1929,6 @@ paths:
     get:
       operationId: qualityprofilesSearch
       summary: Search quality profiles
-      description: Search quality profiles
       tags:
       - qualityprofiles
       parameters:
@@ -2038,7 +2035,7 @@ paths:
   /api/qualityprofiles/set_default:
     post:
       operationId: qualityprofilesSetDefault
-      summary: Select the default profile for a given language. Requires to be logged in and the 'Administer Quality Profiles' permi...
+      summary: Select the default profile for a given language.
       description: Select the default profile for a given language. Requires to be logged in and the 'Administer Quality Profiles' permission.
       tags:
       - qualityprofiles

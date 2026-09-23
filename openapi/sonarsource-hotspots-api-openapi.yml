@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Hotspots API
+  title: SonarQube Cloud Web Hotspots API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/hotspots/change_status:
     post:
       operationId: hotspotsChangeStatus
-      summary: Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.
+      summary: Change the status of a Security Hotpot.
       description: Change the status of a Security Hotpot. Requires the 'Administer Security Hotspot' permission.
       tags:
       - hotspots
@@ -71,7 +71,7 @@ paths:
   /api/hotspots/search:
     get:
       operationId: hotspotsSearch
-      summary: Search for Security Hotpots.
+      summary: Search for Security Hotpots
       description: Search for Security Hotpots.
       tags:
       - hotspots
@@ -176,7 +176,7 @@ paths:
   /api/hotspots/show:
     get:
       operationId: hotspotsShow
-      summary: Provides the details of a Security Hotspot.
+      summary: Provides the details of a Security Hotspot
       description: Provides the details of a Security Hotspot.
       tags:
       - hotspots

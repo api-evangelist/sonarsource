@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Measures API
+  title: SonarQube Cloud Web Measures API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: measures
+- name: Measures
   description: Get components or children with specified measures.
 paths:
   /api/measures/component:
     get:
       operationId: measuresComponent
-      summary: Return component with specified measures. The componentId or the component parameter must be provided. Requires the f...
+      summary: Return component with specified measures.
       description: 'Return component with specified measures. The componentId or the component parameter must be provided. Requires the following permission: ''Browse'' on the project of specified component.'
       tags:
-      - measures
+      - Measures
       parameters:
       - name: additionalFields
         in: query
@@ -95,10 +95,10 @@ paths:
   /api/measures/component_tree:
     get:
       operationId: measuresComponentTree
-      summary: Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the componen...
+      summary: Navigate through components based on the chosen strategy with specified…
       description: 'Navigate through components based on the chosen strategy with specified measures. The baseComponentId or the component parameter must be provided. Requires the following permission: ''Browse'' on the specified project. When limiting search with the q parameter, directories are not returned.'
       tags:
-      - measures
+      - Measures
       parameters:
       - name: additionalFields
         in: query
@@ -268,10 +268,10 @@ paths:
   /api/measures/search_history:
     get:
       operationId: measuresSearchHistory
-      summary: Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of mea...
+      summary: Search measures history of a component.
       description: 'Search measures history of a component. Measures are ordered chronologically. Pagination applies to the number of measures for each metric. Requires the following permission: ''Browse'' on the specified component'
       tags:
-      - measures
+      - Measures
       parameters:
       - name: branch
         in: query

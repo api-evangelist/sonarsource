@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication User Tokens API
+  title: SonarQube Cloud Web User Tokens API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: user_tokens
+- name: User Tokens
   description: List, create, and delete a user's access tokens.
 paths:
   /api/user_tokens/generate:
     post:
       operationId: userTokensGenerate
-      summary: Generate a user access token. Please keep your tokens secret. They enable to authenticate and analyze projects. The e...
+      summary: Generate a user access token.
       description: Generate a user access token. Please keep your tokens secret. They enable to authenticate and analyze projects. The endpoint generates a token for the logged in user.
       tags:
-      - user_tokens
+      - User Tokens
       parameters:
       - name: expirationDate
         in: query
@@ -60,10 +60,10 @@ paths:
   /api/user_tokens/revoke:
     post:
       operationId: userTokensRevoke
-      summary: Revoke an access token of the authenticated user.
+      summary: Revoke an access token of the authenticated user
       description: Revoke an access token of the authenticated user.
       tags:
-      - user_tokens
+      - User Tokens
       parameters:
       - name: login
         in: query
@@ -93,10 +93,10 @@ paths:
   /api/user_tokens/search:
     get:
       operationId: userTokensSearch
-      summary: List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated every hour, so it may no...
+      summary: List the access tokens of the authenticated user.
       description: List the access tokens of the authenticated user. Field 'lastConnectionDate' is only updated every hour, so it may not be accurate, for instance when a user is using a token many times in less than one hour.
       tags:
-      - user_tokens
+      - User Tokens
       parameters:
       - name: login
         in: query

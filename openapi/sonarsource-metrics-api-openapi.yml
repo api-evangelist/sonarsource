@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Metrics API
+  title: SonarQube Cloud Web Metrics API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: metrics
+- name: Metrics
   description: Get information on automatic metrics, and manage custom metrics. See also api/custom_measures.
 paths:
   /api/metrics/domains:
     get:
       operationId: metricsDomains
-      summary: List all custom metric domains.
+      summary: List all custom metric domains
       description: List all custom metric domains.
       tags:
-      - metrics
+      - Metrics
       parameters: []
       responses:
         '200':
@@ -40,9 +40,8 @@ paths:
     get:
       operationId: metricsSearch
       summary: Search for metrics
-      description: Search for metrics
       tags:
-      - metrics
+      - Metrics
       parameters:
       - name: f
         in: query
@@ -88,10 +87,10 @@ paths:
   /api/metrics/types:
     get:
       operationId: metricsTypes
-      summary: List all available metric types.
+      summary: List all available metric types
       description: List all available metric types.
       tags:
-      - metrics
+      - Metrics
       parameters: []
       responses:
         '200':

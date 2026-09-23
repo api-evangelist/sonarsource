@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Permissions API
+  title: SonarQube Cloud Web Permissions API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: permissions
+- name: Permissions
   description: Manage permission templates, and the granting and revoking of permissions at the global and project levels.
 paths:
   /api/permissions/add_group:
     post:
       operationId: permissionsAddGroup
-      summary: Add permission to a group. This service defaults to global permissions, but can be limited to project permissions by ...
+      summary: Add permission to a group.
       description: Add permission to a group. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. The group name or group id must be provided. Requires the permission 'Administer' on the specified project.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: groupId
         in: query
@@ -79,10 +79,10 @@ paths:
   /api/permissions/add_group_to_template:
     post:
       operationId: permissionsAddGroupToTemplate
-      summary: Add a group to a permission template. The group id or group name must be provided. Requires the permission 'Administe...
+      summary: Add a group to a permission template.
       description: Add a group to a permission template. The group id or group name must be provided. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: groupId
         in: query
@@ -147,10 +147,10 @@ paths:
   /api/permissions/add_project_creator_to_template:
     post:
       operationId: permissionsAddProjectCreatorToTemplate
-      summary: Add a project creator to a permission template. Requires the permission 'Administer' on the organization.
+      summary: Add a project creator to a permission template.
       description: Add a project creator to a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: organization
         in: query
@@ -201,10 +201,10 @@ paths:
   /api/permissions/add_user:
     post:
       operationId: permissionsAddUser
-      summary: Add permission to a user. This service defaults to global permissions, but can be limited to project permissions by p...
+      summary: Add permission to a user.
       description: Add permission to a user. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. Requires the permission 'Administer' on the specified project.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: login
         in: query
@@ -254,10 +254,10 @@ paths:
   /api/permissions/add_user_to_template:
     post:
       operationId: permissionsAddUserToTemplate
-      summary: Add a user to a permission template. Requires the permission 'Administer' on the organization.
+      summary: Add a user to a permission template.
       description: Add a user to a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: login
         in: query
@@ -315,10 +315,10 @@ paths:
   /api/permissions/apply_template:
     post:
       operationId: permissionsApplyTemplate
-      summary: Apply a permission template to one project. The project id or project key must be provided. The template id or name m...
+      summary: Apply a permission template to one project.
       description: Apply a permission template to one project. The project id or project key must be provided. The template id or name must be provided. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: organization
         in: query
@@ -369,10 +369,10 @@ paths:
   /api/permissions/bulk_apply_template:
     post:
       operationId: permissionsBulkApplyTemplate
-      summary: Apply a permission template to several projects. The template id or name must be provided. Requires the permission 'A...
+      summary: Apply a permission template to several projects.
       description: Apply a permission template to several projects. The template id or name must be provided. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: analyzedBefore
         in: query
@@ -451,10 +451,10 @@ paths:
   /api/permissions/create_template:
     post:
       operationId: permissionsCreateTemplate
-      summary: Create a permission template. Requires the permission 'Administer' on the organization.
+      summary: Create a permission template.
       description: Create a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: description
         in: query
@@ -498,10 +498,10 @@ paths:
   /api/permissions/delete_template:
     post:
       operationId: permissionsDeleteTemplate
-      summary: Delete a permission template. Requires the permission 'Administer' on the organization.
+      summary: Delete a permission template.
       description: Delete a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: organization
         in: query
@@ -538,10 +538,10 @@ paths:
   /api/permissions/remove_group:
     post:
       operationId: permissionsRemoveGroup
-      summary: Remove a permission from a group. This service defaults to global permissions, but can be limited to project permissi...
+      summary: Remove a permission from a group.
       description: Remove a permission from a group. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. The group id or group name must be provided, not both. Requires the permission 'Administer' on the specified project.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: groupId
         in: query
@@ -598,10 +598,10 @@ paths:
   /api/permissions/remove_group_from_template:
     post:
       operationId: permissionsRemoveGroupFromTemplate
-      summary: Remove a group from a permission template. The group id or group name must be provided. Requires the permission 'Admi...
+      summary: Remove a group from a permission template.
       description: Remove a group from a permission template. The group id or group name must be provided. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: groupId
         in: query
@@ -666,10 +666,10 @@ paths:
   /api/permissions/remove_project_creator_from_template:
     post:
       operationId: permissionsRemoveProjectCreatorFromTemplate
-      summary: Remove a project creator from a permission template. Requires the permission 'Administer' on the organization.
+      summary: Remove a project creator from a permission template.
       description: Remove a project creator from a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: organization
         in: query
@@ -720,10 +720,10 @@ paths:
   /api/permissions/remove_user:
     post:
       operationId: permissionsRemoveUser
-      summary: Remove permission from a user. This service defaults to global permissions, but can be limited to project permissions...
+      summary: Remove permission from a user.
       description: Remove permission from a user. This service defaults to global permissions, but can be limited to project permissions by providing project id or project key. Requires the permission 'Administer' on the specified project.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: login
         in: query
@@ -773,10 +773,10 @@ paths:
   /api/permissions/remove_user_from_template:
     post:
       operationId: permissionsRemoveUserFromTemplate
-      summary: Remove a user from a permission template. Requires the permission 'Administer' on the organization.
+      summary: Remove a user from a permission template.
       description: Remove a user from a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: login
         in: query
@@ -834,10 +834,10 @@ paths:
   /api/permissions/search_templates:
     get:
       operationId: permissionsSearchTemplates
-      summary: List permission templates. Requires the permission 'Administer' on the organization.
+      summary: List permission templates.
       description: List permission templates. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: organization
         in: query
@@ -867,10 +867,10 @@ paths:
   /api/permissions/set_default_template:
     post:
       operationId: permissionsSetDefaultTemplate
-      summary: Set a permission template as default. Requires the permission 'Administer' on the organization.
+      summary: Set a permission template as default.
       description: Set a permission template as default. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: organization
         in: query
@@ -916,10 +916,10 @@ paths:
   /api/permissions/update_template:
     post:
       operationId: permissionsUpdateTemplate
-      summary: Update a permission template. Requires the permission 'Administer' on the organization.
+      summary: Update a permission template.
       description: Update a permission template. Requires the permission 'Administer' on the organization.
       tags:
-      - permissions
+      - Permissions
       parameters:
       - name: description
         in: query

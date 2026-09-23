@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Ce API
+  title: SonarQube Cloud Web Ce API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/ce/activity:
     get:
       operationId: ceActivity
-      summary: Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration ...
+      summary: Search for tasks.
       description: Search for tasks. Either componentId or component can be provided, but not both. Requires the project administration permission if componentId or component is set.
       tags:
       - ce
@@ -116,7 +116,7 @@ paths:
   /api/ce/activity_status:
     get:
       operationId: ceActivityStatus
-      summary: Returns CE activity related metrics. Requires 'Administer' permission on the specified project.
+      summary: Returns CE activity related metrics.
       description: Returns CE activity related metrics. Requires 'Administer' permission on the specified project.
       tags:
       - ce
@@ -149,7 +149,7 @@ paths:
   /api/ce/component:
     get:
       operationId: ceComponent
-      summary: Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Require...
+      summary: Get the pending tasks, in-progress tasks and the last executed task of a given…
       description: 'Get the pending tasks, in-progress tasks and the last executed task of a given component (usually a project). Requires the following permission: ''Browse'' on the specified component. Either ''componentId'' or ''component'' must be provided.'
       tags:
       - ce
@@ -182,7 +182,7 @@ paths:
   /api/ce/task:
     get:
       operationId: ceTask
-      summary: Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis'...
+      summary: Give Compute Engine task details such as type, status, duration and associated…
       description: Give Compute Engine task details such as type, status, duration and associated component. Requires 'Execute Analysis' permission.
       tags:
       - ce

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Project Tags API
+  title: SonarQube Cloud Web Project Tags API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,15 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: project_tags
+- name: Project Tags
   description: Manage project tags
 paths:
   /api/project_tags/search:
     get:
       operationId: projectTagsSearch
       summary: Search tags
-      description: Search tags
       tags:
-      - project_tags
+      - Project Tags
       parameters:
       - name: ps
         in: query
@@ -53,10 +52,10 @@ paths:
   /api/project_tags/set:
     post:
       operationId: projectTagsSet
-      summary: 'Set tags on a project. Requires the following permission: ''Administer'' rights on the specified project'
+      summary: Set tags on a project.
       description: 'Set tags on a project. Requires the following permission: ''Administer'' rights on the specified project'
       tags:
-      - project_tags
+      - Project Tags
       parameters:
       - name: project
         in: query

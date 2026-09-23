@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Project Badges API
+  title: SonarQube Cloud Web Project Badges API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -19,7 +19,7 @@ paths:
   /api/project_badges/ai_code_assurance:
     get:
       operationId: projectBadgesAiCodeAssurance
-      summary: Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on the specified project.
+      summary: Generate a badge for project's AI assurance as an SVG.
       description: Generate a badge for project's AI assurance as an SVG. Requires 'Browse' permission on the specified project.
       tags:
       - project_badges
@@ -51,7 +51,7 @@ paths:
   /api/project_badges/measure:
     get:
       operationId: projectBadgesMeasure
-      summary: Generate badge for project's measure as an SVG. Requires a security token for private projects.
+      summary: Generate badge for project's measure as an SVG.
       description: Generate badge for project's measure as an SVG. Requires a security token for private projects.
       tags:
       - project_badges
@@ -108,7 +108,7 @@ paths:
   /api/project_badges/quality_gate:
     get:
       operationId: projectBadgesQualityGate
-      summary: Generate badge for project's quality gate as an SVG. Requires a security token for private projects.
+      summary: Generate badge for project's quality gate as an SVG.
       description: Generate badge for project's quality gate as an SVG. Requires a security token for private projects.
       tags:
       - project_badges

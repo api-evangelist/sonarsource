@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SonarQube Cloud Web authentication Components API
+  title: SonarQube Cloud Web Components API
   version: v1
   description: The SonarQube Cloud Web API, derived faithfully from the machine-readable service catalog the instance publishes at /api/webservices/list.
   x-derived-from: https://sonarcloud.io/api/webservices/list
@@ -13,16 +13,16 @@ security:
 - bearerToken: []
 - basicToken: []
 tags:
-- name: components
+- name: Components
   description: Get information about a component (file, directory, project, ...) and its ancestors or descendants. Update a project or module key.
 paths:
   /api/components/search:
     get:
       operationId: componentsSearch
-      summary: Search for projects. Used to provide the ability to search for any component but this option has been removed and web...
+      summary: Search for projects.
       description: Search for projects. Used to provide the ability to search for any component but this option has been removed and webservice 'api/components/tree' should be used instead for this purpose
       tags:
-      - components
+      - Components
       parameters:
       - name: organization
         in: query
@@ -68,10 +68,10 @@ paths:
   /api/components/show:
     get:
       operationId: componentsShow
-      summary: Returns a component (file, directory, project) and its ancestors. The ancestors are ordered from the parent to the ro...
+      summary: Returns a component (file, directory, project) and its ancestors.
       description: 'Returns a component (file, directory, project) and its ancestors. The ancestors are ordered from the parent to the root project. Requires the following permission: ''Browse'' on the project of the specified component.'
       tags:
-      - components
+      - Components
       parameters:
       - name: branch
         in: query
@@ -108,10 +108,10 @@ paths:
   /api/components/tree:
     get:
       operationId: componentsTree
-      summary: 'Navigate through components based on the chosen strategy. Requires the following permission: ''Browse'' on the specifie...'
+      summary: Navigate through components based on the chosen strategy.
       description: 'Navigate through components based on the chosen strategy. Requires the following permission: ''Browse'' on the specified project. When limiting search with the q parameter, directories are not returned.'
       tags:
-      - components
+      - Components
       parameters:
       - name: asc
         in: query
