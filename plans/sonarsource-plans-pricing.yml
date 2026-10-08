@@ -54,3 +54,50 @@ plans:
   included_quota: SonarQube Team Plan, free for private projects up to 50k LOC
 rate_limit_statements:
 - free tier that allows you to explore SonarQube using your private projects up to a maximum of 50k LoC
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - seat
+  units:
+  - object
+  - seat
+  plans:
+  - name: Team (SonarQube)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Gitar AI Code Review
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: OSS maintainers
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Developers
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
