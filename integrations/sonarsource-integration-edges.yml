@@ -19,6 +19,7 @@ checked:
 - https://www.openchainproject.org/community-of-conformance
 - slack/integrations/slack-integration-edges.yml
 - docker-hub/integrations/docker-hub-integration-edges.yml
+- artifact-hub/integrations/artifact-hub-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Atlassian Marketplace
@@ -234,6 +235,27 @@ edges:
   category: Docker Verified Publisher
   badges:
   - Docker Verified Publisher
+- partner_name: Artifact Hub (artifact-hub)
+  partner: artifact-hub
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: artifact-hub
+  evidence: https://artifacthub.io/packages/search?repo=sonarqube
+  mirror_of: artifact-hub/integrations/artifact-hub-integration-edges.yml
+  apps:
+  - sonarqube
+  - sonarqube-dce
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Artifact Hub listing (Helm chart)
+  badges:
+  - 'Verified publisher (Artifact Hub official: publisher owns the software)'
+  - 'Verified publisher (Artifact Hub verified publisher: repository ownership proven)'
 source:
 - https://marketplace.atlassian.com/
 - https://marketplace.visualstudio.com/vscode
