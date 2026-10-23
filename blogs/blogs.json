@@ -5,16 +5,17 @@
       "source": "https://www.sonarsource.com/blog/",
       "feed_url": "https://www.sonarsource.com/rss/blog.xml",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "discovered"
     },
     {
-      "source": "https://community.sonarsource.com/",
-      "feed_url": "",
+      "source": "https://www.sonarsource.com/rss/blog.xml",
+      "feed_url": "https://www.sonarsource.com/rss/blog.xml",
+      "title": "",
       "saved": 0,
-      "skipped": "community-shaped; a vendor feed already saved this run (roadmap#239)"
+      "method": "feed"
     }
   ],
-  "post_count": 2,
-  "fetched": "2026-10-10T13:15:00Z"
+  "post_count": 20,
+  "fetched": "2026-10-17T14:53:57Z"
 }
